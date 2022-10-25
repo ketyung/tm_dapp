@@ -1,0 +1,9 @@
+.NotSignedInDiv {
+    padding:10px;
+    border: 1px solid #aab;
+    max-width: 1200px;
+    margin:auto;
+    border-radius: 30px;
+    margin-top: 30px;
+    background-color: #aab;
+}
