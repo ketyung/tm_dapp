@@ -18,14 +18,17 @@ export class UsersContract {
 
         try {
 
-            return await this.wallet?.viewMethod({
+            let b =  await this.wallet?.viewMethod({
                 contractId: this.contractId,
                 method: 'has_user',
                 args: { user_id:  this.wallet.accountId}
             });
+
+            console.log("hasUser@", this.contractId, b, new Date());
+            return b;
         }
         catch( e: any) {
-            //console.log("err@hasUser@", e, new Date());
+            console.error("err@hasUser@", e, new Date());
             return false;
         }
         

@@ -34,6 +34,8 @@ UsersContractState => {
                     action.wallet
                 );
     
+                console.log("Init.contract", contract, new Date());
+
                 return {...state, contract : contract, dateUpdated : action.dateUpdated};
             }
 

@@ -10,6 +10,7 @@ export const UserPromptView : FC = () =>{
 
     const checkHasProfile = useCallback(async ()=>{
         let b = await hasUser();
+        console.log("check.has.prof:", b, new Date());
         setHasProfile(b);
     },[hasUser]);
 
