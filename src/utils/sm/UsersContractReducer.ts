@@ -34,8 +34,11 @@ UsersContractState => {
                     action.wallet
                 );
     
-                console.log("Init.contract", contract, new Date());
+                contract.hasUser().then (b =>{
 
+                    console.log("Init.contract.hasUser::", b , new Date());
+                });
+               
                 return {...state, contract : contract, dateUpdated : action.dateUpdated};
             }
 
