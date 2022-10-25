@@ -12,5 +12,6 @@ export const NotSignedInView : FC = () =>{
     <Button shape="round" style={{marginTop:"30px"}} onClick={()=>{
         signIn();
     }}>Click here to sign in</Button>
+    <p style={{marginTop:"20px"}}>Test String: {process.env.REACT_APP_TEST_STR}</p>
     </div>
 }
