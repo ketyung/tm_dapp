@@ -39,7 +39,7 @@ export const List : FC = () =>{
                 Total Tickets
                 </td>
                 <td style={{width:"10%"}}>
-                Total Tickets Sold
+                Tickets Sold
                 </td>
                 <td style={{width:"10%"}}>
                 Actions
