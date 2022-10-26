@@ -8,6 +8,8 @@ export const HELPER_URL = "https://helper.testnet.near.org";
 
 export const USERS_CONTRACT_ID = "test_tm_users_contract.testnet";
 
+export const COLLECTIONS_CONTRACT_ID = "test_tm_collections_contract.testnet";
+
 export const NEAR_TOKEN_DECIMALS = 24;
 
 
