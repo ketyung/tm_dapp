@@ -19,7 +19,7 @@ export const Form : FC <Props> = ({
     });
 
     return <div className="CollectionForm">
-        <table cellPadding={3} cellSpacing={3}>
+        <table cellPadding={5} cellSpacing={5}>
             <thead>
                 <tr>
                     <td valign="top" align="center" colSpan={2}>
