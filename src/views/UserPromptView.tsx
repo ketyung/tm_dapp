@@ -6,12 +6,14 @@ export const UserPromptView : FC = () =>{
 
     const {hasUser} = useUsersContractState();
 
-    const [hasProfile, setHasProfile] = useState(false);
+    const [hasProfile, setHasProfile] = useState<boolean>();
 
     const checkHasProfile = useCallback(async ()=>{
-        let b = await hasUser();
-        setHasProfile(b);
-    },[hasUser]);
+        if ( hasProfile === undefined ){
+            let b = await hasUser();
+            setHasProfile(b);
+        }
+    },[hasUser, hasProfile]);
 
     const checkHasProfileNow = useCallback(async ()=>{
         

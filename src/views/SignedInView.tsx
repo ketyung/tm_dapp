@@ -18,8 +18,6 @@ export const SignedInView : FC = () =>{
         if ( !isInitialized() ) {
             init();
         }
-    
-
     },[isInitialized,init]);
 
     const switchView = () =>{

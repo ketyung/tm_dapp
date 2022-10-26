@@ -24,7 +24,7 @@ export class UsersContract {
                 args: { user_id:  this.wallet.accountId}
             });
 
-            console.log("hasUser@", this.contractId, b, new Date());
+            //console.log("UsersContract.hasUser@", this.contractId, b, new Date());
             return b;
         }
         catch( e: any) {
