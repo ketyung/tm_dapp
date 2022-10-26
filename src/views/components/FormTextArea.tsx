@@ -88,7 +88,7 @@ export const FormTextArea : FC <FormTextAreaProps> = ({
 
     return <Form.Item label={label ? label : ""} 
     rules = {[{required : required ? required : false, message :"Missing " + name}]}
-    style={formItemStyle ? formItemStyle : {}} name={name} labelAlign={labelAlign ?? "right"}>
+    style={formItemStyle ? formItemStyle : {fontWeight:"bold"}} name={name} labelAlign={labelAlign ?? "right"}>
         {
            <TextArea value={value}
            onChange={onChange}

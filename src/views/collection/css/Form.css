@@ -1,0 +1,30 @@
+.FormModal {
+    border-radius: 20px;
+    background-color: #ddd;
+    padding:10px;
+    min-width: 1200px;
+    min-height:400px;
+}
+
+.CollectionForm {
+    width:99%;
+    padding:10px;
+    border-radius: 20px;
+    border: 1px solid #abc;
+    min-height: 390px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.CollectionForm table {
+
+    width:99%;
+    padding:10px;
+    margin:auto;
+}
+
+.CollectionForm table thead {
+
+    font-weight: bolder;
+    background-color: #dde;
+}

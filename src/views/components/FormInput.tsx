@@ -94,7 +94,7 @@ export const FormInput : FC <FormInputProps> = ({
 
     return <Form.Item label={label} labelAlign={labelAlign ?? "right"}
     rules = {[{required : required ? required : false, message :"Missing " + name}]}
-    style={formItemStyle ? formItemStyle : {}} name={name}>
+    style={formItemStyle ? formItemStyle : {fontWeight:"bold"}} name={name}>
         {
             isSecure ?
             <Input.Password style={style} ref={focusField} className={className}
