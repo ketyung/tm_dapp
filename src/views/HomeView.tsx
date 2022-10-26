@@ -15,6 +15,7 @@ export const HomeView : FC = () =>{
     const checkIfSignedIn =  useCallback(async ()=>{
    
         setLoading(true);
+     
         if ( await isSignedIn()) {
             setHasSignedIn(true);
         }
@@ -24,11 +25,12 @@ export const HomeView : FC = () =>{
 
         setLoading(false);
 
+     
     },[dateUpdated,isSignedIn]);
 
     useEffect(()=>{
         checkIfSignedIn();
-    }, [checkIfSignedIn]);
+    }, []);
 
     const view = hasSignedIn ? <SignedInView/> : <NotSignedInView/>;
 
