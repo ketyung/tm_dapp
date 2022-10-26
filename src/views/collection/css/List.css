@@ -1,0 +1,23 @@
+.CollectionList{
+    width:"98%";
+    margin:"auto";
+    padding:"4px";
+}
+
+.CollectionList thead {
+    font-weight: bolder;
+    background-color: #ccc;
+}
+
+.CollectionList tbody tr {
+
+    color:black;
+    background-color: transparent;
+}
+
+.CollectionList tbody tr:hover {
+
+    background-color: #ded;
+    color:#458;
+    cursor: pointer;
+}
