@@ -6,6 +6,7 @@ import { GSpinner } from "../components/GSpinner";
 import useUsersContractState from "../../utils/sm/hooks/useUsersContractState";
 import usePage from "../../utils/sm/hooks/usePage";
 import { Page } from "../../models";
+import { InfoCircleTwoTone } from "@ant-design/icons";
 import './css/UserForm.css';
 
 export enum UserFormType {
@@ -131,7 +132,7 @@ export const UserForm : FC <Props> = ({
             <thead>
                 <tr>
                     <td colSpan={2} style={{fontWeight:"bolder",width:"100%"}}>{
-                        title ? title : "Please Create Your User Profile"
+                        title ? title : <><InfoCircleTwoTone style={{marginRight:"4px"}}/> Please Create Your User Profile</>
                     }
                     </td>
                 </tr>
