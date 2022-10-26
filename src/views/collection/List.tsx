@@ -75,6 +75,8 @@ export const List : FC = () =>{
             })
         }
         { loading && <tr><td colSpan={6} style={{width:"100%"}}><GSpinner text="Loading..."/></td></tr>}
+        { (collections !== undefined && collections.length ===0 ) && <tr><td colSpan={6} style={{width:"100%"}}>
+            No collection found, click "Create New Collection Ticket" to create a new one</td></tr>}
         </tbody>
 
     </table>

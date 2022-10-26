@@ -1,7 +1,7 @@
 .CollectionList{
-    width:"98%";
-    margin:"auto";
-    padding:"4px";
+    margin:auto;
+    padding:4px;
+    min-width: 98%;
 }
 
 .CollectionList thead {
