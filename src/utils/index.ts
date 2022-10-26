@@ -82,3 +82,16 @@ export function nearTimestampToDateAgo(t : number) : {short? : string, long? : s
 
     return d;
 }
+
+
+export function acronym ( str : string ) : string | undefined {
+
+	let matches = str.match(/\b(\w)/g); 
+
+	if (matches !== null) {
+
+		let acronym = matches.join(''); 
+		return acronym;
+	}
+	
+}
