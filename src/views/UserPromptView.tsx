@@ -1,7 +1,7 @@
 import { FC , useCallback, useEffect, useState} from "react";
 import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
 import { UserForm } from "./user/UserForm";
-import { List } from "./collection/List";
+import { View } from "./collection/View";
 import { GSpinner } from "./components/GSpinner";
 
 export const UserPromptView : FC = () =>{
@@ -27,7 +27,7 @@ export const UserPromptView : FC = () =>{
         checkHasProfileNow();
     },[checkHasProfileNow]);
 
-    const userView = hasProfile ? <List/> : <UserForm/>;
+    const userView = hasProfile ? <View/> : <UserForm/>;
 
     return <>{loading ? <GSpinner text="Loading..." style={{marginTop:"20px"}}/> :userView}</>
 }
