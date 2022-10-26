@@ -3,6 +3,7 @@ import { TopNavBar } from "./TopNavBar";
 import usePage from "../utils/sm/hooks/usePage";
 import { Page } from "../models";
 import { UserPromptView } from "./UserPromptView";
+import { UserForm, UserFormType } from "./user/UserForm";
 import { PageStorage } from "../utils/local-storage";
 import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
 import './css/SignedInView.css';
@@ -26,6 +27,13 @@ export const SignedInView : FC = () =>{
 
             case Page.Home :
                 return <UserPromptView/>
+            
+            case Page.EditUserProfile :
+
+                return <UserForm formType={UserFormType.Edit} title="Edit Profile" buttonTitle="Update"
+                cancelAction={()=>{
+                    setPage(Page.Home);
+                }}/>;
                 
             default :
 

@@ -1,7 +1,8 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import { User, Message, MessageType } from "../../models";
 import { FormInput } from "../components/FormInput";
-import { Button, Spin } from "antd";
+import { Button, Spin} from "antd";
+import { GSpinner } from "../components/GSpinner";
 import useUsersContractState from "../../utils/sm/hooks/useUsersContractState";
 import usePage from "../../utils/sm/hooks/usePage";
 import { Page } from "../../models";
@@ -121,11 +122,10 @@ export const UserForm : FC <Props> = ({
     },[]);
 
 
-
     return <div className="createUserForm">
-       {message && <div style={{color: message.type === MessageType.Error ? "red" : "blue",
-       background:"#ffa",padding:"10px",borderRadius:"16px"}}>
-        {message.text}
+       {(message || loading) && <div style={{color: message?.type === MessageType.Error ? "red" : "#346",
+       background:"#ccd",padding:"10px",borderRadius:"16px"}}>
+        {loading ? <><GSpinner/></> : <>{message?.text}</>}
         </div>}
         <table style={{width:"95%"}} cellPadding={5} cellSpacing={5}>
             <thead>
