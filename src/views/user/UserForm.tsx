@@ -180,7 +180,7 @@ export const UserForm : FC <Props> = ({
                         await createOrUpdate();
                     }}>{buttonTitle ? buttonTitle : "Create Profile Now"} {loading ? <Spin size="small" style={{marginLeft:"6px"}}/> : <></>}</Button>
 
-                    { cancelAction && <Button className="cancelButt" onClick={()=>{
+                    { cancelAction && <Button className="cancelButt" disabled={loading} onClick={()=>{
                         cancelAction();
                     }}>Cancel</Button>}
                   

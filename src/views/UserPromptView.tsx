@@ -1,7 +1,7 @@
 import { FC , useCallback, useEffect, useState} from "react";
 import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
 import { UserForm } from "./user/UserForm";
-import { Spin } from "antd";
+import { GSpinner } from "./components/GSpinner";
 
 export const UserPromptView : FC = () =>{
 
@@ -28,5 +28,5 @@ export const UserPromptView : FC = () =>{
 
     const userView = hasProfile ? <h2 style={{marginTop:"30px"}}>Welcome Back</h2> : <UserForm/>;
 
-    return <>{loading ? <Spin style={{marginTop:"20px"}}/> :userView}</>
+    return <>{loading ? <GSpinner text="Loading..." style={{marginTop:"20px"}}/> :userView}</>
 }

@@ -2,7 +2,7 @@ import { FC, useEffect, useCallback, useState } from "react";
 import useWalletState from "../utils/sm/hooks/useWalletState";
 import { SignedInView } from "./SignedInView";
 import { NotSignedInView } from "./NotSignedInView";
-import { Spin } from "antd";
+import { GSpinner } from "./components/GSpinner";
 
 export const HomeView : FC = () =>{
 
@@ -33,6 +33,6 @@ export const HomeView : FC = () =>{
     const view = hasSignedIn ? <SignedInView/> : <NotSignedInView/>;
 
     return <>
-    {loading ? <Spin style={{marginTop:"20px"}}/> : view}
+    {loading ? <GSpinner text="Loading..." style={{marginTop:"20px"}}/> : view}
     </>
 }
