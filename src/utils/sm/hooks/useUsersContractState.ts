@@ -33,7 +33,6 @@ export default function useUsersContractState() {
     const hasUser = async () : Promise<boolean>=> {
         setLoading(true);
 
-        console.log("hasUser::@usersContractState.contract", usersContractState.contract, new Date());
         let b =  await usersContractState.contract?.hasUser();
         setLoading(false);
         return b;
