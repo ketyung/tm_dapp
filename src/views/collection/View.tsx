@@ -8,8 +8,7 @@ export const View : FC = () =>{
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const modal = <Modal closeIcon={<Button style={{display:"block",marginBottom:"10px",clear:"both"}} 
-    shape="circle" icon={<CloseCircleOutlined className="CloseButton" />}/>}
+    const modal = <Modal closeIcon={<CloseCircleOutlined className="CloseButton" />}
     className="FormModal" closable={true}
     onCancel={() => {setModalVisible(false);}}
     destroyOnClose={true}
