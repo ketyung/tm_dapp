@@ -1,0 +1,21 @@
+.MintsList{
+    margin:auto;
+    padding:4px;
+    min-width: 98%;
+}
+
+.MintsList thead {
+    font-weight: bolder;
+    background-color: #ccc;
+}
+
+.MintsList tbody tr {
+    color:black;
+    background-color: transparent;
+}
+
+.MintsList tbody tr:hover {
+    background-color: #ded;
+    color:#458;
+    cursor: pointer;
+}

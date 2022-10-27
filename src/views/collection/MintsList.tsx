@@ -1,8 +1,12 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import { MintsListRow } from "./MintsListRow";
 import { GSpinner } from "../components/GSpinner";
+import { Page } from "../../models";
+import usePage from "../../utils/sm/hooks/usePage";
+import { LeftCircleOutlined } from "@ant-design/icons";
 import useTicketMintsContract from "../../utils/sm/hooks/useTicketMintsContract";
 import { TicketMint } from "../../models";
+import './css/MintsList.css';
 
 type Props = {
 
@@ -19,6 +23,8 @@ export const MintsList : FC <Props> = ({
 
     const [ticketMints, setTicketMints] = useState<TicketMint[]>();
 
+    const {setPage} = usePage();
+
     const loadTicketMints = useCallback(async ()=>{
 
         let tms = await getTicketMintsOf(title, symbol, 0);
@@ -33,8 +39,11 @@ export const MintsList : FC <Props> = ({
 
     return <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
-            <tr>
-                <td style={{textAlign:"center"}} colSpan={5}>
+            <tr style={{borderBottom:"1px solid #999"}}>
+                <td><LeftCircleOutlined onClick={()=>{
+                    setPage(Page.Home);
+                }}/></td>
+                <td style={{textAlign:"center"}} colSpan={4}>
                 Ticket Sales Of {title} ({symbol})
                 </td>
             </tr>

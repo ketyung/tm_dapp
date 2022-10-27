@@ -11,7 +11,7 @@ export default function usePage() {
     const dispatch: Dispatch<any> = useDispatch();
 
     const setPage = useCallback((page : Page, param? : any) => 
-    {dispatch(setPageAs(page)); PageStorage.setPage(page); },[dispatch]);
+    {dispatch(setPageAs(page, param)); PageStorage.setPage(page); },[dispatch]);
 
     const pageState : PageState =  useSelector(
         (_state: any) => {return _state.pageReducer;}, shallowEqual
