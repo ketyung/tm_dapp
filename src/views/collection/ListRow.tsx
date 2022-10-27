@@ -15,8 +15,6 @@ export const ListRow : FC <Props> = ({
     collection, index,
 }) =>{
 
-
-
     const menu = (<Menu
         items={[
         {
