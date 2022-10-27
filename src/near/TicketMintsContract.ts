@@ -1,5 +1,5 @@
 import { Wallet } from "./Wallet";
-import { Collection } from "../models";
+import { Collection, CollectionId } from "../models";
 
 export class TicketMintsContract {
 
@@ -12,17 +12,24 @@ export class TicketMintsContract {
         this.wallet = walletToUse;    
     }
 
-    async getCollectionsOf(offset?: number, limit : number = 20 ) : Promise<Collection[]>{
+    async getTicketMintsOf(title : string, symbol : string, 
+        offset?: number, limit : number = 20 ) : Promise<Collection[]>{
 
         try {
 
-            let collections =  await this.wallet?.viewMethod({
+            let collection_id : CollectionId ={
+                title : title,
+                symbol : symbol,
+                owner : this.wallet?.accountId,
+            };
+
+            let mints =  await this.wallet?.viewMethod({
                 contractId: this.contractId,
-                method: 'get_collections_of',
-                args: { account_id:  this.wallet.accountId, offset : offset, limit : limit }
+                method: 'get_ticket_mints_of',
+                args: { collection_id : collection_id, offset : offset, limit : limit }
             });
 
-            return collections ;
+            return mints ;
         }
         catch( e: any) {
           

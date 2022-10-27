@@ -127,3 +127,46 @@ export interface Collection {
     date_updated? : number, 
 
 }
+
+export interface CollectionId {
+
+    title : string,
+
+    owner : string,
+
+    symbol : string, 
+}
+
+
+export enum TicketAttributeType {
+
+    IsUsed = 'IsUsed',
+
+    DateUsed = 'DateUsed', 
+
+    Price = 'Price',
+
+    UsedBy = 'UsedBy', 
+}
+
+
+export interface TicketAttribute {
+
+    name : TicketAttributeType,
+
+    value? : string ,
+}
+
+
+export interface TicketMint {
+
+    collection_id : CollectionId,
+
+    token_id : string,
+
+    attributes : TicketAttribute[],
+
+    mint_by : string,
+
+    date : number,
+}
