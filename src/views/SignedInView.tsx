@@ -3,6 +3,7 @@ import { TopNavBar } from "./TopNavBar";
 import usePage from "../utils/sm/hooks/usePage";
 import { Page } from "../models";
 import { UserPromptView } from "./UserPromptView";
+import { MintsList } from "./collection/MintsList";
 import { UserForm, UserFormType } from "./user/UserForm";
 import { PageStorage } from "../utils/local-storage";
 import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
@@ -12,7 +13,7 @@ export const SignedInView : FC = () =>{
 
     const {isInitialized, init} = useUsersContractState();
 
-    const {page, setPage} = usePage();
+    const {page, setPage, param} = usePage();
 
     const initUserContract = useCallback(()=>{
         
@@ -27,7 +28,11 @@ export const SignedInView : FC = () =>{
 
             case Page.Home :
                 return <UserPromptView/>
-            
+
+            case Page.TicketSales :
+
+                return <MintsList title={param?.title} symbol={param?.symbol}/>
+
             case Page.EditUserProfile :
 
                 return <UserForm formType={UserFormType.Edit} title="Edit Profile" buttonTitle="Update"

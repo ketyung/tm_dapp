@@ -15,6 +15,10 @@ export const MintsListRow : FC <Props> = ({
 }) =>{
    
 
+    const price = ticketMint.attributes.filter((t)=>{
+        return (t.name === TicketAttributeType.Price);
+    })[0]?.value;
+
     return <tr key={"_row"+(index)}>
         <td style={{width:"5%"}}>
         {((index ?? 0)+1)}.
@@ -26,9 +30,7 @@ export const MintsListRow : FC <Props> = ({
         {ticketMint.mint_by}
         </td>
         <td style={{width:"10%"}}>
-        {ticketMint.attributes.filter(t=>{
-            t.name === TicketAttributeType.Price
-        })[0]?.value}
+        {price}
         </td>
         <td style={{width:"10%"}}>
         {dateToTimeAgo( new Date(ticketMint.date)).short}

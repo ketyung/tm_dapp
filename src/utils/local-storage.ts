@@ -38,8 +38,8 @@ export class PageStorage {
                     case Page.Home :
                         return Page.Home;
 
-                    case Page.NFT :
-                        return Page.NFT;
+                    case Page.TicketSales :
+                        return Page.TicketSales;
 
                     default :
                         return Page.Home;

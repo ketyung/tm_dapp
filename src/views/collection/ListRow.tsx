@@ -1,6 +1,7 @@
-import { Collection } from "../../models";
+import { Collection, Page } from "../../models";
 import { Button, Image, Menu, Dropdown} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import usePage from "../../utils/sm/hooks/usePage";
 import { FC } from "react";
 
 type Props = {
@@ -15,6 +16,8 @@ export const ListRow : FC <Props> = ({
     collection, index,
 }) =>{
 
+    const {setPage} = usePage();
+
     const menu = (<Menu
         items={[
         {
@@ -25,6 +28,8 @@ export const ListRow : FC <Props> = ({
         },
         {
             label: <div className="menuItem" onClick={()=>{
+
+                setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
     
             }}><EyeOutlined style={{marginRight:"10px"}}/>Ticket Sales</div>,
             key: '1',

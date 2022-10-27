@@ -39,11 +39,7 @@ export enum Page {
 
     Home, 
 
-    CreateToken,
-
-    NFT,
-
-    Test,
+    TicketSales,
 }
 
 export enum AttributeType {

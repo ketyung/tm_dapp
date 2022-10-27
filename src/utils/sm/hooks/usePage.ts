@@ -10,7 +10,7 @@ export default function usePage() {
 
     const dispatch: Dispatch<any> = useDispatch();
 
-    const setPage = useCallback((page : Page) => 
+    const setPage = useCallback((page : Page, param? : any) => 
     {dispatch(setPageAs(page)); PageStorage.setPage(page); },[dispatch]);
 
     const pageState : PageState =  useSelector(
@@ -19,10 +19,13 @@ export default function usePage() {
 
     const page : Page | undefined = pageState.page;
 
+    const param : any | undefined = pageState.param;
+
+
     const isPage = (_page : Page) : boolean =>{
         return _page === page;
     }
 
-    return {page, setPage,isPage} as const;
+    return {page, setPage,isPage, param} as const;
     
 }

@@ -34,6 +34,11 @@ export const MintsList : FC <Props> = ({
     return <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
             <tr>
+                <td style={{textAlign:"center"}} colSpan={5}>
+                Ticket Sales Of {title} ({symbol})
+                </td>
+            </tr>
+            <tr>
                 <td style={{width:"5%"}}>
                 No.
                 </td>
