@@ -1,5 +1,5 @@
 import { TicketMint, TicketAttributeType } from "../../models";
-import { dateToTimeAgo } from "../../utils";
+import { dateToTimeAgo, yoctoToNear } from "../../utils";
 
 import { FC } from "react";
 
@@ -15,9 +15,9 @@ export const MintsListRow : FC <Props> = ({
 }) =>{
    
 
-    const price = ticketMint.attributes.filter((t)=>{
+    const price = yoctoToNear(ticketMint.attributes.filter((t)=>{
         return (t.name === TicketAttributeType.Price);
-    })[0]?.value;
+    })[0]?.value ?? "0", 3) ;
 
     return <tr key={"_row"+(index)}>
         <td style={{width:"5%"}}>

@@ -1,3 +1,6 @@
+import * as nearApiJs from 'near-api-js';
+
+
 export function nearTimestampToDateString(t : number) :string {
 
     let d = formatDate(new Date((t/1000000)));
@@ -94,4 +97,13 @@ export function acronym ( str : string ) : string | undefined {
 		return acronym;
 	}
 	
+}
+
+export const yoctoToNear = ( amount : string, decimalsCount? : number ) =>{
+
+	if (decimalsCount) {
+		let v = nearApiJs.utils.format.formatNearAmount(amount);
+		return parseFloat(v).toFixed(decimalsCount);
+	}
+	return nearApiJs.utils.format.formatNearAmount(amount);
 }

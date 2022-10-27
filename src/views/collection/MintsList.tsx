@@ -39,7 +39,7 @@ export const MintsList : FC <Props> = ({
 
     return <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
-            <tr style={{borderBottom:"1px solid #999"}}>
+            <tr style={{borderBottom:"1px solid #bbb"}}>
                 <td><LeftCircleOutlined onClick={()=>{
                     setPage(Page.Home);
                 }}/></td>
@@ -58,7 +58,7 @@ export const MintsList : FC <Props> = ({
                 Purchased By
                 </td>
                 <td style={{width:"10%"}}>
-                Price
+                Price (NEAR)
                 </td>
                 <td style={{width:"10%"}}>
                 Date
