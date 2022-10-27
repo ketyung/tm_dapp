@@ -51,7 +51,7 @@ export const Form : FC <Props> = ({
                 </tr>
                 <tr>
                     <td valign="top" colSpan={2} style={{width:"100%"}}>
-                    <FormTextArea style={{width:"600px"}} rows={3} 
+                    <FormTextArea style={{width:"600px",marginTop:"10px"}} rows={3} 
                     minRows={2} maxRows={5}
                     label="Description" 
                     value={collection.description} onChange={(e)=>{

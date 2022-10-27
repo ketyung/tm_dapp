@@ -3,6 +3,7 @@ import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract"
 import { Collection } from "../../models";
 import { MoreOutlined } from "@ant-design/icons";
 import { Button, Image } from "antd";
+import { ListRow } from "./ListRow";
 import { GSpinner } from "../components/GSpinner";
 import './css/List.css';
 
@@ -50,28 +51,7 @@ export const List : FC = () =>{
         {
             collections?.map((c,i)=>{
 
-                return  <tr key={"row"+i}>
-                    <td style={{width:"5%"}}>
-                    {(i+1)}.
-                    </td>
-                    <td style={{width:"20%"}}>
-                    {c.icon && <Image src={c.icon} placeholder="Loading..."
-                    style={{width:"30px",height:"30px",borderRadius:"30px",marginRight:"4px"}}/>}
-                    {c.title}
-                    </td>
-                    <td style={{width:"30%",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
-                    {c.description}
-                    </td>
-                    <td style={{width:"10%"}}>
-                    {c.total_tickets}
-                    </td>
-                    <td style={{width:"10%"}}>
-                    {c.tickets_sold}
-                    </td>
-                    <td style={{width:"10%"}}>
-                    <Button shape="circle" icon={<MoreOutlined/>}></Button>
-                    </td>
-                </tr>;
+                return <ListRow key={"ListRow"+i} collection={c} index={i}/>;
             })
         }
         { loading && <tr><td colSpan={6} style={{width:"100%"}}><GSpinner text="Loading..."/></td></tr>}

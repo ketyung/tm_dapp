@@ -8,7 +8,7 @@
 
 .FormModal .ant-modal-content {
     border-radius: 20px;    
-    background-image: linear-gradient(to right,#eee, #dde);      
+    background-image: linear-gradient(to right,#eee, #fff);      
 }
 
 .FormModal .ant-modal-header{
