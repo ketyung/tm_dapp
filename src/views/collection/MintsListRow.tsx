@@ -1,5 +1,5 @@
 import { TicketMint, TicketAttributeType } from "../../models";
-import { dateToTimeAgo, yoctoToNear } from "../../utils";
+import { dateToTimeAgo, yoctoToNear, nearTimestampToDate } from "../../utils";
 
 import { FC } from "react";
 
@@ -32,8 +32,8 @@ export const MintsListRow : FC <Props> = ({
         <td style={{width:"10%"}}>
         {price}
         </td>
-        <td style={{width:"10%"}}>
-        {dateToTimeAgo( new Date(ticketMint.date)).short}
+        <td style={{width:"10%"}} title={nearTimestampToDate(ticketMint.date).toLocaleString()}>
+        {dateToTimeAgo( nearTimestampToDate(ticketMint.date)).short}  
         </td>
     </tr>
 }

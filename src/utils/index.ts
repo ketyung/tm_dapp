@@ -107,3 +107,8 @@ export const yoctoToNear = ( amount : string, decimalsCount? : number ) =>{
 	}
 	return nearApiJs.utils.format.formatNearAmount(amount);
 }
+
+export const nearTimestampToDate = ( ts : number) : Date =>{
+
+	return new Date(ts/1000_000);
+}
