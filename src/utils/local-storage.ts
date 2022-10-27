@@ -38,9 +38,6 @@ export class PageStorage {
                     case Page.Home :
                         return Page.Home;
 
-                    case Page.TicketSales :
-                        return Page.TicketSales;
-
                     default :
                         return Page.Home;
                 }
