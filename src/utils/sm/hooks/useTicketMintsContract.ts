@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import { Collection } from "../../../models";
+import {TicketMint} from "../../../models";
 import { TicketMintsContract } from "../../../near/TicketMintsContract";
 import { TICKET_MINTS_CONTRACT_ID } from "../../../near/const";
 
@@ -13,14 +13,14 @@ export default function useTicketMintsContract() {
 
     const getTicketMintsOf = async (
         title : string, symbol : string, 
-        offset : number, limit: number = 20) : Promise<Collection[]>=> {
+        offset : number, limit: number = 20) : Promise<TicketMint[]>=> {
         setLoading(true);
 
         let contract = new TicketMintsContract ( TICKET_MINTS_CONTRACT_ID, wallet);
 
-        let colls =  await contract.getTicketMintsOf(title, symbol, offset, limit);
+        let tms =  await contract.getTicketMintsOf(title, symbol, offset, limit);
         setLoading(false);
-        return colls;
+        return tms;
     } 
 
     return {getTicketMintsOf, loading} as const;

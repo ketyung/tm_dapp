@@ -1,5 +1,5 @@
 import { Wallet } from "./Wallet";
-import { Collection, CollectionId } from "../models";
+import { TicketMint, CollectionId } from "../models";
 
 export class TicketMintsContract {
 
@@ -13,7 +13,7 @@ export class TicketMintsContract {
     }
 
     async getTicketMintsOf(title : string, symbol : string, 
-        offset?: number, limit : number = 20 ) : Promise<Collection[]>{
+        offset?: number, limit : number = 20 ) : Promise<TicketMint[]>{
 
         try {
 
