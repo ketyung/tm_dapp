@@ -1,6 +1,6 @@
 import { Collection } from "../../models";
-import { Button, Image } from "antd";
-import { MoreOutlined } from "@ant-design/icons";
+import { Button, Image, Menu, Dropdown} from "antd";
+import { MoreOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { FC } from "react";
 
 type Props = {
@@ -14,6 +14,27 @@ type Props = {
 export const ListRow : FC <Props> = ({
     collection, index,
 }) =>{
+
+
+
+    const menu = (<Menu
+        items={[
+        {
+            label: <div className="menuItem" onClick={()=>{
+    
+            }}><EditOutlined style={{marginRight:"10px"}}/>Edit</div>,
+            key: '0',
+        },
+        {
+            label: <div className="menuItem" onClick={()=>{
+    
+            }}><EyeOutlined style={{marginRight:"10px"}}/>Ticket Sales</div>,
+            key: '1',
+        },
+      
+        ]}
+    />
+    );
 
     return <tr key={"row"+(index)}>
         <td style={{width:"5%"}}>
@@ -33,8 +54,11 @@ export const ListRow : FC <Props> = ({
         <td style={{width:"10%"}}>
         {collection.tickets_sold}
         </td>
-        <td style={{width:"10%"}}>
-        <Button shape="circle" icon={<MoreOutlined/>}></Button>
+        <td style={{width:"10%"}}><Dropdown overlay={menu} trigger={['click']}>
+        <Button shape="circle" onClick={(e)=>{
+            e.preventDefault();
+        }}><MoreOutlined/></Button>
+        </Dropdown>
         </td>
     </tr>
 }
