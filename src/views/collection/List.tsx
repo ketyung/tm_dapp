@@ -1,8 +1,6 @@
 import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
 import { Collection } from "../../models";
-import { MoreOutlined } from "@ant-design/icons";
-import { Button, Image } from "antd";
 import { ListRow } from "./ListRow";
 import { GSpinner } from "../components/GSpinner";
 import './css/List.css';
