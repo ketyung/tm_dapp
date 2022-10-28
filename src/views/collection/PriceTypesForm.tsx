@@ -47,10 +47,9 @@ export const PriceTypesForm : FC <Props> = ({
                         <div className="col" style={{width:"40%"}}>
                             <FormInput style={{maxWidth:"150px"}} value={e.ticket_type} onChange={(e)=>{
                                 if ( setCollection && collection && collection.ticket_types) {
-                                    let tt = collection.ticket_types[i];
-                                    tt.ticket_type = e.target.value;
-                                    collection.ticket_types[i]  = tt;
-                                    setCollection(collection);
+                                    let tts = collection.ticket_types;
+                                    tts[i].ticket_type = e.target.value;
+                                    setCollection({...collection, ticket_types: tts });
                                 }
                             }}/>
 
@@ -58,14 +57,14 @@ export const PriceTypesForm : FC <Props> = ({
                         <div className="col" style={{width:"25%"}}>
                             <FormInput style={{maxWidth:"100px"}} isNumber={true} value={e.price} onChange={(e)=>{
                                 if ( setCollection && collection && collection.ticket_types) {
-                                    let tt = collection.ticket_types[i];
-                                  
+                                    let tts = collection.ticket_types;
                                     let price = e;
 
                                     if (!isNaN(price)) {
-                                        tt.price = price;
-                                        collection.ticket_types[i]  = tt;
-                                        setCollection(collection);
+                                   
+                                        tts[i].price = price;
+                                        setCollection({...collection, ticket_types: tts });
+                                       
                                     }
                                   
                                 }
