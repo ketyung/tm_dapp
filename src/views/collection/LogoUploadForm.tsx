@@ -1,6 +1,6 @@
-import { uploadImageToArweave } from "../../../arweave";
+import { uploadImageToArweave } from "../../arweave";
 import { FC , useState } from "react";
-import { Message, MessageType } from "../../../models";
+import { Message, MessageType } from "../../models";
 import { FileImageOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
 import { Upload, Button, Spin} from 'antd';
@@ -15,7 +15,7 @@ type Props = {
 
 }
 
-export const ArweaveUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageDataUrlCallback }) =>{
+export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageDataUrlCallback }) =>{
 
 
     const [message, setMessage] = useState<Message>();
