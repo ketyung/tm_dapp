@@ -1,5 +1,6 @@
 import { FormInput } from "../components/FormInput";
 import { FormTextArea } from "../components/FormTextArea";
+import { PriceTypesForm } from "./PriceTypesForm";
 import { Collection } from "../../models";
 import { acronym } from "../../utils";
 import { FC, useState } from "react";
@@ -31,7 +32,7 @@ export const Form : FC <Props> = ({
             <tbody>
                 <tr>
                     <td valign="top" style={{width:"50%"}}>
-                    <FormInput label="Title" style={{minWidth:"220px"}} 
+                    <FormInput label="Title" style={{minWidth:"180px"}} 
                     value={collection.title}
                     onChange={(e)=>{
                         let title = e.target.value
@@ -59,7 +60,11 @@ export const Form : FC <Props> = ({
                     }}/>
                     </td>
                 </tr>
-
+                <tr>
+                    <td valign="top" colSpan={2} style={{width:"100%"}}>
+                    <PriceTypesForm collection={collection} setCollection={setCollection}/>
+                    </td>
+                </tr>
             </tbody>
 
         </table>

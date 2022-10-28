@@ -1,5 +1,5 @@
 import { FC, useRef, useEffect, ReactElement } from "react";
-import { Form, Input } from "antd";
+import { Form, Input, InputNumber } from "antd";
 import { FormLabelAlign } from "antd/lib/form/interface";
 
 export const FORM_INPUT_FOCUS_EVENT = "FORM_INPU_FOCUS_EVENT";
@@ -31,9 +31,9 @@ export interface FormInputProps {
 
     required? : boolean,
 
-    value? : string, 
+    value? : string|number, 
 
-    onChange? : (e: React.ChangeEvent<HTMLInputElement>) => void,
+    onChange? : (e: any ) => void,
 
     onClick? : (e: React.FormEvent<HTMLInputElement>) => void,
  
@@ -52,13 +52,20 @@ export interface FormInputProps {
     maxLength? : number,
 
     placeholder? : string, 
+
+    isNumber? : boolean,
+
+    min? : number,
+
+    max? : number, 
 }
 
 export const FormInput : FC <FormInputProps> = ({
     style, formItemStyle, className, name, label, 
     labelAlign, readOnly, required, value, onChange, 
     onDoubleClick, onClick, isSecure, defaultValue, 
-    placeholder, onPressEnter, focus, setFocus, maxLength}) =>{
+    isNumber, min, max, placeholder, onPressEnter, 
+    focus, setFocus, maxLength}) =>{
 
     const focusField = useRef<any>(null);
 
@@ -78,12 +85,12 @@ export const FormInput : FC <FormInputProps> = ({
 
             if ( !style) {
             
-                style = {backgroundColor: "#dff"}
+                style = {backgroundColor: "#def"}
     
             }
             else {
     
-                style['backgroundColor'] = "#dff";
+                style['backgroundColor'] = "#def";
     
             }
         }
@@ -107,6 +114,25 @@ export const FormInput : FC <FormInputProps> = ({
                 emitFormInputEvent(FORM_INPUT_BLUR_EVENT);
             }} />
             : 
+            isNumber ?
+
+            <InputNumber style={style} className={className} readOnly={readOnly ? readOnly : false } ref={focusField}
+            id={name} maxLength={maxLength} step={0.1} value={value} 
+            placeholder={placeholder} onChange={(e)=>{
+                if ( onChange) {
+                    onChange(e);
+                }
+            }} onClick={onClick} min={min ?? 1} max={max ?? 20} 
+            onDoubleClick={onDoubleClick} onPressEnter={onPressEnter}
+            onFocus={()=>{
+                emitFormInputEvent(FORM_INPUT_FOCUS_EVENT);  
+            }}
+            onBlur={()=>{
+                emitFormInputEvent(FORM_INPUT_BLUR_EVENT);
+            }}
+            />
+            :
+
             <Input style={style} className={className} readOnly={readOnly ? readOnly : false } ref={focusField}
             id={name} value={value ? value : ""} defaultValue={defaultValue} maxLength={maxLength}
             placeholder={placeholder} onChange={onChange} onClick={onClick} onDoubleClick={onDoubleClick} onPressEnter={onPressEnter}

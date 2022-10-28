@@ -1,0 +1,42 @@
+.PriceTypesForm {
+    max-width: 70%;
+}
+
+.PriceTypesForm .row {
+    display: table-row;
+    padding:10px;
+    margin:10px;
+    height:50px;
+    text-align: justify;
+ }
+ 
+ .PriceTypesForm .col {
+     display: table-cell;
+     padding:10px;
+     margin:10px;
+ }
+ 
+ 
+ .PriceTypesForm .header {
+     display: table-header-group;
+     font-weight: 600;
+     background: transparent;
+ }
+ 
+ .PriceTypesForm .item {
+     background: #fff;
+     cursor: pointer;
+     height:50px;
+ }
+ 
+ .PriceTypesForm .item:hover {
+     background: #dde;
+     cursor: pointer;
+     height:50px;
+ }
+ 
+ 
+ .PriceTypesForm .body {
+     display: table-row-group;
+ }
+ 
