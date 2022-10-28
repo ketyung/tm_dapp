@@ -34,6 +34,6 @@ export const TemplateView : FC <CollectionFormProps> = ({
     color:"whitesmoke"}}>Change Template</Button>
     </>
     {imageDataUri && <Image src={imageDataUri} 
-    style={{width:"300px",height:"200px",border:"0px",marginLeft:"12px"}}/>}
+    style={{width:"300px",height:"180px",border:"0px",marginLeft:"12px"}}/>}
     </div>
 }
