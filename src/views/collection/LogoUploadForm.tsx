@@ -2,6 +2,7 @@ import { uploadImageToArweave } from "../../arweave";
 import { FC , useState } from "react";
 import { Message, MessageType } from "../../models";
 import ImgCrop from 'antd-img-crop';
+import { UploadOutlined } from "@ant-design/icons";
 import { Upload, Button, Spin, Checkbox} from 'antd';
 
 
@@ -129,16 +130,20 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
 
 
     const uploader = <Upload maxCount={1} beforeUpload={checkIfFileValid}
-    showUploadList={!doNotShowOrigUploadList} listType="text" onChange={onChange} onRemove={onRemove}>  
-     <Button shape="round" style={{display:"inline",background:"#458",color:"white", width:"100px"}}>Browse</Button>
+    showUploadList={(doNotShowOrigUploadList !== undefined) ? !doNotShowOrigUploadList : true } 
+    listType="picture" onChange={onChange} onRemove={onRemove}>  
+     <Button shape="round" onClick={(e)=>{
+        e.preventDefault(); setImageDataUri(undefined);
+     }} style={{display:"inline",background:"#458",color:"white", width:"100px"}}>Browse</Button>
     </Upload>;
 
     return (<><div style={{display:"inline-block", float:"left", marginRight:"10px"}}>
     { withCropTool ? <ImgCrop rotate={true} fillColor="transparent">{uploader}</ImgCrop> : uploader}</div>
-    <Button shape="round" disabled={(imageDataUri === undefined)} 
-     style={{display:"inline-block",marginLeft:"10px",width:"100px",background:(imageDataUri === undefined) ? "#aba" : "#375",color:"white"}} 
+    { (imageDataUri !== undefined) && <Button shape="round" style={{display:"inline-block",marginLeft:"10px",
+    width:"100px",background:"#375",color:"white"}} 
      onClick={async (e)=>{e.preventDefault();await uploadToArweaveNow();}}>
-    {imageUploading ? <Spin size="small" style={{color:"white"}} /> : <>Upload</>}</Button>
+    {imageUploading ? <Spin size="small" style={{color:"white"}} /> : <><UploadOutlined 
+    style={{marginRight:"4px"}}/>Upload</>}</Button>}
     <span style={{marginLeft:"20px",fontSize:"8pt"}}>
      Use crop tool <Checkbox checked={withCropTool} onChange={(e)=>{
         if (e.target.checked){

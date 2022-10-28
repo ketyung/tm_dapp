@@ -28,7 +28,7 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
             <div className="row">
                 <div className="col" style={{width:"2%"}}>No.</div>
                 <div className="col" style={{width:"40%"}}>Price Type</div>
-                <div className="col" style={{width:"25%"}}>Price (NEAR)</div>
+                <div className="col" style={{width:"25%"}}>Price In NEAR</div>
             </div>
         </div>
         <div className="body">
