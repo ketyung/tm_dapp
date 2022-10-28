@@ -3,7 +3,7 @@ import { FC , useState } from "react";
 import { Message, MessageType } from "../../models";
 import { FileImageOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
-import { Upload, Button, Spin} from 'antd';
+import { Upload, Button, Spin, Checkbox} from 'antd';
 
 
 
@@ -19,6 +19,8 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
 
 
     const [message, setMessage] = useState<Message>();
+
+    const [withCropTool, setWithCropTool] = useState(false);
 
     const [imageDataUri, setImageDataUri] = useState<string>();
 
@@ -119,17 +121,30 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
         setImageDataUrlNow(undefined);
     }
 
-    return (<><div style={{display:"inline-block", float:"left", marginRight:"10px"}}>
-    <ImgCrop rotate={true}><Upload  maxCount={1} beforeUpload={checkIfFileValid}
+
+    const uploader = <Upload  maxCount={1} beforeUpload={checkIfFileValid}
     showUploadList={!doNotShowOrigUploadList} listType="text" onChange={onChange} onRemove={onRemove}>  
      <Button shape="round" style={{display:"inline"}} icon={<FileImageOutlined />}></Button>
-    </Upload></ImgCrop></div>
+    </Upload>;
+
+    return (<><div style={{display:"inline-block", float:"left", marginRight:"10px"}}>
+    { withCropTool ? <ImgCrop rotate={true} fillColor="transparent">{uploader}</ImgCrop> : uploader}</div>
     <Button shape="round" disabled={(imageDataUri === undefined)} 
      style={{display:"inline-block",marginLeft:"10px"}} onClick={async (e)=>{
         e.preventDefault();
         await uploadToArweaveNow();
      }}>{imageUploading ? <Spin size="small" style={{background:"#333", 
      padding:"2px", borderRadius:"180px"}}/> : <UploadOutlined />}</Button>
+    <span style={{marginLeft:"10px",fontSize:"8pt"}}>
+     Use crop tool <Checkbox onChange={(e)=>{
+        if (e.target.checked){
+            setWithCropTool(true);
+        }
+        else {
+            setWithCropTool(false);
+        }
+     }}/>   
+    </span>
     {message && <div style={{padding:"10px",borderRadius:"10px",background:"#def", 
     color:message.type === MessageType.Error ? "red" : "#668", marginTop:"10px"}}>
     {message.text}
