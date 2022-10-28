@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { CollectionFormProps } from "./Form";
-import { Button } from "antd";
+import { Button , Image } from "antd";
 import * as template1 from "./templates/template1";
 import imagePlaceHolder from './images/picture.png';
 
@@ -33,7 +33,7 @@ export const TemplateView : FC <CollectionFormProps> = ({
     <Button shape="round" style={{marginLeft:"15px",background:"#458",
     color:"whitesmoke"}}>Change Template</Button>
     </>
-    {imageDataUri && <img src={imageDataUri} 
+    {imageDataUri && <Image src={imageDataUri} 
     style={{width:"300px",height:"200px",border:"0px",marginLeft:"12px"}}/>}
     </div>
 }

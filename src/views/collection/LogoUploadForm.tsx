@@ -69,12 +69,8 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
         }
     
         if ( src ) {
-
             setImageDataUri(src);   
         }
-
-     
-    
     }
 
 
@@ -98,11 +94,14 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
             else {
 
                 setMessage({text : "Success", type : MessageType.Info});
+                setImageDataUrlNow(e);
             }
+
+            setImageUploading(false);
+
         });
        
-        setImageUploading(false);
-
+        
     }
 
 
@@ -132,7 +131,7 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
      }}>{imageUploading ? <Spin size="small" style={{background:"#333", 
      padding:"2px", borderRadius:"180px"}}/> : <UploadOutlined />}</Button>
     {message && <div style={{padding:"10px",borderRadius:"10px",background:"#def", 
-    color:message.type === MessageType.Error ? "red" : "#668"}}>
+    color:message.type === MessageType.Error ? "red" : "#668", marginTop:"10px"}}>
     {message.text}
     </div>}
     </>);
