@@ -14,7 +14,7 @@ export const View : FC = () =>{
     destroyOnClose={true}
     footer={null}
     maskClosable={false}
-    visible={modalVisible}>
+    open={modalVisible}>
     <Form/>
     </Modal>
 

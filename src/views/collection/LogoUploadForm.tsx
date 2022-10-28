@@ -122,7 +122,7 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
     }
 
 
-    const uploader = <Upload  maxCount={1} beforeUpload={checkIfFileValid}
+    const uploader = <Upload maxCount={1} beforeUpload={checkIfFileValid}
     showUploadList={!doNotShowOrigUploadList} listType="text" onChange={onChange} onRemove={onRemove}>  
      <Button shape="round" style={{display:"inline"}} icon={<FileImageOutlined />}></Button>
     </Upload>;
@@ -136,7 +136,7 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
      }}>{imageUploading ? <Spin size="small" style={{background:"#333", 
      padding:"2px", borderRadius:"180px"}}/> : <UploadOutlined />}</Button>
     <span style={{marginLeft:"10px",fontSize:"8pt"}}>
-     Use crop tool <Checkbox onChange={(e)=>{
+     Use crop tool <Checkbox checked={withCropTool} onChange={(e)=>{
         if (e.target.checked){
             setWithCropTool(true);
         }

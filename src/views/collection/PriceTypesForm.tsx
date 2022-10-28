@@ -36,7 +36,7 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
         {
             collection?.ticket_types?.map((e,i) =>{
 
-                    return <div className="row item">
+                    return <div className="row item" key={"ptype"+i}>
                         <div className="col" style={{width:"2%"}}>{i+1}</div>
                         <div className="col" style={{width:"40%"}}>
                             <FormInput style={{maxWidth:"150px"}} value={e.ticket_type} onChange={(e)=>{
