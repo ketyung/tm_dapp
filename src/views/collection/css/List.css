@@ -4,14 +4,18 @@
     padding:26px 4px 26px 4px;
     border: 1px solid #ccd;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
+    overflow-x: hidden;
 }
 
 
-.CollectionList{
-    margin:auto;
-    padding:4px;
-    min-width: 98%;
-    background-color: transparent;
+@media only screen and (min-device-width: 868px){
+
+    .CollectionList{
+        margin:auto;
+        padding:4px;
+        min-width: 1280px;
+        background-color: transparent;
+    }
 }
 
 .CollectionList thead {
@@ -38,4 +42,43 @@
 
 .CollectionList thead tr {
     height:40px;
+}
+
+
+@media only screen and (max-device-width: 867px){
+
+
+    .CollectionList{
+        margin:auto;
+        padding:4px;
+        width:90%;
+        background-color: transparent;
+    }
+
+    .CollectionList td:nth-child(3){
+        display: none;
+    }
+
+
+    .CollectionList td:nth-child(4){
+        display: none;
+    }
+
+
+    .CollectionList td:nth-child(5){
+        display: none;
+    }
+
+    .CollectionList th:nth-child(3){
+        display: none;
+    }
+
+    .CollectionList th:nth-child(4){
+        display: none;
+    }
+
+    .CollectionList th:nth-child(5){
+        display: none;
+    }
+
 }

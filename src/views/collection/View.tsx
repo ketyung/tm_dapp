@@ -29,6 +29,7 @@ export const View : FC = () =>{
             Create New Ticket Collection
         </Button>
         </div>
+        <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Ticket Collections</h3>
         <List/>
         {modal}
     </div>
