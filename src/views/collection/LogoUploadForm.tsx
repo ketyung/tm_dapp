@@ -130,7 +130,7 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
 
     const uploader = <Upload maxCount={1} beforeUpload={checkIfFileValid}
     showUploadList={!doNotShowOrigUploadList} listType="text" onChange={onChange} onRemove={onRemove}>  
-     <Button shape="round" style={{display:"inline",background:"#982",color:"white", width:"100px"}}>Browse</Button>
+     <Button shape="round" style={{display:"inline",background:"#458",color:"white", width:"100px"}}>Browse</Button>
     </Upload>;
 
     return (<><div style={{display:"inline-block", float:"left", marginRight:"10px"}}>

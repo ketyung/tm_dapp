@@ -55,7 +55,9 @@ export const ListRow : FC <Props> = ({
         {collection.total_tickets}
         </td>
         <td style={{width:"10%"}}>
-        {collection.tickets_sold}
+        <Button type="link" onClick={()=>{
+            setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
+        }}>{collection.tickets_sold}</Button>
         </td>
         <td style={{width:"10%"}}><Dropdown overlay={menu} trigger={['click']}>
         <Button shape="circle" onClick={(e)=>{
