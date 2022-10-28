@@ -78,3 +78,14 @@
     min-height: 80px;
     text-align: left;
 }
+
+.CollectionForm .TicketTemplateView {
+
+    padding:10px 10px 10px 2px;
+    border: 1px solid #ccd;
+    border-radius: 20px;
+    max-width: 420px;
+    min-height: 220px;
+    text-align: left;
+    margin-top: 10px;
+}

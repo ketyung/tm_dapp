@@ -166,3 +166,19 @@ export interface TicketMint {
 
     date : number,
 }
+
+
+export interface TicketInfo {
+
+    title? : string,
+
+    imageSrc? : string, 
+    
+    ticketNo? : string,
+    
+    venue? : string,
+    
+    startDate? : string, 
+    
+    endDate? : string,
+}

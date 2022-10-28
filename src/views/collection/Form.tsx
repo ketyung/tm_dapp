@@ -1,6 +1,7 @@
 import { Collection } from "../../models";
 import { InfoForm } from "./InfoForm";
 import { LogoAndTmplForm } from "./LogoAndTmplForm";
+import { TemplateView } from "./TemplateView";
 import { BulbOutlined } from "@ant-design/icons";
 import { FC, useState } from "react";
 import './css/Form.css';
@@ -34,6 +35,7 @@ export const Form : FC <Props> = ({
         </div>   
         <div className="formCol">
             <LogoAndTmplForm/>
+            <TemplateView collection={collection}/>
         </div>  
     </div>
 }
