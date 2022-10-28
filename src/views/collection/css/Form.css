@@ -48,3 +48,8 @@
 .CollectionForm table thead {
     font-weight: 500;
 }
+
+.CollectionForm .formCol {
+    display: inline-block;
+    width:50%;
+}

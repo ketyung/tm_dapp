@@ -1,16 +1,10 @@
 import { FC, useEffect } from "react";
 import { Collection } from "../../models";
+import { CollectionFormProps } from "./Form";
 import { FormInput } from "../components/FormInput";
 import './css/PriceTypesForm.css';
 
-type Props = {
-
-    collection? : Collection
-
-    setCollection? : (collection: Collection)=> void,
-}
-
-export const PriceTypesForm : FC <Props> = ({
+export const PriceTypesForm : FC <CollectionFormProps> = ({
     collection,setCollection
 }) =>{
 

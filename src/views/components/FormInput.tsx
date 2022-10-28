@@ -58,6 +58,8 @@ export interface FormInputProps {
     min? : number,
 
     max? : number, 
+
+    step? : number,
 }
 
 export const FormInput : FC <FormInputProps> = ({
@@ -65,7 +67,7 @@ export const FormInput : FC <FormInputProps> = ({
     labelAlign, readOnly, required, value, onChange, 
     onDoubleClick, onClick, isSecure, defaultValue, 
     isNumber, min, max, placeholder, onPressEnter, 
-    focus, setFocus, maxLength}) =>{
+    step, focus, setFocus, maxLength}) =>{
 
     const focusField = useRef<any>(null);
 
@@ -117,7 +119,7 @@ export const FormInput : FC <FormInputProps> = ({
             isNumber ?
 
             <InputNumber style={style} className={className} readOnly={readOnly ? readOnly : false } ref={focusField}
-            id={name} maxLength={maxLength} step={0.1} value={value} 
+            id={name} maxLength={maxLength} step={step ?? 0.1} value={value} 
             placeholder={placeholder} onChange={(e)=>{
                 if ( onChange) {
                     onChange(e);
