@@ -7,8 +7,8 @@
 
 
 .FormModal .ant-modal-content {
-    border-radius: 20px;    
-    background-image: linear-gradient(to right,#eee, #fff);      
+    border-radius: 20px;        
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
 }
 
 .FormModal .ant-modal-header{
@@ -46,7 +46,5 @@
 }
 
 .CollectionForm table thead {
-
-    font-weight: bolder;
-    background-color: #dde;
+    font-weight: 500;
 }
