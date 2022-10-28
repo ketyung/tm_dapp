@@ -13,7 +13,7 @@ export const TemplateView : FC <CollectionFormProps> = ({
     const obtainImageDataUri = useCallback(async ()=>{
 
         let img = await template1.createImageDataUrl({
-            title: collection?.title,
+            title: collection?.title ? collection?.title : "Title goes here...",
             startDate : "10/10/2022 9:00AM",
             endDate : "10/10/2022 5:00PM",
             venue : "Kota Kinabalu",
