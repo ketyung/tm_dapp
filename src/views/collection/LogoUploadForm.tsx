@@ -1,7 +1,6 @@
 import { uploadImageToArweave } from "../../arweave";
 import { FC , useState } from "react";
 import { Message, MessageType } from "../../models";
-import { FileImageOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
 import { Upload, Button, Spin, Checkbox} from 'antd';
 
@@ -92,11 +91,13 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
             if ( e instanceof Error) {
 
                 setMessage({ text :e.message, type: MessageType.Error});
+                setImageDataUri(undefined);
             }
             else {
 
                 setMessage({text : "Success", type : MessageType.Info});
                 setImageDataUrlNow(e);
+                setImageDataUri(undefined);
             }
 
             setImageUploading(false);
@@ -124,18 +125,16 @@ export const LogoUploadForm : FC <Props> = ( {doNotShowOrigUploadList, setImageD
 
     const uploader = <Upload maxCount={1} beforeUpload={checkIfFileValid}
     showUploadList={!doNotShowOrigUploadList} listType="text" onChange={onChange} onRemove={onRemove}>  
-     <Button shape="round" style={{display:"inline"}} icon={<FileImageOutlined />}></Button>
+     <Button shape="round" style={{display:"inline",background:"#348",color:"white", width:"100px"}}>Browse</Button>
     </Upload>;
 
     return (<><div style={{display:"inline-block", float:"left", marginRight:"10px"}}>
     { withCropTool ? <ImgCrop rotate={true} fillColor="transparent">{uploader}</ImgCrop> : uploader}</div>
     <Button shape="round" disabled={(imageDataUri === undefined)} 
-     style={{display:"inline-block",marginLeft:"10px"}} onClick={async (e)=>{
-        e.preventDefault();
-        await uploadToArweaveNow();
-     }}>{imageUploading ? <Spin size="small" style={{background:"#333", 
-     padding:"2px", borderRadius:"180px"}}/> : <UploadOutlined />}</Button>
-    <span style={{marginLeft:"10px",fontSize:"8pt"}}>
+     style={{display:"inline-block",marginLeft:"10px",width:"100px",background:(imageDataUri === undefined) ? "#aba" : "#375",color:"white"}} 
+     onClick={async (e)=>{e.preventDefault();await uploadToArweaveNow();}}>
+    {imageUploading ? <Spin size="small" style={{color:"white"}} /> : <>Upload</>}</Button>
+    <span style={{marginLeft:"20px",fontSize:"8pt"}}>
      Use crop tool <Checkbox checked={withCropTool} onChange={(e)=>{
         if (e.target.checked){
             setWithCropTool(true);
