@@ -1,5 +1,6 @@
 import { Collection } from "../../models";
 import { InfoForm } from "./InfoForm";
+import { BulbOutlined } from "@ant-design/icons";
 import { FC, useState } from "react";
 import './css/Form.css';
 
@@ -26,7 +27,7 @@ export const Form : FC <Props> = ({
     });
 
     return <div className="CollectionForm">
-        <h3> {title ?? "Create Your Ticket Collection"} </h3>
+        <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>{title ?? "Create Your Ticket Collection"} </h3></div>
         <div className="formCol">
             <InfoForm setCollection={setCollection} collection={collection}/>
         </div>    
