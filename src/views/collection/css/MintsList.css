@@ -1,3 +1,11 @@
+.MintsListDiv {
+    border-radius: 20px;
+    min-width: 99%;
+    padding:26px 4px 26px 4px;
+    border: 1px solid #ccd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
 .MintsList{
     margin:auto;
     padding:4px;
@@ -6,16 +14,25 @@
 
 .MintsList thead {
     font-weight: bolder;
-    background-color: #ccc;
 }
 
 .MintsList tbody tr {
     color:black;
     background-color: transparent;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
 }
 
 .MintsList tbody tr:hover {
     background-color: #ded;
     color:#458;
     cursor: pointer;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
 }
+
+
+.MintsList thead tr {
+    height:40px;
+}
+

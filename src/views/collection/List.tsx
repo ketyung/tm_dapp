@@ -22,27 +22,28 @@ export const List : FC = () =>{
         loadCollections();
     },[]);
 
-    return <table className="CollectionList" cellPadding={3} cellSpacing={3}>
+    return <div className="CollectionListDiv">
+        <table className="CollectionList" cellPadding={3} cellSpacing={3}>
         <thead>
             <tr>
-                <td style={{width:"5%"}}>
+                <th style={{width:"5%"}}>
                 No.
-                </td>
-                <td style={{width:"20%"}}>
+                </th>
+                <th style={{width:"20%"}}>
                 Title
-                </td>
-                <td style={{width:"30%"}}>
+                </th>
+                <th style={{width:"30%"}}>
                 Description
-                </td>
-                <td style={{width:"10%"}}>
+                </th>
+                <th style={{width:"10%"}}>
                 Total Tickets
-                </td>
-                <td style={{width:"10%"}}>
+                </th>
+                <th style={{width:"10%"}}>
                 Tickets Sold
-                </td>
-                <td style={{width:"10%"}}>
+                </th>
+                <th style={{width:"10%"}}>
                 Actions
-                </td>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -57,5 +58,5 @@ export const List : FC = () =>{
             No collection found, click "Create New Collection Ticket" to create a new one</td></tr>}
         </tbody>
 
-    </table>
+    </table></div>
 }

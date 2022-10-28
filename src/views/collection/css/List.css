@@ -1,18 +1,29 @@
+.CollectionListDiv {
+    border-radius: 20px;
+    min-width: 99%;
+    padding:26px 4px 26px 4px;
+    border: 1px solid #ccd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
+}
+
+
 .CollectionList{
     margin:auto;
     padding:4px;
     min-width: 98%;
+    background-color: transparent;
 }
 
 .CollectionList thead {
     font-weight: bolder;
-    background-color: #ccc;
 }
 
 .CollectionList tbody tr {
 
     color:black;
     background-color: transparent;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
 }
 
 .CollectionList tbody tr:hover {
@@ -20,4 +31,11 @@
     background-color: #ded;
     color:#458;
     cursor: pointer;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
+}
+
+
+.CollectionList thead tr {
+    height:40px;
 }

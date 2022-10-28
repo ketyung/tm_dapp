@@ -37,32 +37,33 @@ export const MintsList : FC <Props> = ({
         loadTicketMints();
     },[]);
 
-    return <table className="MintsList" cellPadding={3} cellSpacing={3}>
+    return <div className="MintsListDiv">
+        <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
             <tr style={{borderBottom:"1px solid #bbb"}}>
-                <td><LeftCircleOutlined onClick={()=>{
+                <th><LeftCircleOutlined onClick={()=>{
                     setPage(Page.Home);
-                }}/></td>
-                <td style={{textAlign:"center"}} colSpan={4}>
+                }}/></th>
+                <th style={{textAlign:"center"}} colSpan={4}>
                 Ticket Sales Of {title} ({symbol})
-                </td>
+                </th>
             </tr>
             <tr>
-                <td style={{width:"5%"}}>
+                <th style={{width:"5%"}}>
                 No.
-                </td>
-                <td style={{width:"20%"}}>
+                </th>
+                <th style={{width:"20%"}}>
                 Ticket No
-                </td>
-                <td style={{width:"30%"}}>
+                </th>
+                <th style={{width:"30%"}}>
                 Purchased By
-                </td>
-                <td style={{width:"10%"}}>
+                </th>
+                <th style={{width:"10%"}}>
                 Price (NEAR)
-                </td>
-                <td style={{width:"10%"}}>
+                </th>
+                <th style={{width:"10%"}}>
                 Date
-                </td>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -75,5 +76,5 @@ export const MintsList : FC <Props> = ({
         { (ticketMints !== undefined && ticketMints.length ===0 ) && <tr><td colSpan={6} style={{width:"100%"}}>
             No Ticket Sales Found</td></tr>}
         </tbody>
-    </table>
+    </table></div>
 }
