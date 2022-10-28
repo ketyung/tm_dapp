@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
-import { Collection } from "../../models";
 import { CollectionFormProps } from "./Form";
 import { FormInput } from "../components/FormInput";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import './css/PriceTypesForm.css';
 
 export const PriceTypesForm : FC <CollectionFormProps> = ({
@@ -23,12 +23,29 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
 
     },[]);
 
+    const addMoreRows = () =>{
+
+        if ( collection && setCollection ) {
+
+            let tts = collection.ticket_types;
+            tts?.push ({
+                ticket_type : "Premium",
+                price : 2.00
+            });
+
+            setCollection({...collection, ticket_types : tts});
+        }
+    }
+
+
     return <div className="PriceTypesForm">
         <div className="header">
             <div className="row">
                 <div className="col" style={{width:"2%"}}>No.</div>
                 <div className="col" style={{width:"40%"}}>Price Type</div>
                 <div className="col" style={{width:"25%"}}>Price In NEAR</div>
+                <div className="col" style={{width:"10%"}}><PlusCircleOutlined
+                onClick={()=>{ addMoreRows();}}/></div>
             </div>
         </div>
         <div className="body">
