@@ -2,42 +2,12 @@
     max-width: 90%;
 }
 
- 
-.PriceTypesForm .header {
-     display: table-header-group;
-     font-weight: 600;
-     background: transparent;
+.PriceTypesForm table tbody tr {
+    height: 20px;
 }
 
 
-.PriceTypesForm .col {
-    display: table-cell;
-    padding:10px;
-    margin:2px;
+.PriceTypesForm table tbody tr:hover {
+    height: 20px;
+    background-color: #eee;
 }
-
-.PriceTypesForm .row {
-    display: table-row;
-    padding:10px;
-    margin:2px;
-    height:30px;
-    text-align: justify;
- }
- 
- .PriceTypesForm .item {
-     background: #fff;
-     cursor: pointer;
-     height:30px;
- }
- 
- .PriceTypesForm .item:hover {
-     background: #dde;
-     cursor: pointer;
-     height:30px;
- }
- 
- 
- .PriceTypesForm .body {
-     display: table-row-group;
- }
- 
