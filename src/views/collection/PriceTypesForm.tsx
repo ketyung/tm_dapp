@@ -28,16 +28,17 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
         if ( collection && setCollection ) {
 
             let tts = collection.ticket_types;
+            if (tts) {
 
-            let idx = tts?.length ?? 0; 
-            let idxs = idx > 1 ? " " + idx  : "";
+                let idx = tts?.length ?? 0; 
+                let idxs = idx > 1 ? " " + idx  : "";
 
-            tts?.push ({
-                ticket_type : "Premium" + idxs,
-                price : 2.00 + (idx - 1)
-            });
-
-            setCollection({...collection, ticket_types : tts});
+                setCollection({...collection, ticket_types : [...tts, {
+                    ticket_type : "Premium" + idxs,
+                    price : 2.00 + (idx - 1)
+                }]});
+            }
+            
         }
     }
 
