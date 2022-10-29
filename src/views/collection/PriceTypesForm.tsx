@@ -4,6 +4,8 @@ import { PriceTypeRow } from "./PriceTypeRow";
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import './css/PriceTypesForm.css';
 
+export const DEFAULT_COLOR_CODE = "#34d";
+
 export const PriceTypesForm : FC <CollectionFormProps> = ({
     collection,setCollection
 }) =>{
@@ -16,7 +18,8 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
 
                 setCollection({
                     ...collection,
-                    ticket_types:  [{ticket_type : "Standard", price : 1.00}]
+                    ticket_types:  [{ticket_type : "Standard", price : 1.00, 
+                    color_code : DEFAULT_COLOR_CODE}]
                 });
             }
         }
@@ -28,6 +31,7 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
         if ( collection && setCollection ) {
 
             let tts = collection.ticket_types;
+
             if (tts) {
 
                 let idx = tts?.length ?? 0; 
@@ -35,7 +39,8 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
 
                 setCollection({...collection, ticket_types : [...tts, {
                     ticket_type : "Premium" + idxs,
-                    price : 2.00 + (idx - 1)
+                    price : 2.00 + (idx - 1),
+                    color_code : DEFAULT_COLOR_CODE,
                 }]});
             }
             
