@@ -1,5 +1,7 @@
 .PriceTypesForm {
     max-width: 90%;
+    max-height:200px;
+    overflow-y: scroll;
 }
 
 .PriceTypesForm table tbody tr {
