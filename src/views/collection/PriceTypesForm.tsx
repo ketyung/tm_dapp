@@ -68,8 +68,8 @@ export const PriceTypesForm : FC <Props> = ({
         <thead>   
             <tr>             
                 <th style={{width:"2%"}}>No.</th>
-                <th style={{width:"40%",textAlign:"left",paddingLeft:"20px"}}>Price Type</th>
-                <th style={{width:"20%"}}>Price In NEAR</th>
+                <th style={{width:"40%",textAlign:"left",paddingLeft:"40px"}}>Price Type</th>
+                <th style={{width:"20%",textAlign:"left",paddingLeft:"10px"}}>Price In NEAR</th>
                 <th style={{width:"20%"}}>Color Code</th>
                 <th style={{width:"15%"}}><PlusCircleOutlined
                 onClick={()=>{ addMoreRows();}}/>
