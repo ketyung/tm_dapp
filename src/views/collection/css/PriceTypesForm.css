@@ -7,6 +7,11 @@
     padding:10px;
 }
 
+.PriceTypesForm table thead tr {
+    height: 20px;
+    font-size: 8pt;
+}
+
 .PriceTypesForm table tbody tr {
     height: 20px;
 }
