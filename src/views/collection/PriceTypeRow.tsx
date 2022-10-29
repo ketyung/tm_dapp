@@ -2,16 +2,15 @@ import { DEFAULT_COLOR_CODE } from "./PriceTypesForm";
 import { FC } from "react";
 import { TicketType } from "../../models";
 import { FormInput } from "../components/FormInput";
+import { EyeOutlined } from "@ant-design/icons";
 import { PriceTypeColorPicker } from "./PriceTypeColorPicker";
 import { CollectionFormProps } from "./Form";
-
 
 
 type Props = CollectionFormProps & {index ? : number, ticketType? : TicketType };
 
 export const PriceTypeRow : FC <Props> = ({
     index, collection, setCollection, ticketType
-
 }) =>{
 
     return <tr key={"ptype"+index}>
@@ -48,7 +47,7 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
     </td>
 
-    <td valign="top" style={{width:"15%",textAlign:"left",paddingLeft:"30px"}} colSpan={2}>
+    <td valign="top" style={{width:"15%"}}>
         <PriceTypeColorPicker selectedColorCode={
            (collection && collection.ticket_types && index!==undefined) ? 
            collection.ticket_types[index].color_code : DEFAULT_COLOR_CODE
@@ -60,6 +59,9 @@ export const PriceTypeRow : FC <Props> = ({
                 setCollection({...collection, ticket_types: tts });
             }
         }}/>
+    </td>
+    <td valign="top" style={{width:"10%"}}>
+        <EyeOutlined style={{width:"50px",marginTop:"10px",cursor:"pointer"}}/>
     </td>
     </tr>;
 

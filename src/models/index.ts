@@ -181,4 +181,6 @@ export interface TicketInfo {
     startDate? : string, 
     
     endDate? : string,
+
+    ticketType? : TicketType,
 }

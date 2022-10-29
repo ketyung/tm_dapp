@@ -79,7 +79,7 @@ export const createImageDataUrl = async (
         if ( ticketInfo.ticketNo ) {
 
             roundRect2(ctx, txtXStart, 120,200, 45, 16) ;
-            ctx.fillStyle = "#700";
+            ctx.fillStyle = ticketInfo.ticketType?.color_code ?? "#700";
             ctx.fill();
         
             ctx.font = "32px Arial";

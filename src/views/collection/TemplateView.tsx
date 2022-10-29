@@ -4,8 +4,10 @@ import { Button , Image } from "antd";
 import * as template1 from "./templates/template1";
 import imagePlaceHolder from './images/picture.png';
 
-export const TemplateView : FC <CollectionFormProps> = ({
-    collection
+type Props = CollectionFormProps & {index ? : number };
+
+export const TemplateView : FC <Props> = ({
+    collection, index
 }) =>{
 
     const [imageDataUri, setImageDataUri] = useState<string>();
@@ -18,6 +20,9 @@ export const TemplateView : FC <CollectionFormProps> = ({
             endDate : "10/10/2022 5:00PM",
             venue : "Kota Kinabalu",
             imageSrc : collection.icon ?? imagePlaceHolder,  
+            ticketNo : "#000001",
+            ticketType : (collection.ticket_types) ? 
+                collection?.ticket_types[index ?? 0] : undefined
         });
 
         setImageDataUri(img);
