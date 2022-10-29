@@ -6,8 +6,12 @@ import { FormTextArea } from "../components/FormTextArea";
 import { Form } from "antd";
 import { acronym } from "../../utils";
 
-export const InfoForm : FC <CollectionFormProps> = ({
-    collection, setCollection
+type Props = CollectionFormProps & {
+    setSelectedRowForPreview? : (index? : number) => void };
+
+
+export const InfoForm : FC <Props> = ({
+    collection, setCollection, setSelectedRowForPreview
 }) =>{
 
     const formItemLayout = {
@@ -54,7 +58,8 @@ export const InfoForm : FC <CollectionFormProps> = ({
         </tr>
         <tr>
             <td valign="top" colSpan={2} style={{width:"100%"}}>
-            <PriceTypesForm collection={collection} setCollection={setCollection}/>
+            <PriceTypesForm collection={collection} setCollection={setCollection}
+            setSelectedRowForPreview={setSelectedRowForPreview}/>
             </td>
         </tr>
     </tbody>

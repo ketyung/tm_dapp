@@ -28,7 +28,7 @@ export const createImageDataUrl = async (
         ctx.fill();
     
         // Draw the text
-        ctx.font = "30px Verdana";
+        ctx.font = "30px Raleway";
         ctx.fillStyle = "ghostwhite";
         ctx.fillText(ticketInfo.title ?? "No Title", 40, 70);
 
@@ -38,10 +38,10 @@ export const createImageDataUrl = async (
 
         if ( ticketInfo.venue ) {
 
-            ctx.font = "17px Helvetica";
+            ctx.font = "19px Raleway";
             ctx.fillStyle = "#ffa";
             
-            ctx.fillText(ticketInfo.venue, txtXStart, txtYStart );
+            ctx.fillText(`Venue: ${ticketInfo.venue}`, txtXStart, txtYStart );
         }
        
 
@@ -49,10 +49,10 @@ export const createImageDataUrl = async (
 
         if ( ticketInfo.startDate ) {
 
-            ctx.font = "17px Helvetica";
+            ctx.font = "19px Raleway";
             ctx.fillStyle = "#ffa";
             
-            ctx.fillText(ticketInfo.startDate, txtXStart, txtYStart  );
+            ctx.fillText(`Start Date: ${ticketInfo.startDate}`, txtXStart, txtYStart  );
         }
 
 
@@ -60,10 +60,10 @@ export const createImageDataUrl = async (
 
         if ( ticketInfo.endDate ) {
 
-            ctx.font = "17px Helvetica";
+            ctx.font = "19px Raleway";
             ctx.fillStyle = "#ffa";
             
-            ctx.fillText(ticketInfo.endDate, txtXStart, txtYStart );
+            ctx.fillText(`End Date:${ticketInfo.endDate}`, txtXStart, txtYStart );
         }
 
 
@@ -82,7 +82,7 @@ export const createImageDataUrl = async (
             ctx.fillStyle = ticketInfo.ticketType?.color_code ?? "#700";
             ctx.fill();
         
-            ctx.font = "32px Arial";
+            ctx.font = "32px Raleway";
             ctx.fillStyle = "white";
             
             ctx.fillText(ticketInfo.ticketNo, txtXStart + 20, 154 );

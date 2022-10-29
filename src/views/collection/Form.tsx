@@ -27,13 +27,17 @@ export const Form : FC <Props> = ({
         title : "", owner : "", symbol : "",
     });
 
+    const [selectedRow, setSelectedRow] = useState<number>();
+
     return <div className="CollectionForm">
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>{title ?? "Create Your Ticket Collection"} </h3></div>
         <div className="formCol">
-            <InfoForm setCollection={setCollection} collection={collection}/>
+            <InfoForm setCollection={setCollection} collection={collection} 
+            setSelectedRowForPreview={setSelectedRow}/>
         </div>   
         <div className="formCol">
-            <LogoAndTmplForm collection={collection} setCollection={setCollection}/>
+            <LogoAndTmplForm collection={collection} setCollection={setCollection}
+            selectedRow={selectedRow}/>
         </div>  
     </div>
 }

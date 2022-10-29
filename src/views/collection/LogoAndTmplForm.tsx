@@ -3,10 +3,15 @@ import { LogoMediaView } from "./LogoMediaView";
 import { TemplateView } from "./TemplateView";
 import { CollectionFormProps } from "./Form";
 
-export const LogoAndTmplForm : FC <CollectionFormProps> = ({
-    collection, setCollection
+
+type Props = CollectionFormProps & {selectedRow? : number};
+
+
+export const LogoAndTmplForm : FC <Props> = ({
+    collection, setCollection, selectedRow
 }) =>{
 
+   
     const setImageDataCallback = (img? : string ) => {
 
         if ( setCollection ) {
@@ -16,6 +21,6 @@ export const LogoAndTmplForm : FC <CollectionFormProps> = ({
 
     return <>
     <LogoMediaView setImageDataCallback={setImageDataCallback} imageData={collection?.icon} />
-    <TemplateView collection={collection}/>
+    <TemplateView collection={collection} index={selectedRow}/>
     </>
 }

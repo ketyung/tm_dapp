@@ -7,10 +7,11 @@ import { PriceTypeColorPicker } from "./PriceTypeColorPicker";
 import { CollectionFormProps } from "./Form";
 
 
-type Props = CollectionFormProps & {index ? : number, ticketType? : TicketType };
+type Props = CollectionFormProps & {index ? : number, ticketType? : TicketType,
+setSelectedRowForPreview? : (index? : number) => void };
 
 export const PriceTypeRow : FC <Props> = ({
-    index, collection, setCollection, ticketType
+    index, collection, setCollection, ticketType, setSelectedRowForPreview
 }) =>{
 
     return <tr key={"ptype"+index}>
@@ -61,7 +62,11 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
     </td>
     <td valign="top" style={{width:"10%"}}>
-        <EyeOutlined style={{width:"50px",marginTop:"10px",cursor:"pointer"}}/>
+        <EyeOutlined style={{width:"50px",marginTop:"10px",cursor:"pointer"}}
+        onClick={()=>{
+            if (setSelectedRowForPreview)
+                setSelectedRowForPreview(index);
+        }}/>
     </td>
     </tr>;
 

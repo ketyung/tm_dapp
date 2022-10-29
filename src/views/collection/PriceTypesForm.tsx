@@ -6,8 +6,11 @@ import './css/PriceTypesForm.css';
 
 export const DEFAULT_COLOR_CODE = "#34d";
 
-export const PriceTypesForm : FC <CollectionFormProps> = ({
-    collection,setCollection
+type Props = CollectionFormProps & {
+    setSelectedRowForPreview? : (index? : number) => void };
+    
+export const PriceTypesForm : FC <Props> = ({
+    collection,setCollection, setSelectedRowForPreview
 }) =>{
 
     useEffect(()=>{
@@ -79,7 +82,8 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
         {
             collection?.ticket_types?.map((t,i) =>{
                 return <PriceTypeRow collection={collection} key={"prcRow"+i}
-                setCollection={setCollection} index={i} ticketType={t}/>
+                setCollection={setCollection} index={i} ticketType={t} 
+                setSelectedRowForPreview={setSelectedRowForPreview}/>
             })
         }
         </tbody>

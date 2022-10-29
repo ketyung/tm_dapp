@@ -15,7 +15,7 @@ export const TemplateView : FC <Props> = ({
     const obtainImageDataUri = useCallback(async ()=>{
 
         let img = await template1.createImageDataUrl({
-            title: collection?.title ? collection?.title : "Title goes here...",
+            title: collection?.title ? collection?.title : "Event name...",
             startDate : "10/10/2022 9:00AM",
             endDate : "10/10/2022 5:00PM",
             venue : "Kota Kinabalu",
@@ -34,7 +34,7 @@ export const TemplateView : FC <Props> = ({
     },[obtainImageDataUri]);
 
     return <div className="TicketTemplateView">
-    <><h3 style={{marginLeft:"28px",display:"inline-block"}}>Your Ticket's Appearance</h3>
+    <><h3 style={{marginLeft:"28px",display:"inline-block"}}>Preview Of Ticket</h3>
     <Button shape="round" style={{marginLeft:"15px",background:"#458",
     color:"whitesmoke"}}>Change Template</Button>
     </>
