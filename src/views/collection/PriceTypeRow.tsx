@@ -15,8 +15,8 @@ export const PriceTypeRow : FC <Props> = ({
 }) =>{
 
     return <tr key={"ptype"+index}>
-    <td valign="top" style={{width:"2%"}}>{(index ?? 0)+1}</td>
-    <td valign="top" style={{width:"40%"}}>
+    <td style={{width:"2%"}}>{(index ?? 0)+1}</td>
+    <td style={{width:"40%"}}>
         <FormInput style={{maxWidth:"150px"}} 
         formItemStyle={{display:"inline"}}
         value={ticketType?.ticket_type} onChange={(e)=>{
@@ -28,7 +28,7 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
 
     </td>
-    <td valign="top" style={{width:"20%",textAlign:"left",
+    <td style={{width:"20%",textAlign:"left",
     paddingLeft:"12px"}}>
         <FormInput style={{maxWidth:"80px"}} 
         formItemStyle={{display:"inline"}}
@@ -48,7 +48,7 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
     </td>
 
-    <td valign="top" style={{width:"15%"}}>
+    <td style={{width:"15%"}}>
         <PriceTypeColorPicker selectedColorCode={
            (collection && collection.ticket_types && index!==undefined) ? 
            collection.ticket_types[index].color_code : DEFAULT_COLOR_CODE
@@ -61,9 +61,9 @@ export const PriceTypeRow : FC <Props> = ({
             }
         }}/>
     </td>
-    <td valign="top" style={{width:"10%"}}>
+    <td style={{width:"10%"}}>
         <EyeOutlined title="Preview" 
-        style={{width:"50px",marginTop:"10px",cursor:"pointer"}}
+        style={{width:"50px",cursor:"pointer"}}
         onClick={()=>{
             if (setSelectedRowForPreview)
                 setSelectedRowForPreview(index);
