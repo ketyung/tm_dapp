@@ -20,8 +20,8 @@ export const InfoForm : FC <CollectionFormProps> = ({
     return  <Form {...formItemLayout}><table cellPadding={5} cellSpacing={5}>
     <tbody>
         <tr>
-            <td valign="top" style={{width:"50%"}}>
-            <FormInput label="Title" style={{minWidth:"200px"}} 
+            <td valign="top" style={{width:"70%"}}>
+            <FormInput label="Event/Title" style={{minWidth:"260px"}} 
             value={collection?.title}
             onChange={(e)=>{
                 let title = e.target.value
@@ -37,7 +37,7 @@ export const InfoForm : FC <CollectionFormProps> = ({
                 
             />
             </td>
-            <td valign="top" style={{width:"50%"}}>
+            <td valign="top" style={{width:"30%"}}>
             <FormInput label="Symbol" style={{maxWidth:"100px"}} readOnly={true} value={collection?.symbol ?? ""}/>
             </td>
         </tr>
