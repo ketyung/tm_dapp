@@ -57,7 +57,7 @@ export const InfoForm : FC <Props> = ({
             </td>
             <td valign="top" style={{width:"30%", textAlign:"left"}}>
             <FormInput style={{width:"80px",marginTop:"10px"}} 
-            step={1000} isNumber={true} label={"Total Tickets"} placeholder="1000" 
+            step={1000} isNumber={true} label={<>Total number<br/>of tickets</>} placeholder="1000" 
             min={1} max={50000}
             value={collection.total_tickets} onChange={(e)=>{
                 let v = parseInt(e);
