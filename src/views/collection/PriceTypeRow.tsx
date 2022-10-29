@@ -62,7 +62,8 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
     </td>
     <td valign="top" style={{width:"10%"}}>
-        <EyeOutlined style={{width:"50px",marginTop:"10px",cursor:"pointer"}}
+        <EyeOutlined title="Preview" 
+        style={{width:"50px",marginTop:"10px",cursor:"pointer"}}
         onClick={()=>{
             if (setSelectedRowForPreview)
                 setSelectedRowForPreview(index);

@@ -27,7 +27,7 @@ export const TemplateView : FC <Props> = ({
 
         setImageDataUri(img);
 
-    },[collection]);
+    },[collection, index]);
 
     useEffect(()=>{
         obtainImageDataUri();
