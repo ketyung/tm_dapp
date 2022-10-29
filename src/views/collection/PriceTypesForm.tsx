@@ -34,7 +34,7 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
 
             tts?.push ({
                 ticket_type : "Premium" + idxs,
-                price : 2.00
+                price : 2.00 + (idx - 1)
             });
 
             setCollection({...collection, ticket_types : tts});
