@@ -21,11 +21,11 @@ export const InfoForm : FC <Props> = ({
     };
 
 
-    return  <Form {...formItemLayout}><table cellPadding={5} cellSpacing={5}>
+    return  <Form {...formItemLayout}><table cellPadding={1} cellSpacing={1}>
     <tbody>
         <tr>
             <td valign="top" style={{width:"70%"}}>
-            <FormInput label="Event/Title" style={{minWidth:"260px"}} 
+            <FormInput label="Event/Title" style={{minWidth:"180px"}} 
             value={collection?.title}
             onChange={(e)=>{
                 let title = e.target.value
@@ -46,13 +46,23 @@ export const InfoForm : FC <Props> = ({
             </td>
         </tr>
         <tr>
-            <td valign="top" colSpan={2} style={{width:"100%"}}>
-            <FormTextArea style={{width:"420px",marginTop:"10px"}} rows={3} 
+            <td valign="top" style={{width:"70%",textAlign:"left"}}>
+            <FormTextArea style={{width:"320px",marginTop:"10px"}} rows={3} 
             minRows={2} maxRows={5}
             label="Description" 
             value={collection.description} onChange={(e)=>{
                 if ( setCollection)
                     setCollection({...collection, description : e.currentTarget.value})
+            }}/>
+            </td>
+            <td valign="top" style={{width:"30%", textAlign:"left"}}>
+            <FormInput style={{width:"80px",marginTop:"10px"}} 
+            step={1000} isNumber={true} label={"Total Tickets"} placeholder="1000" 
+            min={1} max={50000}
+            value={collection.total_tickets} onChange={(e)=>{
+                let v = parseInt(e);
+                if ( setCollection && !isNaN(v))
+                    setCollection({...collection, total_tickets : v});
             }}/>
             </td>
         </tr>
