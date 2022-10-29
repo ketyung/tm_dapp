@@ -72,7 +72,7 @@ export const PriceTypesForm : FC <CollectionFormProps> = ({
         <tbody>
         {
             collection?.ticket_types?.map((t,i) =>{
-                return <PriceTypeRow collection={collection}
+                return <PriceTypeRow collection={collection} key={"prcRow"+i}
                 setCollection={setCollection} index={i} ticketType={t}/>
             })
         }

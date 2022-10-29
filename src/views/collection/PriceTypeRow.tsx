@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { TicketType } from "../../models";
 import { FormInput } from "../components/FormInput";
+import { PriceTypeColorPicker } from "./PriceTypeColorPicker";
 import { CollectionFormProps } from "./Form";
 
 
@@ -25,8 +26,8 @@ export const PriceTypeRow : FC <Props> = ({
         }}/>
 
     </td>
-    <td valign="top" style={{width:"35%",textAlign:"left",
-    paddingLeft:"12px"}} colSpan={2}>
+    <td valign="top" style={{width:"20%",textAlign:"left",
+    paddingLeft:"12px"}}>
         <FormInput style={{maxWidth:"80px"}} 
         formItemStyle={{display:"inline"}}
         isNumber={true} value={ticketType?.price} onChange={(e)=>{
@@ -43,6 +44,10 @@ export const PriceTypeRow : FC <Props> = ({
               
             }
         }}/>
+    </td>
+
+    <td valign="top" style={{width:"15%",textAlign:"left",paddingLeft:"30px"}} colSpan={2}>
+        <PriceTypeColorPicker/>
     </td>
     </tr>;
 
