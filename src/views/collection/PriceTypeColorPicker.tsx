@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import 'rc-color-picker/assets/index.css';
 import { Button } from "antd";
 const ColorPicker = require('rc-color-picker');
@@ -13,17 +13,15 @@ export const PriceTypeColorPicker : FC <Props> = ({
     selectedColorCode, setSelectedColorCode
 }) =>{
 
-    const [colorCode, setColorCode] = useState(selectedColorCode ?? "#34c");
-
     const onChange = (color : any ) =>{
-        setColorCode(color.color);
         if (setSelectedColorCode) {
             setSelectedColorCode(color.color);
         }
     }
 
-    return  <ColorPicker color={colorCode} onChange={onChange}>
-        <Button className="react-custom-trigger" shape="circle" style={{background:colorCode}}>&nbsp;</Button>
+    return  <ColorPicker color={selectedColorCode} onChange={onChange}>
+        <Button className="react-custom-trigger" shape="circle" 
+        style={{background:selectedColorCode}}>&nbsp;</Button>
     </ColorPicker>
 
 }

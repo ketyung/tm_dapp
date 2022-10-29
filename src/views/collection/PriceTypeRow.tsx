@@ -47,7 +47,17 @@ export const PriceTypeRow : FC <Props> = ({
     </td>
 
     <td valign="top" style={{width:"15%",textAlign:"left",paddingLeft:"30px"}} colSpan={2}>
-        <PriceTypeColorPicker/>
+        <PriceTypeColorPicker selectedColorCode={
+           (collection && collection.ticket_types && index) ? 
+           collection.ticket_types[index].color_code : "#34b"
+        } setSelectedColorCode ={(c)=>{
+            
+            if ( setCollection && collection && collection.ticket_types && index) {
+                let tts = collection.ticket_types;
+                tts[index].color_code = c;
+                setCollection({...collection, ticket_types: tts });
+            }
+        }}/>
     </td>
     </tr>;
 
