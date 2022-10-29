@@ -3,12 +3,23 @@ import 'rc-color-picker/assets/index.css';
 import { Button } from "antd";
 const ColorPicker = require('rc-color-picker');
 
-export const PriceTypeColorPicker : FC = () =>{
+type Props = {
+    selectedColorCode? : string,
 
-    const [colorCode, setColorCode] = useState("#34c");
+    setSelectedColorCode? : ( color : string) => void, 
+}
+
+export const PriceTypeColorPicker : FC <Props> = ({
+    selectedColorCode, setSelectedColorCode
+}) =>{
+
+    const [colorCode, setColorCode] = useState(selectedColorCode ?? "#34c");
 
     const onChange = (color : any ) =>{
         setColorCode(color.color);
+        if (setSelectedColorCode) {
+            setSelectedColorCode(color.color);
+        }
     }
 
     return  <ColorPicker color={colorCode} onChange={onChange}>
