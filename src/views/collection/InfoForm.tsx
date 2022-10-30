@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { CollectionFormProps } from "./Form";
 import { PriceTypesForm } from "./PriceTypesForm";
+import { OtherInfoForm } from "./OtherInfoForm";
 import { FormInput } from "../components/FormInput";
 import { FormTextArea } from "../components/FormTextArea";
 import { Form } from "antd";
@@ -70,6 +71,12 @@ export const InfoForm : FC <Props> = ({
             <td valign="top" colSpan={2} style={{width:"100%"}}>
             <PriceTypesForm collection={collection} setCollection={setCollection}
             setSelectedRowForPreview={setSelectedRowForPreview}/>
+            </td>
+        </tr>
+
+        <tr>
+            <td valign="top" colSpan={2} style={{width:"100%"}}>
+            <OtherInfoForm collection={collection} setCollection={setCollection}/>
             </td>
         </tr>
     </tbody>

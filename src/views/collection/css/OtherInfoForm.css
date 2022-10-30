@@ -1,0 +1,13 @@
+.OtherInfoForm {
+    max-width: 100%;
+    max-height:200px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    border: 1px solid #ccd;
+    padding:10px;
+    margin-top: 10px;
+}
+
+.OtherInfoForm table tbody tr {
+    height: 20px;
+}

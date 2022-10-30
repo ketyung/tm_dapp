@@ -52,6 +52,8 @@ export enum AttributeType {
 
     EndTime = 'EndTime', 
 
+    Venue = 'Venue',
+
     MaxTicketPerWallet = 'MaxTicketPerWallet',
 
     SalesPageTemplate = 'SalesPageTemplate',
