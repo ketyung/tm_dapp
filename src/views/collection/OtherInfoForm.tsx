@@ -36,14 +36,26 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
                     if (setCollection && collection) {
 
                         let attrbs = collection.attributes;
-                        if (attrbs === undefined) 
+                        if (attrbs === undefined) {
+
                             attrbs = [];
                         
-                        attrbs.push({
-                            name : AttributeType.Venue,
-                            value : e.target.value,
-                        });
+                            attrbs.push({
+                                name : AttributeType.Venue,
+                                value : e.target.value,
+                            });
 
+                        }
+                        else {
+
+                            let i = attrbs.findIndex((a=> a.name === AttributeType.Venue));
+                            attrbs[i] = {
+                                name : AttributeType.Venue,
+                                value : e.target.value,
+                            };
+
+                        }
+                        
                         setCollection({...collection, attributes : attrbs });
                     }
                 }}
@@ -67,14 +79,26 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
                     if (setCollection && collection) {
 
                         let attrbs = collection.attributes;
-                        if (attrbs === undefined) 
+                        if (attrbs === undefined) {
+
                             attrbs = [];
                         
-                        attrbs.push({
-                            name : AttributeType.MaxTicketPerWallet,
-                            value : e + "",
-                        });
+                            attrbs.push({
+                                name : AttributeType.MaxTicketPerWallet,
+                                value : e + "",
+                            });
+    
+                        }                          
+                        else {
 
+                            let i = attrbs.findIndex((a=> a.name === AttributeType.MaxTicketPerWallet));
+                            attrbs[i] = {
+                                name : AttributeType.MaxTicketPerWallet,
+                                value : e + "",
+                            };
+                            
+                        }
+                      
                         setCollection({...collection, attributes : attrbs });
                     }
                 }}
