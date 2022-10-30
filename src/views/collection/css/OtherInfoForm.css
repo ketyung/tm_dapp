@@ -8,6 +8,14 @@
     margin-top: 10px;
 }
 
+.OtherInfoForm table thead tr {
+    height: 20px;
+    font-weight: 500;
+    text-align: left;
+    font-size: 9pt;
+}
+
+
 .OtherInfoForm table tbody tr {
     height: 20px;
 }

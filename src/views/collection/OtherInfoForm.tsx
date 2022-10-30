@@ -62,6 +62,11 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
 
     return <div className="OtherInfoForm">
         <table cellPadding={3} cellSpacing={3}>
+            <thead>
+                <tr>
+                    <td colSpan={2}>Other Event's Info</td>
+                </tr>
+            </thead>
             <tbody>
             <tr>
                 <td style={{textAlign:"left"}} colSpan={2}>
