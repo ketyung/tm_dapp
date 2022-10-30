@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CollectionFormProps } from "./Form";
-import { AttributeType } from "../../models";
+import { Attribute, AttributeType } from "../../models";
 import { FormInput } from "../components/FormInput";
 import { DatePicker } from "antd";
 import './css/OtherInfoForm.css';
@@ -8,38 +8,55 @@ import './css/OtherInfoForm.css';
 
 const { RangePicker } = DatePicker;
 
+const REQ_DATE_FORMAT = "DD/MMM/YY HH:mm";
+
 
 export const OtherInfoForm : FC<CollectionFormProps> = ({
     collection, setCollection
 }) =>{
 
 
-    const setCollectionAttrib = (attrbType : AttributeType, value : string) =>{
+    const setAttributeValue =( attrbType : AttributeType, value : string) : Attribute[] => {
 
-        if ( setCollection && collection) {
+        let attrbs = collection.attributes;
+        if (attrbs === undefined) {
 
-            let attrbs = collection.attributes;
-            if (attrbs === undefined) {
-    
-                attrbs = [{
-                    name : attrbType,
-                    value : value,
-                }];
-            }
-            else {
-    
-                let i = attrbs.findIndex((a => a.name === attrbType));
-                
-                //console.log("ix", i, new Date());
+            attrbs = [{
+                name : attrbType,
+                value : value,
+            }];
+        }
+        else {
+
+            let i = attrbs.findIndex((a => a.name === attrbType));
+            
+            if ( i >= 0 ) {
+
                 attrbs[i] = {
                     name : attrbType,
                     value : value,
                 };
     
             }
-            
+            else {
+
+                attrbs.push({
+                    name : attrbType,
+                    value : value,
+                });
+            }
+        }
+
+        return attrbs;
+      
+    }
+
+    const setCollectionAttrib = (attrbType : AttributeType, value : string) =>{
+
+        if ( setCollection && collection) {
+
+            let attrbs = setAttributeValue(attrbType, value);
             setCollection({...collection, attributes : attrbs });
-       
         }   
     }
 
@@ -52,11 +69,24 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
                 format={'DD/MMM/YY HH:mm'}
                 onChange={(e)=>{
 
-                    setCollectionAttrib(AttributeType.StartDate, e?.[0]?.toDate().toString() ?? "" );
+                    let attrbs = setAttributeValue(AttributeType.StartDate, 
+                        e?.[0]?.format(REQ_DATE_FORMAT).toString() ?? "" );
 
-                    setCollectionAttrib(AttributeType.EndDate, e?.[1]?.toDate().toString() ?? "" );
+                    //console.log("a1",attrbs);
 
+                    let attrbs2 = setAttributeValue(AttributeType.EndDate, 
+                        e?.[1]?.format(REQ_DATE_FORMAT).toString() ?? "" );
 
+                    let a = attrbs2.filter((a)=> {
+                        return (a.name === AttributeType.EndDate)})[0];
+
+                    let attrbs3 = [...attrbs, a ];
+
+                    //console.log("a3", attrbs3);
+                    
+                    if ( setCollection)
+                        setCollection({...collection, attributes : attrbs3 });
+                    
                 }}/>
                 </td>
             </tr>

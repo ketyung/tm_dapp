@@ -17,12 +17,21 @@ export const TemplateView : FC <Props> = ({
 
         let venue = collection.attributes?.filter(a=>{
             return a.name === AttributeType.Venue
-        })[0].value;
+        })[0]?.value;
+
+        let startDate = collection.attributes?.filter(a=>{
+            return a.name === AttributeType.StartDate
+        })[0]?.value; 
+
+        let endDate = collection.attributes?.filter(a=>{
+            return a.name === AttributeType.EndDate
+        })[0]?.value; 
+        
 
         let img = await template1.createImageDataUrl({
             title: collection?.title ? collection?.title : "Event name...",
-            startDate : "10/10/2022 9:00AM",
-            endDate : "10/10/2022 5:00PM",
+            startDate : startDate,
+            endDate : endDate,
             venue : venue,
             imageSrc : collection.icon ?? imagePlaceHolder,  
             ticketNo : "#000001",
