@@ -1,6 +1,5 @@
 import * as nearApiJs from 'near-api-js';
 
-
 export function nearTimestampToDateString(t : number) :string {
 
     let d = formatDate(new Date((t/1000000)));

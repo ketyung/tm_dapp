@@ -48,10 +48,6 @@ export enum AttributeType {
 
     EndDate = 'EndDate', 
 
-    StartTime = 'StartTime',
-
-    EndTime = 'EndTime', 
-
     Venue = 'Venue',
 
     MaxTicketPerWallet = 'MaxTicketPerWallet',
