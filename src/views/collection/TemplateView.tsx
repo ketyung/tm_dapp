@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { CollectionFormProps } from "./Form";
 import { Button , Image } from "antd";
+import { AttributeType } from "../../models";
 import * as template1 from "./templates/template1";
 import imagePlaceHolder from './images/picture.png';
 
@@ -14,11 +15,15 @@ export const TemplateView : FC <Props> = ({
 
     const obtainImageDataUri = useCallback(async ()=>{
 
+        let venue = collection.attributes?.filter(a=>{
+            return a.name === AttributeType.Venue
+        })[0].value;
+
         let img = await template1.createImageDataUrl({
             title: collection?.title ? collection?.title : "Event name...",
             startDate : "10/10/2022 9:00AM",
             endDate : "10/10/2022 5:00PM",
-            venue : "Kota Kinabalu",
+            venue : venue,
             imageSrc : collection.icon ?? imagePlaceHolder,  
             ticketNo : "#000001",
             ticketType : (collection.ticket_types) ? 
