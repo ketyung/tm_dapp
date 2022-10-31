@@ -49,7 +49,7 @@ export class CollectionsContract {
         }
         catch( e: any) {
           
-            console.error(e, new Date());
+            console.error(e.message, new Date());
             return undefined;
         }
         

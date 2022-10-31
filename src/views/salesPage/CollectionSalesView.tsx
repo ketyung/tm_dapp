@@ -20,8 +20,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             let collectionId = b64ToCollectionId(id);
             let c = await getCollection(collectionId);
             setCollection(c);
-            console.log("coll.id::", collectionId,c, new Date());
-          
+            //console.log("coll.id::", collectionId,c, new Date());
         }
     },[id]);
 
