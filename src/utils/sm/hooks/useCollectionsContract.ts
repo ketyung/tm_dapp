@@ -4,6 +4,7 @@ import { Collection, CollectionId } from "../../../models";
 import { CollectionsContract } from "../../../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../../../near/const";
 import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../..";
+import { toB64OfShortInfo, b64ToShortInfo } from "../..";
 
 export default function useCollectionsContract() {
 
@@ -44,8 +45,20 @@ export default function useCollectionsContract() {
     const b64ToCollectionId = ( b64str : string ) : CollectionId => {
 
         return b64ToColId(b64str);
-
     }
 
-    return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId} as const;
+
+    const b64ToShortCollectionInfo = ( b64str : string) =>{
+
+        return b64ToShortInfo(b64str);
+    }
+
+
+    const toB64OfShortCollectionInfo = (collection? : Collection) =>{
+
+        return toB64OfShortInfo(collection);
+    }
+
+    return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
+    toB64OfShortCollectionInfo, b64ToShortCollectionInfo} as const;
 }

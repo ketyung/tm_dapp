@@ -35,12 +35,12 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const [collection, setCollection] = useState<Collection>();
 
-    const {getCollection, b64ToCollectionId} = useCollectionsContract();
+    const {getCollection, b64ToShortCollectionInfo} = useCollectionsContract();
 
     const fetchCollection = useCallback(async ()=>{
         if ( id ) {
-            let collectionId = b64ToCollectionId(id);
-            let c = await getCollection(collectionId);
+            let collInfo = b64ToShortCollectionInfo(id);
+            let c = await getCollection(collInfo.collectionId);
             setCollection(c);
         }
     },[id]);

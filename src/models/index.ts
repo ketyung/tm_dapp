@@ -131,6 +131,13 @@ export interface CollectionId {
     symbol : string, 
 }
 
+export interface ShortCorrectionInfo {
+
+    collectionId : CollectionId,
+
+    template? : string, 
+}
+
 
 export enum TicketAttributeType {
 

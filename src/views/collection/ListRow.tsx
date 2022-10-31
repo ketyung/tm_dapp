@@ -19,7 +19,7 @@ export const ListRow : FC <Props> = ({
 
     const {setPage} = usePage();
 
-    const {collectionIdToB64} = useCollectionsContract();
+    const {toB64OfShortCollectionInfo} = useCollectionsContract();
 
     const menu = (<Menu
         items={[
@@ -41,8 +41,8 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={async ()=>{
 
-                let cid = collectionIdToB64(collection);
-                window.open("/page/"+cid,"_blank");
+                let cid = toB64OfShortCollectionInfo(collection);
+                window.open("/c/"+cid,"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',

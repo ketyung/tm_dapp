@@ -1,5 +1,5 @@
 import * as nearApiJs from 'near-api-js';
-import { CollectionId } from '../models';
+import { CollectionId, Collection, AttributeType, ShortCorrectionInfo } from '../models';
 
 export function nearTimestampToDateString(t : number) :string {
 
@@ -112,14 +112,44 @@ export const nearTimestampToDate = ( ts : number) : Date =>{
 
 	return new Date(ts/1000_000);
 }
-export const collectionIdToB64 = ( collectionId : CollectionId) => {
 
+
+export const collectionIdToB64 = ( collectionId : CollectionId) => {
 	return Buffer.from( JSON.stringify(collectionId) ).toString( "base64");
 }
-
 
 export const b64ToCollectionId = (b64str : string) : CollectionId => {
 
 	let s = Buffer.from(b64str, "base64").toString();
 	return JSON.parse(s) as CollectionId;
+}
+
+
+export const toB64OfShortInfo = ( collection? : Collection) => {
+
+	let a = [collection?.title, collection?.symbol, collection?.owner, 
+		collection?.attributes?.filter(a=> 
+		{return a.name === AttributeType.SalesPageTemplate})[0]?.value ??
+	"Default" ];
+
+	return Buffer.from( JSON.stringify(a) ).toString( "base64");
+}
+
+export const b64ToShortInfo = (b64str : string) : ShortCorrectionInfo => {
+
+	let s = Buffer.from(b64str, "base64").toString();
+	let a = JSON.parse(s);
+
+	return {
+
+		collectionId : {
+
+			title : a[0],
+			symbol :a[1],
+			owner : a[2],
+
+		},
+
+		template : a[3],
+	};
 }

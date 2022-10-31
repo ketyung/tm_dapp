@@ -8,7 +8,7 @@ export const Routes : FC = () =>{
    
     const [matchHome] = useRoute("/");
     
-    const [matchSalesPage] = useRoute("/page/:id");
+    const [matchSalesPage] = useRoute("/c/:id");
 
     const pageTitle = () => {
 
@@ -35,7 +35,7 @@ export const Routes : FC = () =>{
         <Route path="/">
         <HomeView/>
         </Route>
-        <Route path="/page/:id">
+        <Route path="/c/:id">
         {(params) => 
             <CollectionSalesView id={params.id}/>}
         </Route>
