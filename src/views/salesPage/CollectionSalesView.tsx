@@ -1,7 +1,7 @@
 import { Collection } from "../../models";
 import { FC, useEffect, useState, useCallback } from "react";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
-
+import useWalletState from "../../utils/sm/hooks/useWalletState";
 
 
 type Props = {
@@ -9,6 +9,29 @@ type Props = {
 }
 
 export const CollectionSalesView : FC <Props> = ({id}) =>{
+
+    const {isSignedIn, dateUpdated} = useWalletState();
+
+    const [loading,setLoading] = useState(false);
+
+    const [hasSignedIn, setHasSignedIn] = useState(false);
+
+    const checkIfSignedIn =  useCallback(async ()=>{
+   
+        setLoading(true);
+     
+        if ( await isSignedIn()) {
+            setHasSignedIn(true);
+            fetchCollection();
+        }
+        else {
+            setHasSignedIn(false);
+        }
+
+        setLoading(false);
+
+    },[dateUpdated,isSignedIn]);
+
 
     const [collection, setCollection] = useState<Collection>();
 
@@ -19,17 +42,23 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             let collectionId = b64ToCollectionId(id);
             let c = await getCollection(collectionId);
             setCollection(c);
-            //console.log("coll.id::", collectionId,c, new Date());
         }
     },[id]);
 
     useEffect(()=>{
-       
-        fetchCollection();
-       
-    },[fetchCollection]);
+        checkIfSignedIn();
+    },[]);
 
     return <>
-    <p>{collection?.title} ({collection?.symbol})</p>
+    {!hasSignedIn ? 
+    <div style={{width:"300px",background:"#347",color:"white",padding:"10px",
+    borderRadius:"20px",margin:"auto", marginTop:"20px"}}>
+    Please Sign In 
+    </div> :
+    <div>
+    {collection?.title}
+    </div>
+    }
+
     </>
 }
