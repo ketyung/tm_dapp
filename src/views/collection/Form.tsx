@@ -3,6 +3,7 @@ import { InfoForm } from "./InfoForm";
 import { LogoAndTmplForm } from "./LogoAndTmplForm";
 import { BulbOutlined } from "@ant-design/icons";
 import { FC, useState } from "react";
+import { Button } from "antd";
 import './css/Form.css';
 
 
@@ -39,5 +40,10 @@ export const Form : FC <Props> = ({
             <LogoAndTmplForm collection={collection} setCollection={setCollection}
             selectedRow={selectedRow}/>
         </div>  
+        <div style={{textAlign:"center"}}>
+        <Button shape="round" style={{background:"#384",color:"white",
+        minWidth:"260px",marginTop:"10px",fontWeight:600}}>Create</Button>
+        </div>
+      
     </div>
 }
