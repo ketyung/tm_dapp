@@ -45,6 +45,7 @@ export class CollectionsContract {
                 args: { collection_id : collectionId }
             });
 
+        
             return collection ;
         }
         catch( e: any) {
