@@ -3,7 +3,7 @@ import useWalletState from "./useWalletState";
 import { Collection, CollectionId } from "../../../models";
 import { CollectionsContract } from "../../../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../../../near/const";
-import { collectionIdToB64 as colIdToB64 } from "../..";
+import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../..";
 
 export default function useCollectionsContract() {
 
@@ -41,5 +41,11 @@ export default function useCollectionsContract() {
     }
 
 
-    return {getCollectionsOf, loading, getCollection, collectionIdToB64} as const;
+    const b64ToCollectionId = ( b64str : string ) : CollectionId => {
+
+        return b64ToColId(b64str);
+
+    }
+
+    return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId} as const;
 }

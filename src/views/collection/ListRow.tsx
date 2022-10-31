@@ -39,9 +39,10 @@ export const ListRow : FC <Props> = ({
         },
 
         {
-            label: <div className="menuItem" onClick={()=>{
+            label: <div className="menuItem" onClick={async ()=>{
 
-                window.open("/page/"+collectionIdToB64(collection),"_blank");
+                let cid = collectionIdToB64(collection);
+                window.open("/page/"+cid,"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',

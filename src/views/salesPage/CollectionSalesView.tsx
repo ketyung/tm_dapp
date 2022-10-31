@@ -1,5 +1,4 @@
 import { Collection } from "../../models";
-import { b64ToCollectionId } from "../../utils";
 import { FC, useEffect, useState, useCallback } from "react";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
 
@@ -13,7 +12,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const [collection, setCollection] = useState<Collection>();
 
-    const {getCollection} = useCollectionsContract();
+    const {getCollection, b64ToCollectionId} = useCollectionsContract();
 
     const fetchCollection = useCallback(async ()=>{
         if ( id ) {

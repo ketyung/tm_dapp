@@ -118,8 +118,8 @@ export const collectionIdToB64 = ( collectionId : CollectionId) => {
 }
 
 
-export const b64ToCollectionId = (hex : string) : CollectionId => {
+export const b64ToCollectionId = (b64str : string) : CollectionId => {
 
-	let s = Buffer.from(hex, "base64").toString();
+	let s = Buffer.from(b64str, "base64").toString();
 	return JSON.parse(s) as CollectionId;
 }
