@@ -10,7 +10,7 @@ export const CategoriesSelect : FC <CollectionFormProps> = ({
 
     const categories = ["Concert Ticket", "Event Ticket"];
 
-    return <Form.Item label={"Category"} labelAlign={"right"}>   
+    return <Form.Item label={"Category"} labelAlign={"right"} required={true}>   
     <Select defaultValue={collection.category ?? ""} style={{maxWidth:"320px",textAlign:"left"}}
     onChange={(e)=>{
         if (setCollection) {

@@ -102,7 +102,7 @@ export const FormInput : FC <FormInputProps> = ({
     setReadOnlyBackground();
 
     return <Form.Item label={label} labelAlign={labelAlign ?? "right"}
-    rules = {[{required : required ? required : false, message :"Missing " + name}]}
+    rules = {[{required : required, message :"Missing " + name}]}
     style={formItemStyle ? formItemStyle : {fontWeight:"500"}} name={name}>
         {
             isSecure ?

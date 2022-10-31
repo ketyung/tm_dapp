@@ -28,7 +28,7 @@ export const InfoForm : FC <Props> = ({
         <tr>
             <td valign="top" style={{width:"70%"}}>
             <FormInput label="Event/Title" style={{minWidth:"180px"}} 
-            value={collection?.title}
+            value={collection?.title} required={true}
             onChange={(e)=>{
                 let title = e.target.value
                 let a = acronym(title);
@@ -38,10 +38,7 @@ export const InfoForm : FC <Props> = ({
                     else 
                         setCollection({...collection, title: title});
                 }
-    
-            }}
-                
-            />
+            }}/>
             </td>
             <td valign="top" style={{width:"30%"}}>
             <FormInput label="Symbol" style={{maxWidth:"100px"}} readOnly={true} value={collection?.symbol ?? ""}/>
@@ -58,7 +55,7 @@ export const InfoForm : FC <Props> = ({
             }}/>
             </td>
             <td valign="top" style={{width:"30%", textAlign:"left"}}>
-            <FormInput style={{width:"80px",marginTop:"10px"}} 
+            <FormInput style={{width:"80px",marginTop:"10px"}} required={true}
             step={1000} isNumber={true} label={<>Total number<br/>of tickets</>} placeholder="1000" 
             min={1} max={50000}
             value={collection.total_tickets} onChange={(e)=>{
@@ -79,7 +76,6 @@ export const InfoForm : FC <Props> = ({
             setSelectedRowForPreview={setSelectedRowForPreview}/>
             </td>
         </tr>
-
         <tr>
             <td valign="top" colSpan={2} style={{width:"100%"}}>
             <OtherInfoForm collection={collection} setCollection={setCollection}/>
