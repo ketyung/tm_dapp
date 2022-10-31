@@ -35,8 +35,10 @@ export class CollectionsContract {
 
         try {
 
-            console.log("this.wallet::", this.wallet, new Date());
-            
+            console.log("this.wallet::", this.wallet, 
+            collectionId, 
+            new Date());
+
             let collection =  await this.wallet?.viewMethod({
                 contractId: this.contractId,
                 method: 'get_collection',
