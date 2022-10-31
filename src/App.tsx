@@ -1,4 +1,4 @@
-import { HomeView } from './views/HomeView';
+import { Routes } from "./Routes";
 import { Provider } from "react-redux";
 import { StateStore } from './utils/sm/StateStore';
 import './App.css';
@@ -10,7 +10,7 @@ function App() {
     
     <div className="App">
     <Provider store={StateStore}>
-      <HomeView/>
+      <Routes/>
     </Provider>
     </div>
   );

@@ -1,5 +1,5 @@
 import { Wallet } from "./Wallet";
-import { Collection } from "../models";
+import { Collection, CollectionId } from "../models";
 
 export class CollectionsContract {
 
@@ -27,6 +27,25 @@ export class CollectionsContract {
         catch( e: any) {
           
             return [];
+        }
+        
+    } 
+
+    async getCollection(collectionId : CollectionId ) : Promise<Collection|undefined>{
+
+        try {
+
+            let collection =  await this.wallet?.viewMethod({
+                contractId: this.contractId,
+                method: 'get_collection',
+                args: { collection_id : collectionId }
+            });
+
+            return collection ;
+        }
+        catch( e: any) {
+          
+            return undefined;
         }
         
     } 

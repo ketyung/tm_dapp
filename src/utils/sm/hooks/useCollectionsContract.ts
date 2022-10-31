@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import { Collection } from "../../../models";
+import { Collection, CollectionId } from "../../../models";
 import { CollectionsContract } from "../../../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../../../near/const";
 
@@ -21,5 +21,17 @@ export default function useCollectionsContract() {
         return colls;
     } 
 
-    return {getCollectionsOf, loading} as const;
+    const  getCollection = async (collectionId : CollectionId ) : Promise<Collection|undefined> => {
+
+        setLoading(true);
+        let contract = new CollectionsContract (COLLECTIONS_CONTRACT_ID, wallet);
+
+        let coll =  await contract.getCollection(collectionId);
+        setLoading(false);
+        return coll;
+    }
+
+
+
+    return {getCollectionsOf, loading, getCollection} as const;
 }

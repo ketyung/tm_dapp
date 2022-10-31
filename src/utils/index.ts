@@ -1,4 +1,5 @@
 import * as nearApiJs from 'near-api-js';
+import { CollectionId } from '../models';
 
 export function nearTimestampToDateString(t : number) :string {
 
@@ -110,4 +111,40 @@ export const yoctoToNear = ( amount : string, decimalsCount? : number ) =>{
 export const nearTimestampToDate = ( ts : number) : Date =>{
 
 	return new Date(ts/1000_000);
+}
+
+export const strToHex = (str: string) => {
+	var result = "";
+    let hex = "";
+
+	for (var i=0; i< str.length; i++) {
+        hex = str.charCodeAt(i).toString(16);
+        result += ("000"+hex).slice(-4);
+    }
+
+    return result
+}
+
+
+export const hexToStr = (hex : string ) => {
+	
+	let j;
+    let hexes = hex.match(/.{1,4}/g) || [];
+    let back = "";
+    for(j = 0; j<hexes.length; j++) {
+        back += String.fromCharCode(parseInt(hexes[j], 16));
+    }
+    return back;
+}
+
+export const collectionIdToHex = ( collectionId : CollectionId) => {
+
+	return strToHex( JSON.stringify(collectionId));
+}
+
+
+export const hexToCollectionId = (hex : string) : CollectionId => {
+
+	let s = hexToStr(hex);
+	return JSON.parse(s) as CollectionId;
 }
