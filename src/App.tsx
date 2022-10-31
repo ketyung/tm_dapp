@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 
 function App() {
   return (
-    
     <div className="App">
     <Provider store={StateStore}>
       <Routes/>

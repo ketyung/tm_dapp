@@ -20,6 +20,8 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             let collectionId = hexToCollectionId(id);
             let c = await getCollection(collectionId);
             setCollection(c);
+            console.log("coll.id::", collectionId,c, new Date());
+          
         }
     },[id]);
 
