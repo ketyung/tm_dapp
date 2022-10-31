@@ -2,7 +2,7 @@
     background-color: transparent;
     padding:10px 10px 10px 20px;
     min-width: 1200px;
-    min-height:400px;
+    min-height:520px;
 }
 
 
@@ -33,7 +33,7 @@
     padding:10px;
     border-radius: 20px;
     border: 1px solid #abc;
-    min-height: 390px;
+    min-height: 500px;
     margin: auto;
     margin-top: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
