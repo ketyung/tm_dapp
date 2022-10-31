@@ -70,6 +70,35 @@ export default function useUsersContractState() {
     const createAndDeployNftContract  = async ( collection : Collection,
         completion? : (res : string|Error) => void ) => {
 
+        if (collection.title.trim() === "") {
+            if (completion)
+                completion(new Error("Title is blank!"));
+            return; 
+        }
+
+        if (collection.icon === undefined) {
+
+            if ( completion)
+                completion(new Error("Please provide an icon/logo for your event/collection"));
+            return; 
+        }
+
+        if ( collection.total_tickets === 0) {
+
+            if ( completion)
+                completion(new Error("Please specify the total number of tickets of your event/collection"));
+            return; 
+        }
+
+        if ( collection.category === undefined) {
+
+            if ( completion)
+                completion(new Error("Please choose a category for your event/collection"));
+            return; 
+        }
+
+
+
         setLoading(true);
         await usersContractState.contract?.createCollectionAndDeploy(collection,
             20, (e)=>{

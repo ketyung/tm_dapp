@@ -15,7 +15,7 @@ export const uploadImageToArweave = async (
     const akey = process.env.REACT_APP_ARWEAVE_KEY; 
     if ( akey === undefined ) {
         if ( completion )
-         completion(new Error("Undefined REACT_APP_ARWEAVE_KEY"));
+         completion(new Error("Undefined ARWEAVE KEY"));
 
         return;
     }
