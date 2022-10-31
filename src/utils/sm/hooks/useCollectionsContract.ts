@@ -3,7 +3,7 @@ import useWalletState from "./useWalletState";
 import { Collection, CollectionId } from "../../../models";
 import { CollectionsContract } from "../../../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../../../near/const";
-import { collectionIdToHex as colIdToHex } from "../..";
+import { collectionIdToB64 as colIdToB64 } from "../..";
 
 export default function useCollectionsContract() {
 
@@ -33,13 +33,13 @@ export default function useCollectionsContract() {
     }
 
 
-    const collectionIdToHex = (collection? : Collection) =>{
+    const collectionIdToB64 = (collection? : Collection) =>{
 
-        return colIdToHex( {title : collection?.title ?? "",
+        return colIdToB64( {title : collection?.title ?? "",
         owner : wallet.accountId, 
         symbol :collection?.symbol ?? ""});
     }
 
 
-    return {getCollectionsOf, loading, getCollection, collectionIdToHex} as const;
+    return {getCollectionsOf, loading, getCollection, collectionIdToB64} as const;
 }

@@ -19,7 +19,7 @@ export const ListRow : FC <Props> = ({
 
     const {setPage} = usePage();
 
-    const {collectionIdToHex} = useCollectionsContract();
+    const {collectionIdToB64} = useCollectionsContract();
 
     const menu = (<Menu
         items={[
@@ -41,7 +41,7 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={()=>{
 
-                window.open("/page/"+collectionIdToHex(collection),"_blank");
+                window.open("/page/"+collectionIdToB64(collection),"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',

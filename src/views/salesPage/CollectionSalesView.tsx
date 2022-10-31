@@ -1,5 +1,5 @@
 import { Collection } from "../../models";
-import { hexToCollectionId } from "../../utils";
+import { b64ToCollectionId } from "../../utils";
 import { FC, useEffect, useState, useCallback } from "react";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
 
@@ -17,7 +17,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const fetchCollection = useCallback(async ()=>{
         if ( id ) {
-            let collectionId = hexToCollectionId(id);
+            let collectionId = b64ToCollectionId(id);
             let c = await getCollection(collectionId);
             setCollection(c);
             console.log("coll.id::", collectionId,c, new Date());
