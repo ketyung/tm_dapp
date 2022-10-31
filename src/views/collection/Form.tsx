@@ -86,10 +86,11 @@ export const Form : FC <Props> = ({
         minWidth:"260px",marginTop:"10px",fontWeight:600}}>
         {processing ? <Spin size="small"/> : <>Create</>}    
         </Button>
-        {message && <div style={{marginTop:"10px",background:message.type===MessageType.Error ? "#d00" : "#56a",
-        borderRadius:"20px",padding:"10px",color:"white"}}>
-        {message.type===MessageType.Error && <ExclamationCircleOutlined style={{marginRight:"10px"}}/>} 
-        {message.text}</div>}
+        <div style={{marginTop:"10px",background:message?.type===MessageType.Error ? "#d00" : "#56a",
+        borderRadius:"20px",padding:"10px",color:"white",visibility:message ? "visible":"hidden", 
+        transition:"height 1.5s ease"}}>
+        {message?.type===MessageType.Error && <ExclamationCircleOutlined style={{marginRight:"10px"}}/>} 
+        {message?.text}</div>
         </div>
       
     </div>
