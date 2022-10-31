@@ -57,8 +57,7 @@ export const InfoForm : FC <Props> = ({
             <td valign="top" style={{width:"30%", textAlign:"left"}}>
             <FormInput style={{width:"80px",marginTop:"10px"}} required={true}
             step={1000} isNumber={true} label={<>Total number<br/>of tickets</>} placeholder="1000" 
-            min={1} max={50000}
-            value={collection.total_tickets} onChange={(e)=>{
+            min={1} max={50000} value={collection.total_tickets} onChange={(e)=>{
                 let v = parseInt(e);
                 if ( setCollection && !isNaN(v))
                     setCollection({...collection, total_tickets : v});
