@@ -1,11 +1,11 @@
 .createUserForm {
-    max-width: 95%;
-    min-width: 800px;
+    max-width: 80%;
     margin: auto;
     margin-top: 20px;
-    border: 1px solid #aaa;
+    border: 1px solid #ccd;
     border-radius: 30px;
     padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
 }
 
 .createUserForm .createButt {
