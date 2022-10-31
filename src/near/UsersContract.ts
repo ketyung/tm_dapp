@@ -1,6 +1,8 @@
 import { Wallet } from "./Wallet";
 import { User } from "../models";
 import { NEAR_TOKEN_DECIMALS } from "./const";
+import { Collection } from "../models";
+
 const BN = require("bn.js");
 
 export class UsersContract {
@@ -114,9 +116,9 @@ export class UsersContract {
         }
     }
   
-    async createAndDeployNftContract ( subAccountId : string ,
+    async createCollectionAndDeploy ( 
+        collection : Collection,
         initBalanceInNear : number , 
-        param? : {name : string, symbol : string, icon? : string, base_uri? : string },
         completion? : (res : string|Error) => void ) {
 
         try {
@@ -129,18 +131,15 @@ export class UsersContract {
             }
 
 
-          
             let deposit = new BN(((initBalanceInNear * 1.02) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
             let res = await this.wallet?.callMethod({
                 contractId: this.contractId,
-                method: 'create_and_deploy_nft_contract',
+                method: 'create_collection_and_deploy',
                 gas : "300000000000000", // max limit 
                 deposit : deposit,
-                args: { sub_account_id : subAccountId, init_balance : initBalanceInNear,
-                /* code : new Uint8Array(buf), */
-                param : param },
+                args: { collection : collection },
             });
             if ( completion ) {
                 completion(res);

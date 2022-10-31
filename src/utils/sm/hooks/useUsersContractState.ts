@@ -5,7 +5,7 @@ import { useCallback} from "react";
 import { initContract } from "../UsersContractActions";
 import { UsersContractState } from "../UsersContractReducer";
 import useWalletState from "./useWalletState";
-import { User } from "../../../models";
+import { Collection, User } from "../../../models";
 
 export default function useUsersContractState() {
 
@@ -67,14 +67,12 @@ export default function useUsersContractState() {
 
    
 
-    const createAndDeployNftContract  = async ( subAccountId : string ,
-        initBalanceInNear : number , 
-        initParam? : {name : string, symbol : string, icon? : string, base_uri? : string },
+    const createAndDeployNftContract  = async ( collection : Collection,
         completion? : (res : string|Error) => void ) => {
 
         setLoading(true);
-        await usersContractState.contract?.createAndDeployNftContract(subAccountId, initBalanceInNear,
-            initParam, (e)=>{
+        await usersContractState.contract?.createCollectionAndDeploy(collection,
+            20, (e)=>{
             if ( completion )
                 completion(e);
             setLoading(false);
