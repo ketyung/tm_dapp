@@ -52,7 +52,7 @@ export const createImageDataUrl = async (
             ctx.font = "19px Raleway";
             ctx.fillStyle = "#ffa";
             
-            ctx.fillText(`Start Date: ${ticketInfo.startDate}`, txtXStart, txtYStart  );
+            ctx.fillText(`Start: ${ticketInfo.startDate}`, txtXStart, txtYStart  );
         }
 
 
@@ -63,7 +63,7 @@ export const createImageDataUrl = async (
             ctx.font = "19px Raleway";
             ctx.fillStyle = "#ffa";
             
-            ctx.fillText(`End Date:${ticketInfo.endDate}`, txtXStart, txtYStart );
+            ctx.fillText(`End:  ${ticketInfo.endDate}`, txtXStart, txtYStart );
         }
 
 
