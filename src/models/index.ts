@@ -135,7 +135,7 @@ export interface ShortCorrectionInfo {
 
     collectionId : CollectionId,
 
-    template? : string, 
+    templateId? : number, 
 }
 
 
@@ -189,3 +189,14 @@ export interface TicketInfo {
 
     ticketType? : TicketType,
 }
+
+
+export interface SalesPageTemplate{
+
+    id : number,
+
+    name : string, 
+} 
+
+
+export const SALE_PAGE_TEMPLATES : SalesPageTemplate[] = [{id :1 , name : "Default"}];

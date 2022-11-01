@@ -3,6 +3,7 @@ import { CollectionFormProps } from "./Form";
 import { Select, Form } from "antd";
 import { AttributeType } from "../../models";
 import { setCollectionAttribute } from "./OtherInfoForm";
+import { SALE_PAGE_TEMPLATES } from "../../models";
 
 const { Option } = Select;
 
@@ -10,7 +11,7 @@ export const SalesTemplateSelect : FC <CollectionFormProps> = ({
     collection, setCollection
 }) =>{
 
-    const templates = ["Default"];
+    const templates = SALE_PAGE_TEMPLATES;
 
     return <div className="SalesTemplateSelectView"><Form.Item label={"Sales Page Template"} labelAlign={"right"}>   
     <Select defaultValue={collection.attributes?.filter(a=>{
@@ -23,7 +24,7 @@ export const SalesTemplateSelect : FC <CollectionFormProps> = ({
     }}>
         {
             templates.map((e,i)=>{
-                return <Option key={"stOpt"+i} value={e}>{e}</Option>
+                return <Option key={"stOpt"+i} value={e.id}>{e.name}</Option>
             })
         }
     </Select></Form.Item></div>

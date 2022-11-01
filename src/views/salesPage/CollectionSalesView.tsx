@@ -12,6 +12,8 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const {isSignedIn, dateUpdated} = useWalletState();
 
+    const [pageTemplateId, setPageTemplateId] = useState(0);
+
     const [loading,setLoading] = useState(false);
 
     const [hasSignedIn, setHasSignedIn] = useState(false);
@@ -40,8 +42,11 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     const fetchCollection = useCallback(async ()=>{
         if ( id ) {
             let collInfo = b64ToShortCollectionInfo(id);
+
             let c = await getCollection(collInfo.collectionId);
             setCollection(c);
+
+            setPageTemplateId(collInfo.templateId ?? 1);
         }
     },[id]);
 
@@ -57,6 +62,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     </div> :
     <div>
     {collection?.title}
+    <p>Page Template Id :{pageTemplateId}</p>
     </div>
     }
 
