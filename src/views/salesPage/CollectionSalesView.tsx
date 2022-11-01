@@ -1,5 +1,7 @@
-import { Collection } from "../../models";
+import { Collection, ShortCorrectionInfo } from "../../models";
 import { FC, useEffect, useState, useCallback } from "react";
+import { Template1 } from "./templates/Template1";
+import { GSpinner } from "../components/GSpinner";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
 import useWalletState from "../../utils/sm/hooks/useWalletState";
 
@@ -12,10 +14,8 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const {isSignedIn, dateUpdated} = useWalletState();
 
-    const [pageTemplateId, setPageTemplateId] = useState(0);
-
-    const [icon, setIcon] = useState<string>();
-
+    const [shortCollectionInfo, setShortCollectionInfo] = useState<ShortCorrectionInfo>();
+   
     const [loading,setLoading] = useState(false);
 
     const [hasSignedIn, setHasSignedIn] = useState(false);
@@ -42,34 +42,46 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     const {getCollection, b64ToShortCollectionInfo} = useCollectionsContract();
 
     const fetchCollection = useCallback(async ()=>{
-        if ( id ) {
-            let collInfo = b64ToShortCollectionInfo(id);
-
-            let c = await getCollection(collInfo.collectionId);
+        if (shortCollectionInfo ) {
+       
+            let c = await getCollection(shortCollectionInfo.collectionId);
             setCollection(c);
-
-            setPageTemplateId(collInfo.templateId ?? 1);
-
-            setIcon(collInfo.icon);
         }
     },[id]);
 
+    const getShortCollectionInfo = () =>{
+
+        if ( id ) {
+            let collInfo = b64ToShortCollectionInfo(id);
+            setShortCollectionInfo(collInfo);
+        }
+    }
+
     useEffect(()=>{
+        getShortCollectionInfo();
         checkIfSignedIn();
     },[]);
 
-    return <>
-    {!hasSignedIn ? 
-    <div style={{width:"300px",background:"#347",color:"white",padding:"10px",
-    borderRadius:"20px",margin:"auto", marginTop:"20px"}}>
-    Please Sign In 
-    </div> :
-    <div>
-    {collection?.title}
-    <p>Page Template Id :{pageTemplateId}</p>
-    <p><img src={icon}  style={{width:"300px",height:"auto"}}/></p>
-    </div>
+
+    const switchView = () =>{
+
+        if (shortCollectionInfo) {
+
+            switch(+(shortCollectionInfo.templateId ?? 0)) {
+
+                case 1 :
+                    return <Template1 shortCollectionInfo={shortCollectionInfo}
+                    collection={collection} hasSignedIn={hasSignedIn}/>
+
+                default :
+
+                    return <GSpinner style={{margin:"auto",marginTop:"30px"}}/>
+
+            }
+        }
     }
 
+    return <>
+    {loading ? <GSpinner style={{margin:"auto",marginTop:"30px"}}/> : switchView()}
     </>
 }
