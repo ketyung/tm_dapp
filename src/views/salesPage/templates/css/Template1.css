@@ -38,3 +38,10 @@
     margin-top:20px;
     min-width: 240px;
 }
+
+.Template1 .Logo {
+    width:300px;
+    height:auto;
+    border-radius:300px;
+    border:10px solid #aab;
+}

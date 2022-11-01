@@ -20,13 +20,13 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const [hasSignedIn, setHasSignedIn] = useState(false);
 
-    const checkIfSignedIn =  useCallback(async ()=>{
+    const checkIfSignedIn =  useCallback(async (collInfo? : ShortCorrectionInfo)=>{
    
         setLoading(true);
      
         if ( await isSignedIn()) {
             setHasSignedIn(true);
-            fetchCollection();
+            fetchCollection(collInfo);
         }
         else {
             setHasSignedIn(false);
@@ -41,10 +41,9 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const {getCollection, b64ToShortCollectionInfo} = useCollectionsContract();
 
-    const fetchCollection = useCallback(async ()=>{
-        if (shortCollectionInfo ) {
-       
-            let c = await getCollection(shortCollectionInfo.collectionId);
+    const fetchCollection = useCallback(async (collInfo? : ShortCorrectionInfo)=>{
+        if (collInfo ) {
+            let c = await getCollection(collInfo.collectionId);
             setCollection(c);
         }
     },[id]);
@@ -54,12 +53,13 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
         if ( id ) {
             let collInfo = b64ToShortCollectionInfo(id);
             setShortCollectionInfo(collInfo);
+            return collInfo;
         }
     }
 
     useEffect(()=>{
-        getShortCollectionInfo();
-        checkIfSignedIn();
+        let collInfo = getShortCollectionInfo();
+        checkIfSignedIn(collInfo);
     },[]);
 
 
