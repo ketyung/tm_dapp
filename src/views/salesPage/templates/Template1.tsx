@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button } from "antd";
 import { Collection, ShortCorrectionInfo } from "../../../models";
+import useWalletState from "../../../utils/sm/hooks/useWalletState";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
 
@@ -18,6 +19,8 @@ export const Template1 : FC <Props> = ({
     hasSignedIn, shortCollectionInfo, collection
 }) =>{
 
+    const {signIn} = useWalletState();
+
     return <div className="Template1">
         <Helmet>
             <meta charSet="utf-8" />
@@ -28,7 +31,10 @@ export const Template1 : FC <Props> = ({
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>
         <div><img src={shortCollectionInfo?.icon} style={{width:"300px",height:"auto",
         borderRadius:"300px",border:"10px solid #aab"}}/></div>
-        { !hasSignedIn ? <Button className="ConnectButton">Connect Your Wallet</Button>
+        { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
+            e.preventDefault();
+            signIn();
+        }}>Connect Your Wallet</Button>
         : <Button className="BuyButton">
         Buy Ticket</Button>}
     </div>
