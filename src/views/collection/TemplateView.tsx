@@ -13,7 +13,7 @@ export const TemplateView : FC <Props> = ({
     const [imageDataUri, setImageDataUri] = useState<string>();
 
     const obtainImageDataUri = useCallback(async ()=>{
-       await genTemplateImageDataUri(1, collection, index, setImageDataUri);
+       await genTemplateImageDataUri(collection, index, setImageDataUri);
     },[collection, index]);
 
     useEffect(()=>{

@@ -3,11 +3,11 @@ import * as template1 from './template1';
 import imagePlaceHolder from '../images/picture.png';
 
 export const genTemplateImageDataUri = async (
-    templateType : number, 
     collection: Collection,
     index? : number, 
     setImageDataUriCallback? : (imageUri?: string) => void ) =>{
 
+    let templateType = parseInt(collection.ticket_template_type?.value ?? "1");
     
     let venue = collection.attributes?.filter(a=>{
         return a.name === AttributeType.Venue
