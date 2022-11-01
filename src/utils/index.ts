@@ -152,3 +152,9 @@ export const b64ToShortInfo = (b64str : string) : ShortCorrectionInfo => {
 		icon : a[4],
 	};
 }
+
+
+export const useQuery = () =>{
+
+	return new URLSearchParams(window.location.search);
+}

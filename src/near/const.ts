@@ -6,6 +6,8 @@ export const WALLET_URL = "https://wallet.testnet.near.org";
 
 export const HELPER_URL = "https://helper.testnet.near.org";
 
+export const EXPLORER_URL = "https://explorer.testnet.near.org/transactions/";
+
 export const USERS_CONTRACT_ID = "test_tm_users_contract.testnet";
 
 export const COLLECTIONS_CONTRACT_ID = "test_tm_collections_contract.testnet";

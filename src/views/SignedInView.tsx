@@ -8,6 +8,7 @@ import { UserForm, UserFormType } from "./user/UserForm";
 import { PageStorage } from "../utils/local-storage";
 import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
 import './css/SignedInView.css';
+import { InfoView } from "./InfoView";
 
 export const SignedInView : FC = () =>{
 
@@ -62,6 +63,7 @@ export const SignedInView : FC = () =>{
     <TopNavBar/>
     <div className="content">
         <div className="main">
+            <InfoView/>
             {switchView()}
         </div>
     </div>
