@@ -136,6 +136,8 @@ export interface ShortCorrectionInfo {
     collectionId : CollectionId,
 
     templateId? : number, 
+
+    icon? : string, 
 }
 
 

@@ -14,6 +14,8 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
     const [pageTemplateId, setPageTemplateId] = useState(0);
 
+    const [icon, setIcon] = useState<string>();
+
     const [loading,setLoading] = useState(false);
 
     const [hasSignedIn, setHasSignedIn] = useState(false);
@@ -47,6 +49,8 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             setCollection(c);
 
             setPageTemplateId(collInfo.templateId ?? 1);
+
+            setIcon(collInfo.icon);
         }
     },[id]);
 
@@ -63,6 +67,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     <div>
     {collection?.title}
     <p>Page Template Id :{pageTemplateId}</p>
+    <p><img src={icon}  style={{width:"300px",height:"auto"}}/></p>
     </div>
     }
 

@@ -129,7 +129,8 @@ export const toB64OfShortInfo = ( collection? : Collection) => {
 
 	let a = [collection?.title, collection?.symbol, collection?.owner, 
 		collection?.attributes?.filter(a=> 
-		{return a.name === AttributeType.SalesPageTemplate})[0]?.value ?? "1" ];
+		{return a.name === AttributeType.SalesPageTemplate})[0]?.value ?? "1",
+		collection?.icon ];
 
 	return Buffer.from( JSON.stringify(a) ).toString( "base64");
 }
@@ -147,7 +148,7 @@ export const b64ToShortInfo = (b64str : string) : ShortCorrectionInfo => {
 			symbol :a[1],
 			owner : a[2],
 		},
-
 		templateId : a[3],
+		icon : a[4],
 	};
 }
