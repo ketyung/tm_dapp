@@ -1,0 +1,30 @@
+.Template1 {
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #395 , #359);
+    padding:20px;
+    max-width: 70%;
+    margin: auto;
+    color:white;
+    margin-top: 30px;
+    min-height: 600px;
+}
+
+.Template1 h2 {
+
+    color:white;
+}
+
+
+.Template1 h3 {
+
+    color:white;
+}
+
+.Template1 .BuyButton {
+    font-weight: 600;
+    border-radius: 30px;
+    background:#396;
+    color:white;
+    margin-top:20px;
+    min-width: 240px;
+}
