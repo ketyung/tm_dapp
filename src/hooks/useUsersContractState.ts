@@ -5,7 +5,10 @@ import { useCallback, useEffect} from "react";
 import { initContract } from "../utils/sm/UsersContractActions";
 import { UsersContractState } from "../utils/sm/UsersContractReducer";
 import useWalletState from "./useWalletState";
-import { Collection, User, CollectionId } from "../models";
+import { Collection, User, CollectionId, TicketType } from "../models";
+import useCollectionsContract from "./useCollectionsContract";
+import { genTemplateImageDataUri } from "../views/collection/templates/util";
+import { uploadImageToArweave } from "../arweave";
 
 export default function useUsersContractState() {
 
@@ -114,8 +117,6 @@ export default function useUsersContractState() {
             return; 
         }
 
-
-
         setLoading(true);
         await usersContractState.contract?.createCollectionAndDeploy(collection,
             20, (e)=>{
@@ -124,6 +125,107 @@ export default function useUsersContractState() {
             setLoading(false);
         });
     }
+
+
+    const {getNextTicketNumber} = useCollectionsContract();
+
+    const ticketMint = async ( collection : Collection, 
+        ticketType : TicketType , 
+        setTicketImageCallback? : (imgDataUri?: string) => void, 
+        completion? : (res : string|Error) => void ) => {
+    
+            setLoading(true);
+
+            let collectionId = {
+                title: collection?.title ?? "",
+                owner : collection?.owner ?? "",
+                symbol : collection?.symbol ?? "",
+            };
+
+
+            await genNextTicketNumber(collectionId, 6, async (e)=>{
+
+                if (e instanceof Error){
+                    setLoading(false);
+
+                    if ( completion )
+                        completion(e);
+
+                    return;
+                }
+                else { 
+                    
+                    let ticketNumber = await getNextTicketNumber(collectionId, 6);
+
+                    if (ticketNumber === undefined){
+
+                        setLoading(false);
+                        if(completion)
+                            completion(new Error("Failed to get new ticket number"));
+                        return;
+                    }
+                    
+                    let imgUri : string | undefined = undefined;
+
+                    await genTemplateImageDataUri(collection, ticketNumber, 0, (d)=>{
+                        imgUri = d ;
+                        if ( setTicketImageCallback) {
+                            setTicketImageCallback(d);
+                        }
+                    });
+
+                    let arImageUri : string|undefined ;
+
+                    if (imgUri){
+
+                        await uploadImageToArweave(imgUri, "image/png", (e)=>{
+
+                            if ( e instanceof Error){
+
+                                setLoading(false);
+                                if (completion) completion(e);
+                                return; 
+                            }
+                            else {
+
+                                arImageUri = e;
+                            }
+                        });
+                    }
+
+
+                    if (arImageUri) {
+
+                        await usersContractState.contract?.ticketMint(
+                            collectionId, ticketNumber, 
+                            arImageUri,
+                            ticketType,
+                            (e)=>{
+
+                                if ( e instanceof Error){
+    
+                                    if (completion) completion(e);
+                                    setLoading(false);
+                                    return; 
+                                }
+                                else {
+    
+                                    setLoading(false);
+                                    if (completion) completion(e);
+                                
+                                }
+                            }   
+                        );
+                    }
+
+        
+                }
+    
+            });
+          
+    }
+
+
 
     const initUserContract = useCallback(()=>{
         
@@ -139,5 +241,5 @@ export default function useUsersContractState() {
 
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 
-        createAndDeployNftContract, genNextTicketNumber, setLoading} as const;
+        createAndDeployNftContract, genNextTicketNumber, setLoading, ticketMint} as const;
 }
