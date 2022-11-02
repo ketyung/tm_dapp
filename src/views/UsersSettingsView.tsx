@@ -1,8 +1,8 @@
 import { FC } from "react";
-import useWalletState from "../utils/sm/hooks/useWalletState";
+import useWalletState from "../hooks/useWalletState";
 import { Button, Menu, Dropdown } from "antd";
 import { UserOutlined, LogoutOutlined, ProfileOutlined, StarOutlined } from "@ant-design/icons";
-import usePage from "../utils/sm/hooks/usePage";
+import usePage from "../hooks/usePage";
 import { Page } from "../models";
 import './css/UsersSettingsView.css';
 

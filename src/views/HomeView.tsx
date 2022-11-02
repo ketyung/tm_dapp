@@ -1,5 +1,5 @@
 import { FC, useEffect, useCallback, useState } from "react";
-import useWalletState from "../utils/sm/hooks/useWalletState";
+import useWalletState from "../hooks/useWalletState";
 import { SignedInView } from "./SignedInView";
 import { NotSignedInView } from "./NotSignedInView";
 import { GSpinner } from "./components/GSpinner";

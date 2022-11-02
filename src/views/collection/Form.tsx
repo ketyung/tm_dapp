@@ -4,7 +4,7 @@ import { LogoAndTmplForm } from "./LogoAndTmplForm";
 import { BulbOutlined } from "@ant-design/icons";
 import { FC, useState } from "react";
 import { Message, MessageType } from "../../models";
-import useUsersContractState from "../../utils/sm/hooks/useUsersContractState";
+import useUsersContractState from "../../hooks/useUsersContractState";
 import { Button, Spin } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import './css/Form.css';

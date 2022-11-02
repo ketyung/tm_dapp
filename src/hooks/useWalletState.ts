@@ -1,12 +1,12 @@
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Dispatch } from "redux";
 import { useCallback} from "react";
-import { signInWallet, signOutWallet } from "../WalletActions";
-import { Wallet } from "../../../near/Wallet";
-import { WalletState } from "../WalletStateReducer";
+import { signInWallet, signOutWallet } from "../utils/sm/WalletActions";
+import { Wallet } from "../near/Wallet";
+import { WalletState } from "../utils/sm/WalletStateReducer";
 import * as NearApi from 'near-api-js';
 import { WalletConnection } from "near-api-js";
-import * as Const from '../../../near/const';
+import * as Const from '../near/const';
 
 const keyStore = new NearApi.keyStores.BrowserLocalStorageKeyStore();
 
@@ -84,8 +84,7 @@ export default function useWalletState() {
         return rs;
     }
    
-
-    
+ 
     return {isSignedIn, wallet, signIn, signOut, accountId, accountBalance, dateUpdated,
     getConnection, getAccount , getWalletConnection, getTxResult} as const;
 }

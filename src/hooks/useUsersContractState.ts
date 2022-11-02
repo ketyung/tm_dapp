@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Dispatch } from "redux";
-import { useCallback} from "react";
-import { initContract } from "../UsersContractActions";
-import { UsersContractState } from "../UsersContractReducer";
+import { useCallback, useEffect} from "react";
+import { initContract } from "../utils/sm/UsersContractActions";
+import { UsersContractState } from "../utils/sm/UsersContractReducer";
 import useWalletState from "./useWalletState";
-import { Collection, User, CollectionId } from "../../../models";
+import { Collection, User, CollectionId } from "../models";
 
 export default function useUsersContractState() {
 
@@ -124,6 +124,18 @@ export default function useUsersContractState() {
             setLoading(false);
         });
     }
+
+    const initUserContract = useCallback(()=>{
+        
+        if ( !isInitialized() ) {
+            init();
+        }
+    },[isInitialized,init]);
+
+   
+    useEffect (()=>{
+        initUserContract();
+    },[]);
 
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 

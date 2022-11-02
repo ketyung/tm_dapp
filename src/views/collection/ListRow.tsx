@@ -1,8 +1,8 @@
 import { Collection, Page } from "../../models";
 import { Button, Image, Menu, Dropdown} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined } from "@ant-design/icons";
-import usePage from "../../utils/sm/hooks/usePage";
-import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
+import usePage from "../../hooks/usePage";
+import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { FC } from "react";
 
 type Props = {

@@ -1,9 +1,9 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { UsersSettingsView } from "./UsersSettingsView";
-import usePage from "../utils/sm/hooks/usePage";
+import usePage from "../hooks/usePage";
 import { Page } from "../models";
 import { Button } from "antd";
-import useWalletState from "../utils/sm/hooks/useWalletState";
+import useWalletState from "../hooks/useWalletState";
 import { HomeOutlined } from "@ant-design/icons";
 import './css/TopNavBar.css';
 

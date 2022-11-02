@@ -1,10 +1,10 @@
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Dispatch } from "redux";
 import { useCallback} from "react";
-import { PageState } from "../PageReducer";
-import { setPage as setPageAs } from "../PageActions";
-import { Page } from "../../../models";
-import { PageStorage } from "../../local-storage";
+import { PageState } from "../utils/sm/PageReducer";
+import { setPage as setPageAs } from "../utils/sm/PageActions";
+import { Page } from "../models";
+import { PageStorage } from "../utils/local-storage";
 
 export default function usePage() {
 

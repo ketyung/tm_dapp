@@ -1,10 +1,10 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import { Collection, CollectionId } from "../../../models";
-import { CollectionsContract } from "../../../near/CollectionsContract";
-import { COLLECTIONS_CONTRACT_ID } from "../../../near/const";
-import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../..";
-import { toB64OfShortInfo, b64ToShortInfo } from "../..";
+import { Collection, CollectionId } from "../models";
+import { CollectionsContract } from "../near/CollectionsContract";
+import { COLLECTIONS_CONTRACT_ID } from "../near/const";
+import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../utils";
+import { toB64OfShortInfo, b64ToShortInfo } from "../utils";
 
 export default function useCollectionsContract() {
 

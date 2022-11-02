@@ -1,27 +1,17 @@
-import { FC , useEffect, useCallback} from "react";
+import { FC , useEffect} from "react";
 import { TopNavBar } from "./TopNavBar";
-import usePage from "../utils/sm/hooks/usePage";
+import usePage from "../hooks/usePage";
 import { Page } from "../models";
 import { UserPromptView } from "./UserPromptView";
 import { MintsList } from "./collection/MintsList";
 import { UserForm, UserFormType } from "./user/UserForm";
 import { PageStorage } from "../utils/local-storage";
-import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
 import './css/SignedInView.css';
 import { InfoView } from "./InfoView";
 
 export const SignedInView : FC = () =>{
 
-    const {isInitialized, init} = useUsersContractState();
-
     const {page, setPage, param} = usePage();
-
-    const initUserContract = useCallback(()=>{
-        
-        if ( !isInitialized() ) {
-            init();
-        }
-    },[isInitialized,init]);
 
     const switchView = () =>{
 
@@ -55,8 +45,6 @@ export const SignedInView : FC = () =>{
         if ( p !== undefined) {
             setPage(p);
         }
-
-        initUserContract();
     },[]);
 
     return <>

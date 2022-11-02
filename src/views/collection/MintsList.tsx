@@ -2,9 +2,9 @@ import { FC, useState, useEffect, useCallback } from "react";
 import { MintsListRow } from "./MintsListRow";
 import { GSpinner } from "../components/GSpinner";
 import { Page } from "../../models";
-import usePage from "../../utils/sm/hooks/usePage";
+import usePage from "../../hooks/usePage";
 import { LeftCircleOutlined } from "@ant-design/icons";
-import useTicketMintsContract from "../../utils/sm/hooks/useTicketMintsContract";
+import useTicketMintsContract from "../../hooks/useTicketMintsContract";
 import { TicketMint } from "../../models";
 import './css/MintsList.css';
 

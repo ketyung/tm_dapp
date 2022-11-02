@@ -1,5 +1,5 @@
 import { FC , useCallback, useEffect, useState} from "react";
-import useUsersContractState from "../utils/sm/hooks/useUsersContractState";
+import useUsersContractState from "../hooks/useUsersContractState";
 import { UserForm } from "./user/UserForm";
 import { View } from "./collection/View";
 import { GSpinner } from "./components/GSpinner";

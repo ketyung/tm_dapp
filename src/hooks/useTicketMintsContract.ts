@@ -1,8 +1,8 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import {TicketMint} from "../../../models";
-import { TicketMintsContract } from "../../../near/TicketMintsContract";
-import { TICKET_MINTS_CONTRACT_ID } from "../../../near/const";
+import {TicketMint} from "../models";
+import { TicketMintsContract } from "../near/TicketMintsContract";
+import { TICKET_MINTS_CONTRACT_ID } from "../near/const";
 
 export default function useTicketMintsContract() {
 

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "antd";
-import useWalletState from "../utils/sm/hooks/useWalletState";
+import useWalletState from "../hooks/useWalletState";
 import './css/NotSignedInView.css';
 
 export const NotSignedInView : FC = () =>{

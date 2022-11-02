@@ -1,5 +1,5 @@
 import { FC, useState, useCallback, useEffect } from "react";
-import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
+import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { Collection } from "../../models";
 import { ListRow } from "./ListRow";
 import { GSpinner } from "../components/GSpinner";
