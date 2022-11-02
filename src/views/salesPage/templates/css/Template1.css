@@ -54,14 +54,14 @@
     background:#396;
     color:white;
     margin-top:20px;
-    min-width: 240px;
+    min-width: 40%;
 }
 
 .Template1 .Logo {
-    width:300px;
+    width:40%;
     height:auto;
     border-radius:300px;
-    border:10px solid #aab;
+    border:5px solid #aab;
 }
 
 
