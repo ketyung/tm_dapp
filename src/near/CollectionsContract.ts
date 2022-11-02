@@ -56,7 +56,7 @@ export class CollectionsContract {
 
         try {
 
-            let res = await this.wallet?.callMethod({
+            let res = await this.wallet?.viewMethod({
                 contractId: this.contractId,
                 method: 'get_next_ticket_number',
                 args: { collection_id : collectionId, width : width },

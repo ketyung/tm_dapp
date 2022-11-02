@@ -186,6 +186,33 @@ export class UsersContract {
             }
         }
     }
+
+    async genNextTicketNumber(collectionId : CollectionId, width? : number,
+        completion? : (res : string|Error) => void ) {
+
+        try {
+
+            let res = await this.wallet?.callMethod({
+                contractId: this.contractId,
+                method: 'gen_next_ticket_number',
+                args: { collection_id : collectionId, width : width },
+            });
+        
+            console.log("next.ticket.no::", res, new Date());
+            
+            if ( completion ) {
+                completion(res);
+            }
+        }
+        catch( e: any) {
+          
+            console.error(e.message, new Date());
+            if (completion)
+                completion(new Error(e.message));
+        }
+        
+    } 
+
   
   
 }

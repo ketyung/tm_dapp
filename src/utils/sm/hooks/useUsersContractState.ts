@@ -5,7 +5,7 @@ import { useCallback} from "react";
 import { initContract } from "../UsersContractActions";
 import { UsersContractState } from "../UsersContractReducer";
 import useWalletState from "./useWalletState";
-import { Collection, User } from "../../../models";
+import { Collection, User, CollectionId } from "../../../models";
 
 export default function useUsersContractState() {
 
@@ -65,6 +65,22 @@ export default function useUsersContractState() {
         });
     }
 
+
+    const genNextTicketNumber = async (collectionId : CollectionId, 
+        width : number = 7,
+        completion? : (res : string|Error) => void) =>{
+
+        setLoading(true);
+        await usersContractState.contract?.genNextTicketNumber(collectionId, width,
+        (e)=>{
+            if ( completion )
+                completion(e);
+            setLoading(false);
+        });
+
+       
+    }
+
    
 
     const createAndDeployNftContract  = async ( collection : Collection,
@@ -110,5 +126,5 @@ export default function useUsersContractState() {
 
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 
-        createAndDeployNftContract} as const;
+        createAndDeployNftContract, genNextTicketNumber, setLoading} as const;
 }

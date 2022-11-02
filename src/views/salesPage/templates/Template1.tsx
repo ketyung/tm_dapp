@@ -4,6 +4,7 @@ import { Collection, ShortCorrectionInfo } from "../../../models";
 import { genTemplateImageDataUri } from "../../collection/templates/util";
 import useWalletState from "../../../utils/sm/hooks/useWalletState";
 import useCollectionsContract from "../../../utils/sm/hooks/useCollectionsContract";
+import useUsersContractState from "../../../utils/sm/hooks/useUsersContractState";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
 
@@ -25,20 +26,37 @@ export const Template1 : FC <Props> = ({
 
     const [ticketImage, setTicketImage] = useState<string>();
 
-    const {getNextTicketNumber, loading} = useCollectionsContract();
+    const {getNextTicketNumber} = useCollectionsContract();
+
+    const {genNextTicketNumber, loading, setLoading} = useUsersContractState();
 
     const [nextTicketNumber, setNextTicketNumber] = useState<string>();
 
     const getNextTicketNumNow = async () =>{
 
-        let n = await getNextTicketNumber({
+        let cid = {
             title: collection?.title ?? "",
             owner : collection?.owner ?? "",
             symbol : collection?.symbol ?? "",
-        }, 6);
+        };
 
-        if ( n )
-            setNextTicketNumber(n);
+        await genNextTicketNumber(cid, 6, async (e)=>{
+
+            if (e instanceof Error){
+                setNextTicketNumber("Error :"+e.message);
+                setLoading(false);
+            }
+            else {
+
+                setLoading(true);
+                let n = await getNextTicketNumber(cid, 6);
+                if ( n )
+                    setNextTicketNumber(n);
+                setLoading(false);
+            }
+
+        });
+        
     }
 
     const obtainImageDataUri = useCallback(async ()=>{
