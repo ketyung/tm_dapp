@@ -5,9 +5,9 @@ import { genTemplateImageDataUri } from "../../collection/templates/util";
 import useWalletState from "../../../utils/sm/hooks/useWalletState";
 import useCollectionsContract from "../../../utils/sm/hooks/useCollectionsContract";
 import useUsersContractState from "../../../utils/sm/hooks/useUsersContractState";
+import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
-import { Wallet } from "../../../near/Wallet";
 
 type Props = {
 
@@ -75,12 +75,18 @@ export const Template1 : FC <Props> = ({
      },[collection]);
 
 
-    return <div className="Template1">
+    return <div>
         <Helmet>
             <meta charSet="utf-8" />
             <title>Mint your ticket for {shortCollectionInfo?.collectionId?.title}</title>       
         </Helmet>
         <Helmet bodyAttributes={{style: 'background-image:linear-gradient(to right, #001 , #345)'}}/>
+        <div className="TopMenu">
+            <TwitterOutlined className="Icon"/>
+            <FacebookOutlined className="Icon"/>
+            <LinkOutlined className="Icon"/>
+        </div>
+        <div className="Template1">
         <h3>Buy your ticket for</h3>
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>
         <div>{ticketImage ? 
@@ -98,5 +104,5 @@ export const Template1 : FC <Props> = ({
         }}>Connect Your Wallet</Button>
         : <Button className="BuyButton">
         Buy Ticket</Button>}
-    </div>
+    </div></div>
 }
