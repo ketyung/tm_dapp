@@ -84,7 +84,7 @@ export const Template1 : FC <Props> = ({
         <h3>Buy your ticket for</h3>
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>
         <div>{ticketImage ? 
-        <img src={ticketImage} style={{width:"500px",height:"auto"}}/>    
+        <img src={ticketImage} className="TicketImage"/>    
         : <img src={shortCollectionInfo?.icon} className="Logo"/>}</div>
         <div><Button onClick={async ()=>{
             await getNextTicketNumNow();

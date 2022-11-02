@@ -45,3 +45,10 @@
     border-radius:300px;
     border:10px solid #aab;
 }
+
+
+.Template1 .TicketImage {
+    width:60%;
+    height:auto;
+    margin: auto;
+}
