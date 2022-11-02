@@ -1,7 +1,8 @@
 import { Wallet } from "./Wallet";
-import { User } from "../models";
+import { TicketType, User } from "../models";
 import { NEAR_TOKEN_DECIMALS } from "./const";
-import { Collection } from "../models";
+import { Collection, CollectionId } from "../models";
+import { collectionIdToB64 } from "../utils";
 
 const BN = require("bn.js");
 
@@ -151,5 +152,40 @@ export class UsersContract {
             }
         }
     }
+
+
+    async ticketMint ( 
+        collectionId : CollectionId, tokenId : string ,
+        ticketImage : string,ticketType? : TicketType  
+        , completion? : (res : string|Error) => void ) {
+
+        try {
+
+            if ( this.wallet === undefined) {
+                if ( completion ){
+                    completion(new Error("Wallet is undefined!!"));
+                    return;
+                }
+            }
+            
+            let res = await this.wallet?.callMethod({
+                contractId: this.contractId,
+                method: 'ticket_mint',
+                args: { collection_id : collectionId, token_id : tokenId,
+                ticket_image : ticketImage, ticket_type : ticketType,
+                extra : collectionIdToB64(collectionId),
+                },
+            });
+            if ( completion ) {
+                completion(res);
+            }
+        }
+        catch ( e : any ) {
+            if ( completion ) {
+                completion(e);
+            }
+        }
+    }
+  
   
 }
