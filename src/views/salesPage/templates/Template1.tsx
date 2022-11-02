@@ -1,12 +1,13 @@
 import { FC, useState, useCallback, useEffect } from "react";
 import { Button, Spin } from "antd";
-import { Collection, ShortCorrectionInfo } from "../../../models";
+import { Collection, MessageType, ShortCorrectionInfo } from "../../../models";
 import { genTemplateImageDataUri } from "../../collection/templates/util";
 import useWalletState from "../../../hooks/useWalletState";
-import useCollectionsContract from "../../../hooks/useCollectionsContract";
 import useUsersContractState from "../../../hooks/useUsersContractState";
 import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
+import { Message } from "../../../models";
 import {Helmet} from "react-helmet";
+
 import './css/Template1.css';
 
 type Props = {
@@ -31,6 +32,7 @@ export const Template1 : FC <Props> = ({
 
     const {ticketMint, loading} = useUsersContractState();
 
+    const [message, setMessage] = useState<Message>();
     
     const mintTicketNow = async () =>{
 
@@ -39,7 +41,13 @@ export const Template1 : FC <Props> = ({
             await ticketMint(collection, 
                 collection.ticket_types[0], 
                 setTicketImage, setStepCompleted, (e)=>{
+                    if (e instanceof Error) {
+                        setMessage({type : MessageType.Error, text : e.message});
+                    }
+                    else {
 
+                        setMessage({type : MessageType.Info, text : e});
+                    }
             });
         }
     }
@@ -79,7 +87,15 @@ export const Template1 : FC <Props> = ({
         : <Button className="BuyButton" onClick={async ()=>{
             await mintTicketNow();
         }}>
-        {loading ? <>{stepCompleted} <Spin style={{marginLeft:"6px"}}/></> 
+        {loading ? <><span 
+        style={{background:"#345",padding:"10px",width:"20px", height:"20px",
+        color:"white",borderRadius:"100%"}}>{stepCompleted}</span> <Spin style={{marginLeft:"6px"}}/></> 
         : <>Mint Ticket</>}</Button>}
+
+        {message && <div style={{background:"#abc",
+        borderRadius:"20px",padding:"10px",
+        marginTop:"10px",color:message.type=== MessageType.Error ? "red" : "blue"}}>
+        {message.text}
+        </div>}
     </div></div>
 }
