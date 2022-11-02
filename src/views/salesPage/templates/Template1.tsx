@@ -27,10 +27,23 @@ export const Template1 : FC <Props> = ({
 
     const [ticketImage, setTicketImage] = useState<string>();
 
+    const [stepCompleted, setStepCompleted] = useState<number>();
+
     const {ticketMint, loading} = useUsersContractState();
 
     
-    
+    const mintTicketNow = async () =>{
+
+        if ( collection && collection.ticket_types ){
+
+            await ticketMint(collection, 
+                collection.ticket_types[0], 
+                setTicketImage, setStepCompleted, (e)=>{
+
+            });
+        }
+    }
+
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
             await genTemplateImageDataUri(collection, "000001", 0, setTicketImage);
@@ -63,7 +76,10 @@ export const Template1 : FC <Props> = ({
             e.preventDefault();
             signIn();
         }}>Connect Your Wallet</Button>
-        : <Button className="BuyButton">
-        Buy Ticket</Button>}
+        : <Button className="BuyButton" onClick={async ()=>{
+            await mintTicketNow();
+        }}>
+        {loading ? <>{stepCompleted} <Spin style={{marginLeft:"6px"}}/></> 
+        : <>Mint Ticket</>}</Button>}
     </div></div>
 }

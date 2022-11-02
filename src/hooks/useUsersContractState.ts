@@ -132,6 +132,7 @@ export default function useUsersContractState() {
     const ticketMint = async ( collection : Collection, 
         ticketType : TicketType , 
         setTicketImageCallback? : (imgDataUri?: string) => void, 
+        setStepCompleted?: (step: number) =>void,
         completion? : (res : string|Error) => void ) => {
     
             setLoading(true);
@@ -154,6 +155,9 @@ export default function useUsersContractState() {
                     return;
                 }
                 else { 
+
+                    if (setStepCompleted)   
+                        setStepCompleted(1);
                     
                     let ticketNumber = await getNextTicketNumber(collectionId, 6);
 
@@ -164,6 +168,10 @@ export default function useUsersContractState() {
                             completion(new Error("Failed to get new ticket number"));
                         return;
                     }
+
+
+                    if (setStepCompleted)   
+                        setStepCompleted(2);
                     
                     let imgUri : string | undefined = undefined;
 
@@ -177,6 +185,10 @@ export default function useUsersContractState() {
                     let arImageUri : string|undefined ;
 
                     if (imgUri){
+
+                        if (setStepCompleted)   
+                            setStepCompleted(3);
+
 
                         await uploadImageToArweave(imgUri, "image/png", (e)=>{
 
@@ -195,6 +207,10 @@ export default function useUsersContractState() {
 
 
                     if (arImageUri) {
+
+
+                    if (setStepCompleted)   
+                        setStepCompleted(4);
 
                         await usersContractState.contract?.ticketMint(
                             collectionId, ticketNumber, 
