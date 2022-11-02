@@ -34,6 +34,18 @@ export default function useCollectionsContract() {
     }
 
 
+    const  getNextTicketNumber = async (collectionId : CollectionId,
+        width? : number  ) : Promise<string|undefined> => {
+
+        setLoading(true);
+        let contract = new CollectionsContract (COLLECTIONS_CONTRACT_ID, wallet);
+
+        let num =  await contract.getNextTicketNumber(collectionId, width);
+        setLoading(false);
+        return num;
+    }
+
+
     const collectionIdToB64 = (collection? : Collection) =>{
 
         return colIdToB64( {title : collection?.title ?? "",
@@ -60,5 +72,5 @@ export default function useCollectionsContract() {
     }
 
     return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
-    toB64OfShortCollectionInfo, b64ToShortCollectionInfo} as const;
+    toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber} as const;
 }

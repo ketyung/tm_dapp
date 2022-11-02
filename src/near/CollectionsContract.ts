@@ -52,5 +52,26 @@ export class CollectionsContract {
         
     } 
 
+    async getNextTicketNumber(collectionId : CollectionId, width? : number  ) : Promise<string|undefined>{
+
+        try {
+
+            let res = await this.wallet?.callMethod({
+                contractId: this.contractId,
+                method: 'get_next_ticket_number',
+                args: { collection_id : collectionId, width : width },
+            });
+        
+            console.log("next.ticket.no::", res, new Date());
+            return res ;
+        }
+        catch( e: any) {
+          
+            console.error(e.message, new Date());
+            return undefined;
+        }
+        
+    } 
+
  
 }

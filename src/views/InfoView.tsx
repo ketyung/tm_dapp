@@ -10,7 +10,7 @@ export const InfoView : FC = () => {
 
     const errorMessage = query.get("errorMessage");
 
-    const txHash = query.get("txHash");
+    const txHash = query.get("transactionHashes");
 
     return <div className="InfoView" style={{display: 
         (errorMessage === null && txHash === null) ? "none" : "block"}}>

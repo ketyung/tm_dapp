@@ -1,8 +1,9 @@
 import { FC, useState, useCallback, useEffect } from "react";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import { Collection, ShortCorrectionInfo } from "../../../models";
 import { genTemplateImageDataUri } from "../../collection/templates/util";
 import useWalletState from "../../../utils/sm/hooks/useWalletState";
+import useCollectionsContract from "../../../utils/sm/hooks/useCollectionsContract";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
 
@@ -23,6 +24,22 @@ export const Template1 : FC <Props> = ({
     const {signIn} = useWalletState();
 
     const [ticketImage, setTicketImage] = useState<string>();
+
+    const {getNextTicketNumber, loading} = useCollectionsContract();
+
+    const [nextTicketNumber, setNextTicketNumber] = useState<string>();
+
+    const getNextTicketNumNow = async () =>{
+
+        let n = await getNextTicketNumber({
+            title: collection?.title ?? "",
+            owner : collection?.owner ?? "",
+            symbol : collection?.symbol ?? "",
+        }, 6);
+
+        if ( n )
+            setNextTicketNumber(n);
+    }
 
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
@@ -45,6 +62,12 @@ export const Template1 : FC <Props> = ({
         <div>{ticketImage ? 
         <img src={ticketImage} style={{width:"500px",height:"auto"}}/>    
         : <img src={shortCollectionInfo?.icon} className="Logo"/>}</div>
+        <div><Button onClick={async ()=>{
+            await getNextTicketNumNow();
+        }} shape="round">{loading ? <Spin size="small"/> 
+        : <>{nextTicketNumber ? nextTicketNumber 
+        : "Get Next Ticket Number"}</>}</Button></div>
+
         { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();
             signIn();
