@@ -77,13 +77,15 @@ export default function useWalletState() {
         let conn = await NearApi.connect(config);
         return new WalletConnection(conn, "my-app");
     }
+
+    const getTxResult = async ( txHash : string) =>{
+
+        let rs = await wallet.getTransactionResult(txHash);
+        return rs;
+    }
    
 
-    const getKey = async () =>{
-
-        return await keyStore.getKey("testnet", wallet.accountId);
-    }
-
+    
     return {isSignedIn, wallet, signIn, signOut, accountId, accountBalance, dateUpdated,
-    getConnection, getAccount , getKey , getWalletConnection} as const;
+    getConnection, getAccount , getWalletConnection, getTxResult} as const;
 }

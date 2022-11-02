@@ -68,7 +68,7 @@ export default function useUsersContractState() {
 
     const genNextTicketNumber = async (collectionId : CollectionId, 
         width : number = 7,
-        completion? : (res : string|Error) => void) =>{
+        completion? : (res : any|Error) => void) =>{
 
         setLoading(true);
         await usersContractState.contract?.genNextTicketNumber(collectionId, width,

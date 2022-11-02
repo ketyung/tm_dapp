@@ -188,7 +188,7 @@ export class UsersContract {
     }
 
     async genNextTicketNumber(collectionId : CollectionId, width? : number,
-        completion? : (res : string|Error) => void ) {
+        completion? : (res : any|Error) => void ) {
 
         try {
 

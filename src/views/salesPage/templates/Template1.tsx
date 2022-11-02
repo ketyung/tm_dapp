@@ -7,6 +7,7 @@ import useCollectionsContract from "../../../utils/sm/hooks/useCollectionsContra
 import useUsersContractState from "../../../utils/sm/hooks/useUsersContractState";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
+import { Wallet } from "../../../near/Wallet";
 
 type Props = {
 
@@ -22,7 +23,7 @@ export const Template1 : FC <Props> = ({
     hasSignedIn, shortCollectionInfo, collection
 }) =>{
 
-    const {signIn} = useWalletState();
+    const {signIn, getTxResult} = useWalletState();
 
     const [ticketImage, setTicketImage] = useState<string>();
 
@@ -47,6 +48,11 @@ export const Template1 : FC <Props> = ({
                 setLoading(false);
             }
             else {
+ 
+                console.log("tx.hash", e.transaction.hash);
+
+                let txRs = await getTxResult(e.transaction.hash);
+                console.log("txRs:::", txRs, new Date());
 
                 setLoading(true);
                 let n = await getNextTicketNumber(cid, 6);
