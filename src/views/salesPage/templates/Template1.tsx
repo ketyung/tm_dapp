@@ -48,12 +48,17 @@ export const Template1 : FC <Props> = ({
             }
             else {
 
-                console.log("fetching next tick.no....");
                 setLoading(true);
                 let n = await getNextTicketNumber(cid, 6);
                 if ( n )
                     setNextTicketNumber(n);
+                
+                if ( collection)
+                    await genTemplateImageDataUri(collection, n, 0, setTicketImage);
+    
                 setLoading(false);
+
+                
             }
 
         });
@@ -62,7 +67,7 @@ export const Template1 : FC <Props> = ({
 
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
-            await genTemplateImageDataUri(collection, 0, setTicketImage);
+            await genTemplateImageDataUri(collection, nextTicketNumber, 0, setTicketImage);
      },[collection]);
  
      useEffect(()=>{

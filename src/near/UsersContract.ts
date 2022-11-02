@@ -197,9 +197,7 @@ export class UsersContract {
                 method: 'gen_next_ticket_number',
                 args: { collection_id : collectionId, width : width },
             });
-        
-            console.log("next.ticket.no::", res, new Date());
-            
+         
             if ( completion ) {
                 completion(res);
             }

@@ -4,6 +4,7 @@ import imagePlaceHolder from '../images/picture.png';
 
 export const genTemplateImageDataUri = async (
     collection: Collection,
+    ticketNo? : string, 
     index? : number, 
     setImageDataUriCallback? : (imageUri?: string) => void ) =>{
 
@@ -34,7 +35,7 @@ export const genTemplateImageDataUri = async (
                 endDate : endDate,
                 venue : venue,
                 imageSrc : collection.icon ?? imagePlaceHolder,  
-                ticketNo : "#000001",
+                ticketNo :ticketNo ?? "#000001",
                 ticketType : (collection.ticket_types) ? 
                     collection?.ticket_types[index ?? 0] : undefined
             });

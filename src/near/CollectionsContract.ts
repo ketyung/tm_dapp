@@ -62,7 +62,6 @@ export class CollectionsContract {
                 args: { collection_id : collectionId, width : width },
             });
         
-            console.log("next.ticket.no::", res, new Date());
             return res ;
         }
         catch( e: any) {
