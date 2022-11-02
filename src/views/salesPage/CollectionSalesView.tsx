@@ -3,6 +3,7 @@ import { FC, useEffect, useState, useCallback } from "react";
 import { Template1 } from "./templates/Template1";
 import { GSpinner } from "../components/GSpinner";
 import useCollectionsContract from "../../utils/sm/hooks/useCollectionsContract";
+import useUsersContractState from "../../utils/sm/hooks/useUsersContractState";
 import useWalletState from "../../utils/sm/hooks/useWalletState";
 
 
@@ -17,6 +18,15 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     const [shortCollectionInfo, setShortCollectionInfo] = useState<ShortCorrectionInfo>();
    
     const [loading,setLoading] = useState(false);
+
+    const {init, isInitialized} = useUsersContractState();
+
+    const initUserContract = useCallback(()=>{
+        
+        if ( !isInitialized() ) {
+            init();
+        }
+    },[isInitialized,init]);
 
     const [hasSignedIn, setHasSignedIn] = useState(false);
 
@@ -60,6 +70,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
     useEffect(()=>{
         let collInfo = getShortCollectionInfo();
         checkIfSignedIn(collInfo);
+        initUserContract();
     },[]);
 
 
