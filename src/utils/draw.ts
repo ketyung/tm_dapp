@@ -59,6 +59,32 @@ export const roundRect2 = (ctx : CanvasRenderingContext2D,
     }
 }
 
+
+export const drawImageRounded = (ctx : CanvasRenderingContext2D, img : HTMLImageElement, 
+  x : number ,y : number ,width : number ,height : number,radius : number )=>{
+
+    ctx.save();
+    roundedImage(ctx,x,y,width,height,radius);
+    ctx.clip();
+    ctx.drawImage(img,x,y,width,height);
+    ctx.restore();
+}
+
+export const roundedImage = (ctx : CanvasRenderingContext2D,
+  x : number ,y : number ,width : number ,height : number,radius : number )=>{
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+}
+
 export const loadImage = async ( imgSrc : string ) : Promise<HTMLImageElement|undefined> =>{
         
     return new Promise((resolve, reject) => {

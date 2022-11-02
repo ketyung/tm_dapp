@@ -1,5 +1,5 @@
 import { TicketInfo } from "../../../models";
-import { roundRect2, loadImage } from "../../../utils/draw";
+import { roundRect2, loadImage, drawImageRounded } from "../../../utils/draw";
 
 export const createImageDataUrl = async (
     ticketInfo : TicketInfo 
@@ -71,7 +71,8 @@ export const createImageDataUrl = async (
 
             let img = await loadImage(ticketInfo.imageSrc);
             if ( img )
-                ctx.drawImage(img, 40, 110, 200, 200);
+                drawImageRounded(ctx, img, 40, 110, 200, 200, 30);   
+            // ctx.drawImage(img, 40, 110, 200, 200);
     
         }
 
