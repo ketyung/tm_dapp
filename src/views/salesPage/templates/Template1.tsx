@@ -23,7 +23,7 @@ export const Template1 : FC <Props> = ({
     hasSignedIn, shortCollectionInfo, collection
 }) =>{
 
-    const {signIn, getTxResult} = useWalletState();
+    const {signIn} = useWalletState();
 
     const [ticketImage, setTicketImage] = useState<string>();
 
@@ -47,13 +47,7 @@ export const Template1 : FC <Props> = ({
                 setNextTicketNumber("Error :"+e.message);
                 setLoading(false);
             }
-            else {
- 
-                console.log("tx.hash", e.transaction.hash);
-
-                let txRs = await getTxResult(e.transaction.hash);
-                console.log("txRs:::", txRs, new Date());
-
+            else { 
                 setLoading(true);
                 let n = await getNextTicketNumber(cid, 6);
                 if ( n )
