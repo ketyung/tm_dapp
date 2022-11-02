@@ -48,6 +48,7 @@ export const Template1 : FC <Props> = ({
             }
             else {
 
+                console.log("fetching next tick.no....");
                 setLoading(true);
                 let n = await getNextTicketNumber(cid, 6);
                 if ( n )

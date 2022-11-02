@@ -73,6 +73,7 @@ export default function useUsersContractState() {
         setLoading(true);
         await usersContractState.contract?.genNextTicketNumber(collectionId, width,
         (e)=>{
+            console.log("e@xx", e, new Date());
             if ( completion )
                 completion(e);
             setLoading(false);
