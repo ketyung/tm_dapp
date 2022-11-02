@@ -27,47 +27,13 @@ export const Template1 : FC <Props> = ({
 
     const [ticketImage, setTicketImage] = useState<string>();
 
-    const {getNextTicketNumber} = useCollectionsContract();
+    const {ticketMint, loading} = useUsersContractState();
 
-    const {genNextTicketNumber, loading, setLoading} = useUsersContractState();
-
-    const [nextTicketNumber, setNextTicketNumber] = useState<string>();
-
-    const getNextTicketNumNow = async () =>{
-
-        let cid = {
-            title: collection?.title ?? "",
-            owner : collection?.owner ?? "",
-            symbol : collection?.symbol ?? "",
-        };
-
-        await genNextTicketNumber(cid, 6, async (e)=>{
-
-            if (e instanceof Error){
-                setNextTicketNumber("Error :"+e.message);
-                setLoading(false);
-            }
-            else { 
-                setLoading(true);
-                let n = await getNextTicketNumber(cid, 6);
-                if ( n )
-                    setNextTicketNumber(n);
-                
-                if ( collection)
-                    await genTemplateImageDataUri(collection, n, 0, setTicketImage);
     
-                setLoading(false);
-
-                
-            }
-
-        });
-        
-    }
-
+    
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
-            await genTemplateImageDataUri(collection, nextTicketNumber, 0, setTicketImage);
+            await genTemplateImageDataUri(collection, "000001", 0, setTicketImage);
      },[collection]);
  
      useEffect(()=>{
@@ -92,12 +58,7 @@ export const Template1 : FC <Props> = ({
         <div>{ticketImage ? 
         <img src={ticketImage} className="TicketImage"/>    
         : <img src={shortCollectionInfo?.icon} className="Logo"/>}</div>
-        <div><Button onClick={async ()=>{
-            await getNextTicketNumNow();
-        }} shape="round">{loading ? <Spin size="small"/> 
-        : <>{nextTicketNumber ? nextTicketNumber 
-        : "Get Next Ticket Number"}</>}</Button></div>
-
+      
         { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();
             signIn();
