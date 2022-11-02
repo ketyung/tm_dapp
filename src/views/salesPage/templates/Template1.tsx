@@ -80,7 +80,7 @@ export const Template1 : FC <Props> = ({
             <meta charSet="utf-8" />
             <title>Mint your ticket for {shortCollectionInfo?.collectionId?.title}</title>       
         </Helmet>
-        <Helmet bodyAttributes={{style: 'background-image:linear-gradient(to right, #223 , #345)'}}/>
+        <Helmet bodyAttributes={{style: 'background-image:linear-gradient(to right, #001 , #345)'}}/>
         <h3>Buy your ticket for</h3>
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>
         <div>{ticketImage ? 
