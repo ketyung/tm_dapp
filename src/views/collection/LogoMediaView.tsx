@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Image} from "antd";
 import { LogoUploadForm } from "./LogoUploadForm";
-import imagePlaceHolder from './images/picture.png';
+import imagePlaceHolder from '../../images/picture.png';
 
 
 type Props = {

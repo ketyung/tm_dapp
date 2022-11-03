@@ -1,4 +1,4 @@
-import { Image } from "antd";
+import { Image, Spin } from "antd";
 import { FC } from "react";
 
 type Props = {
@@ -15,7 +15,7 @@ export const TicketsView : FC <Props> = ({
             tickets.map((t, i)=>{
                 return <div key={"tkRow"+i}>
                     <div>{(i+1)}. {t.metadata.title}</div>   
-                    <div><Image src={t.metadata.media} 
+                    <div><Image src={t.metadata.media} placeholder={<Spin/>}
                     style={{width:"50%",height:"auto"}} title={t.metadata.title}/></div>
                 </div>;
             })
