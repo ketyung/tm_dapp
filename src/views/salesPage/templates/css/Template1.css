@@ -92,7 +92,7 @@
 
 
 .ant-popover-inner {
-    background-image: linear-gradient(to right, #fff , #349);
+    background-image: linear-gradient(to right, #ddd , #349);
     border-radius: 30px;
     padding:10px;
     color:white;
@@ -100,4 +100,5 @@
 
 .ant-popover-arrow-content {
     background-color: #336;
+    color:#366;
 }
