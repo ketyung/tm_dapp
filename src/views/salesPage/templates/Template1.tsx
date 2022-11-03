@@ -87,12 +87,12 @@ export const Template1 : FC <Props> = ({
         : <Button className="BuyButton" onClick={async ()=>{
             await mintTicketNow();
         }}>
-        {loading ? <><span 
-        style={{background:"#345",padding:"10px",width:"20px", height:"20px",
-        color:"white",borderRadius:"100%"}}>{stepCompleted}</span> <Spin style={{marginLeft:"6px"}}/></> 
+        {loading ? <>{stepCompleted && <span 
+        style={{background:"#345",padding:"4px",width:"30px", height:"auto",
+        color:"white",borderRadius:"20%"}}>{stepCompleted}</span>} <Spin style={{marginLeft:"6px"}}/></> 
         : <>Mint Ticket</>}</Button>}
 
-        {message && <div style={{background:"#abc",
+        {message && <div style={{background:"white",
         borderRadius:"20px",padding:"10px",
         marginTop:"10px",color:message.type=== MessageType.Error ? "red" : "blue"}}>
         {message.text}

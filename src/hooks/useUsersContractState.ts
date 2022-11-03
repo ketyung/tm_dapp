@@ -208,14 +208,14 @@ export default function useUsersContractState() {
 
                     if (arImageUri) {
 
+                        console.log("arweave.img::", arImageUri, new Date());
 
-                    if (setStepCompleted)   
-                        setStepCompleted(4);
+                        if (setStepCompleted)   
+                            setStepCompleted(4);
 
                         await usersContractState.contract?.ticketMint(
                             collectionId, ticketNumber, 
-                            arImageUri,
-                            ticketType,
+                            arImageUri,ticketType,
                             (e)=>{
 
                                 if ( e instanceof Error){
@@ -226,17 +226,17 @@ export default function useUsersContractState() {
                                 }
                                 else {
     
-                                    setLoading(false);
-                                    if (completion) completion(e);
-                                
+                                    if (completion) {
+                                        completion(e);
+                                        setLoading(false);
+                                    }
                                 }
                             }   
                         );
                     }
 
-        
                 }
-    
+                                 
             });
           
     }
