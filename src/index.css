@@ -1,12 +1,33 @@
+@font-face {
+  font-family: 'Turismo';
+  src: local("Turismo"), URL('./fonts/TurismoCF-Regular.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Turismo-Bold';
+  src: local("Turismo-Bold"), URL('./fonts/TurismoCF-Bold.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: local("Raleway"), URL('./fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Karla';
+  src: local("Karla"), URL('./fonts/Karla-VariableFont_wght.ttf') format('truetype');
+}
+
 html {
   margin: 0;
-  font-family: 'Karla','Raleway', 'Roboto', 'Oxygen',
+  font-family: 'Raleway', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: 'Karla','Raleway', 'Roboto', 'Oxygen',
+  font-family: 'Raleway', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
