@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button } from "antd";
 import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
+import { PurchasedTicketsView } from "./PurchasedTicketsView";
 import { AttributeType, Collection } from "../../models";
 
 type Props = {
@@ -26,6 +27,7 @@ export const TopMenu : FC <Props> = ({
 
 
     return <div className="TopMenu">
+        <PurchasedTicketsView collection={collection}/>
         <Button type="link" shape="circle" className="Icon" icon={<TwitterOutlined/>}
         href={twiter ?? "https://twitter.com/techchee"} target="_blank"/>
         <Button type="link" shape="circle" className="Icon" icon={<FacebookOutlined/>}

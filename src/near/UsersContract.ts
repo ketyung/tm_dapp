@@ -220,6 +220,27 @@ export class UsersContract {
         
     } 
 
+    async getMintedTicketsIn(collection : Collection ) {
+
+        try {
+
+            let res = await this.wallet?.callMethod({
+                contractId: collection.contract_id,
+                method: 'nft_tokens_for_owner',
+                args: { account_id : this.wallet?.accountId },
+            });
+         
+            return res; 
+        }
+        catch( e: any) {
+          
+            console.error(e.message, new Date());
+           
+            return [];
+        }
+        
+    } 
+
   
   
 }

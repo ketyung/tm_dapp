@@ -227,6 +227,11 @@ export default function useUsersContractState() {
     }
 
 
+    const getMintedTicketsIn = async (collection : Collection ) => {
+
+        return (await usersContractState.contract?.getMintedTicketsIn(collection));
+    }
+
 
     const initUserContract = useCallback(()=>{
         
@@ -242,5 +247,6 @@ export default function useUsersContractState() {
 
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 
-        createAndDeployNftContract, genNextTicketNumber, setLoading, ticketMint} as const;
+        createAndDeployNftContract, genNextTicketNumber, setLoading, ticketMint,
+        getMintedTicketsIn} as const;
 }
