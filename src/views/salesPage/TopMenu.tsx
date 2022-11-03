@@ -27,7 +27,7 @@ export const TopMenu : FC <Props> = ({
 
 
     return <div className="TopMenu">
-        <PurchasedTicketsView collection={collection}/>
+        {collection && <PurchasedTicketsView collection={collection}/>}
         <Button type="link" shape="circle" className="Icon" icon={<TwitterOutlined/>}
         href={twiter ?? "https://twitter.com/techchee"} target="_blank"/>
         <Button type="link" shape="circle" className="Icon" icon={<FacebookOutlined/>}

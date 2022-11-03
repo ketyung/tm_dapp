@@ -224,7 +224,7 @@ export class UsersContract {
 
         try {
 
-            let res = await this.wallet?.callMethod({
+            let res = await this.wallet?.viewMethod({
                 contractId: collection.contract_id,
                 method: 'nft_tokens_for_owner',
                 args: { account_id : this.wallet?.accountId },
