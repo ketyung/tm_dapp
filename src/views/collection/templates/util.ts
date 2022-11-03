@@ -1,6 +1,6 @@
 import { Collection , AttributeType} from "../../../models";
 import * as template1 from './template1';
-import imagePlaceHolder from '../images/picture.png';
+import imagePlaceHolder from '../../../images/picture.png';
 
 export const genTemplateImageDataUri = async (
     collection: Collection,

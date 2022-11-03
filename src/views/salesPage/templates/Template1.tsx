@@ -45,9 +45,9 @@ export const Template1 : FC <Props> = ({
                         setMessage({type : MessageType.Error, text : e.message});
                     }
                     else {
-
                         setMessage({type : MessageType.Info, text : e});
                     }
+                    console.log("ee::",e, new Date());
             });
         }
     }
