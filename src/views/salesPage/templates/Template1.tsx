@@ -6,6 +6,7 @@ import useWalletState from "../../../hooks/useWalletState";
 import useUsersContractState from "../../../hooks/useUsersContractState";
 import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
 import { Message } from "../../../models";
+import { MessageView } from "../MessageView";
 import { InfoView } from "../../InfoView";
 import {Helmet} from "react-helmet";
 
@@ -28,9 +29,7 @@ export const Template1 : FC <Props> = ({
     const {signIn} = useWalletState();
 
     const [ticketImage, setTicketImage] = useState<string>();
-
-    const [stepCompleted, setStepCompleted] = useState<number>();
-
+    
     const {ticketMint, loading} = useUsersContractState();
 
     const [message, setMessage] = useState<Message>();
@@ -41,7 +40,7 @@ export const Template1 : FC <Props> = ({
 
             await ticketMint(collection, 
                 collection.ticket_types[0], 
-                setTicketImage, setStepCompleted, (e)=>{
+                setTicketImage,  (e)=>{
                     if (e instanceof Error) {
                         setMessage({type : MessageType.Error, text : e.message});
                     }
@@ -85,19 +84,13 @@ export const Template1 : FC <Props> = ({
             e.preventDefault();
             signIn();
         }}>Connect Your Wallet</Button>
-        : <Button className="BuyButton" onClick={async ()=>{
+        : <Button className="BuyButton" disabled={loading} onClick={async ()=>{
             await mintTicketNow();
         }}>
-        {loading ? <>{stepCompleted && <span 
-        style={{background:"#345",padding:"4px",width:"30px", height:"auto",
-        color:"white",borderRadius:"20%"}}>{stepCompleted}</span>} <Spin style={{marginLeft:"6px"}}/></> 
+        {loading ? <Spin size="small"/> 
         : <>Mint Ticket</>}</Button>}
 
-        {message && <div style={{background:"white",
-        borderRadius:"20px",padding:"10px",
-        marginTop:"10px",color:message.type=== MessageType.Error ? "red" : "blue"}}>
-        {message.text}
-        </div>}
+        {message && <MessageView message={message}/>}
 
         <InfoView style={{marginTop:"20px"}} infoTextStyle={{color:"white"}}
         infoTextTitle={"View TX on Explorer: "}/>

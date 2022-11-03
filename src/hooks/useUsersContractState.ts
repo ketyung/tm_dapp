@@ -132,7 +132,6 @@ export default function useUsersContractState() {
     const ticketMint = async ( collection : Collection, 
         ticketType : TicketType , 
         setTicketImageCallback? : (imgDataUri?: string) => void, 
-        setStepCompleted?: (step: number) =>void,
         completion? : (res : string|Error) => void ) => {
     
             setLoading(true);
@@ -156,9 +155,6 @@ export default function useUsersContractState() {
                 }
                 else { 
 
-                    if (setStepCompleted)   
-                        setStepCompleted(1);
-                    
                     let ticketNumber = await getNextTicketNumber(collectionId, 6);
 
                     if (ticketNumber === undefined){
@@ -169,10 +165,6 @@ export default function useUsersContractState() {
                         return;
                     }
 
-
-                    if (setStepCompleted)   
-                        setStepCompleted(2);
-                    
                     let imgUri : string | undefined = undefined;
 
                     await genTemplateImageDataUri(collection, ticketNumber, 0, (d)=>{
@@ -185,10 +177,6 @@ export default function useUsersContractState() {
                     let arImageUri : string|undefined ;
 
                     if (imgUri){
-
-                        if (setStepCompleted)   
-                            setStepCompleted(3);
-
 
                         await uploadImageToArweave(imgUri, "image/png", (e)=>{
 
@@ -208,10 +196,7 @@ export default function useUsersContractState() {
 
                     if (arImageUri) {
 
-                        console.log("arweave.img::", arImageUri, new Date());
-
-                        if (setStepCompleted)   
-                            setStepCompleted(4);
+//                        console.log("arweave.img::", arImageUri, new Date());
 
                         await usersContractState.contract?.ticketMint(
                             collectionId, ticketNumber, 
