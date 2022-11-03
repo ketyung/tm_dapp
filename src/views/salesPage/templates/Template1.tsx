@@ -4,7 +4,7 @@ import { Collection, MessageType, ShortCorrectionInfo } from "../../../models";
 import { genTemplateImageDataUri } from "../../collection/templates/util";
 import useWalletState from "../../../hooks/useWalletState";
 import useUsersContractState from "../../../hooks/useUsersContractState";
-import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
+import { TopMenu } from "../TopMenu";
 import { Message } from "../../../models";
 import { MessageView } from "../MessageView";
 import { InfoView } from "../../InfoView";
@@ -68,11 +68,7 @@ export const Template1 : FC <Props> = ({
             <title>Mint your ticket for {shortCollectionInfo?.collectionId?.title}</title>       
         </Helmet>
         <Helmet bodyAttributes={{style: 'background-image:linear-gradient(to right, #001 , #345)'}}/>
-        <div className="TopMenu">
-            <TwitterOutlined className="Icon"/>
-            <FacebookOutlined className="Icon"/>
-            <LinkOutlined className="Icon"/>
-        </div>
+        <TopMenu collection={collection}/>
         <div className="Template1">
         <h3>Buy your ticket for</h3>
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>

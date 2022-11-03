@@ -53,6 +53,12 @@ export enum AttributeType {
     MaxTicketPerWallet = 'MaxTicketPerWallet',
 
     SalesPageTemplate = 'SalesPageTemplate',
+
+    Twitter = 'Twitter',
+
+    Facebook = 'Facebook',
+
+    Website = 'Website',
 }
 
 
