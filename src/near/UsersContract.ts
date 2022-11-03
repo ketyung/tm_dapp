@@ -170,7 +170,7 @@ export class UsersContract {
 
             
             let ticketPrc = (ticketType?.price ?? 0) / 1000;
-            let deposit = new BN((( ticketPrc * 1.02) * 
+            let deposit = new BN((( ticketPrc * 1.1) * 
             (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
