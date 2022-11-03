@@ -40,7 +40,7 @@ export const PurchasedTicketsView : FC <Props> = ({
     return <>
     {(tickets && tickets.length > 0) && 
     <Popover content={<TicketsView tickets={tickets}/>}
-    title="Your Purchased Tickets"
+    title={<span style={{color:"white"}}>Your Purchased Tickets</span>}
     trigger="click" style={{ borderRadius:"20px"}}
     open={open} overlayStyle={{
         width: "20vw",
