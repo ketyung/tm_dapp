@@ -170,7 +170,7 @@ export class UsersContract {
 
             
             let ticketPrc = (ticketType?.price ?? 0) / 1000;
-            let deposit = new BN((( ticketPrc * 1.1) * 
+            let deposit = new BN((( ticketPrc * 1.02) * 
             (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
@@ -179,6 +179,7 @@ export class UsersContract {
                 contractId: this.contractId,
                 method: 'ticket_mint',
                 deposit : deposit,
+                gas : "300000000000000", // max limit 
                 args: { collection_id : collectionId, token_id : tokenId,
                 ticket_image : ticketImage, ticket_type : ticketType,
                 extra : collectionIdToB64(collectionId),

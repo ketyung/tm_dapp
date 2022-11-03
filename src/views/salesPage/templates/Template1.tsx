@@ -6,6 +6,7 @@ import useWalletState from "../../../hooks/useWalletState";
 import useUsersContractState from "../../../hooks/useUsersContractState";
 import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
 import { Message } from "../../../models";
+import { InfoView } from "../../InfoView";
 import {Helmet} from "react-helmet";
 
 import './css/Template1.css';
@@ -97,5 +98,8 @@ export const Template1 : FC <Props> = ({
         marginTop:"10px",color:message.type=== MessageType.Error ? "red" : "blue"}}>
         {message.text}
         </div>}
+
+        <InfoView style={{marginTop:"20px"}} infoTextStyle={{color:"white"}}
+        infoTextTitle={"View TX on Explorer: "}/>
     </div></div>
 }
