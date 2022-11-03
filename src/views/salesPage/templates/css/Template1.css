@@ -78,3 +78,14 @@
     border-radius: 20px;
     margin-top: 20px;
 }
+
+
+.Template1 .TicketsView {
+    background-color: transparent;
+    border: 1px solid #aaa;
+    padding:10px;
+    width: 50%;
+    max-height: 150px;
+    overflow-y: scroll;
+    border-radius: 30px;
+}

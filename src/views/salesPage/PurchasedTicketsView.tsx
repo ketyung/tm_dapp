@@ -1,7 +1,8 @@
-import { Button } from "antd";
+import { Button, Popover } from "antd";
 import { FC, useEffect, useCallback, useState } from "react";
 import useUsersContractState from "../../hooks/useUsersContractState";
 import { ShopOutlined } from "@ant-design/icons";
+import { TicketsView } from "./TicketsView";
 import { Collection } from "../../models";
 
 type Props = {
@@ -14,6 +15,13 @@ export const PurchasedTicketsView : FC <Props> = ({
     collection
 }) =>{
 
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpenChange = (newOpen : boolean) => {
+        setOpen(newOpen);
+    };
+
     const {getMintedTicketsIn} = useUsersContractState();
 
     const [tickets, setTickets] = useState<any[]>();
@@ -22,10 +30,6 @@ export const PurchasedTicketsView : FC <Props> = ({
         if ( collection) {
             let t = await getMintedTicketsIn(collection);
             setTickets(t);
-            console.log("t::", t , new Date());
-        }
-        else {
-            console.error("null.collec", collection, new Date());
         }
     },[collection]);
 
@@ -35,7 +39,19 @@ export const PurchasedTicketsView : FC <Props> = ({
 
     return <>
     {(tickets && tickets.length > 0) && 
-    <Button shape="round"><ShopOutlined style={{marginRight:"6px"}}/>
-    Your Purchased Tickets</Button> }
+    <Popover content={<TicketsView tickets={tickets}/>}
+    title="Your Purchased Tickets"
+    trigger="click" style={{ borderRadius:"20px"}}
+    open={open} overlayStyle={{
+        width: "20vw",
+        background:"transparent",
+    }} 
+    onOpenChange={handleOpenChange}>
+  
+    <Button shape="round" 
+    style={{background:"#239",color:"white",marginRight:"10px"}}>
+    <ShopOutlined style={{marginRight:"6px"}}/>
+    Your Purchased Tickets</Button>
+    </Popover> }
     </>
 }
