@@ -190,6 +190,8 @@ export class UsersContract {
             // added this for capturing the res for testing
             LocalStorage.set("TestRes", JSON.stringify(res) );
 
+            console.log("TestRs::", res);
+
             if ( completion ) {
                 completion(res);
             }
