@@ -40,6 +40,6 @@ export const UsersSettingsView : FC = () =>{
     return <Dropdown overlay={menu} trigger={['click']}>
         <Button className="triggerButt" onClick={(e)=>{
             e.preventDefault();
-        }}><UserOutlined style={{marginRight:"10px"}}/> {accountId}</Button>
+        }}><UserOutlined style={{marginRight:"10px"}}/> <span className="account">{accountId}</span></Button>
      </Dropdown>
 }
