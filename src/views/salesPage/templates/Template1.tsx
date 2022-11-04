@@ -9,6 +9,7 @@ import { Message } from "../../../models";
 import { MessageView } from "../MessageView";
 import { InfoView } from "../../InfoView";
 import {Helmet} from "react-helmet";
+import { LocalStorage } from "../../../utils/local-storage";
 
 import './css/Template1.css';
 
@@ -33,6 +34,8 @@ export const Template1 : FC <Props> = ({
     const {ticketMint, loading} = useUsersContractState();
 
     const [message, setMessage] = useState<Message>();
+
+    const [forwardingToNear, setForwardingToNear] = useState(false);
     
     const mintTicketNow = async () =>{
 
@@ -40,14 +43,15 @@ export const Template1 : FC <Props> = ({
 
             await ticketMint(collection, 
                 collection.ticket_types[0], 
-                setTicketImage,  (e)=>{
+                setTicketImage, (e)=>{
                     if (e instanceof Error) {
                         setMessage({type : MessageType.Error, text : e.message});
                     }
                     else {
                         setMessage({type : MessageType.Info, text : e});
+                        setForwardingToNear(true);
                     }
-                    console.log("ee::",e, new Date());
+                    
             });
         }
     }
@@ -59,6 +63,11 @@ export const Template1 : FC <Props> = ({
  
      useEffect(()=>{
          obtainImageDataUri();
+
+         let testRs = LocalStorage.get("TestRes");
+         if ( testRs !== null)
+            console.log("testRs", testRs);
+
      },[collection]);
 
 
@@ -80,7 +89,7 @@ export const Template1 : FC <Props> = ({
             e.preventDefault();
             signIn();
         }}>Connect Your Wallet</Button>
-        : <Button className="BuyButton" disabled={loading} onClick={async ()=>{
+        : <Button className="BuyButton" disabled={loading || forwardingToNear} onClick={async ()=>{
             await mintTicketNow();
         }}>
         {loading ? <Spin size="small"/> 

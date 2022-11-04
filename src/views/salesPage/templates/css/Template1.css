@@ -80,10 +80,11 @@
 }
 
 .TicketCount {
-    padding:2px 10px 2px 10px;
+    padding:0px 10px 6px 10px;
     background-color: #500;
     border-radius: 30px;
     min-width: 50px;
+    height: 24px;
     margin-left: 10px;
 }
 

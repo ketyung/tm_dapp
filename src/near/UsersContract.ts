@@ -3,6 +3,7 @@ import { TicketType, User } from "../models";
 import { NEAR_TOKEN_DECIMALS } from "./const";
 import { Collection, CollectionId } from "../models";
 import { collectionIdToB64 } from "../utils";
+import { LocalStorage } from "../utils/local-storage";
 
 const BN = require("bn.js");
 
@@ -185,6 +186,10 @@ export class UsersContract {
                 extra : collectionIdToB64(collectionId),
                 },
             });
+
+            // added this for capturing the res for testing
+            LocalStorage.set("TestRes", JSON.stringify(res) );
+
             if ( completion ) {
                 completion(res);
             }

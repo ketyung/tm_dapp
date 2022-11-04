@@ -43,7 +43,7 @@ export const PurchasedTicketsView : FC <Props> = ({
     title={<span style={{color:"white"}}>Your Purchased Tickets</span>}
     trigger="click" style={{ borderRadius:"20px"}}
     open={open} overlayStyle={{
-        width: "20vw",
+        width: "50vw",
         background:"transparent",
     }} 
     onOpenChange={handleOpenChange}>
