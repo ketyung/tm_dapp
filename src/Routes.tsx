@@ -13,7 +13,7 @@ export const Routes : FC = () =>{
     const pageTitle = () => {
 
         if (matchHome){
-            return "Ticket Mint ...";
+            return "TicketMaker ...";
         }
         else if (matchSalesPage){
             return "Mint Ticket...";
