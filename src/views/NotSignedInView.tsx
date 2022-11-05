@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Button } from "antd";
 import useWalletState from "../hooks/useWalletState";
+import nearLogo from '../images/near_logo_wht.png';
+import logo from '../images/logo1.png';
 import './css/NotSignedInView.css';
 
 export const NotSignedInView : FC = () =>{
@@ -8,10 +10,17 @@ export const NotSignedInView : FC = () =>{
     const {signIn} = useWalletState();
 
     return <div className="NotSignedInDiv">
-    <h2>You're NOT signed in yet, please sign in first</h2>
-    <Button shape="round" style={{marginTop:"30px"}} onClick={()=>{
-        signIn();
-    }}>Click here to sign in</Button>
-    <p style={{marginTop:"20px"}}>Test String: {process.env.REACT_APP_TEST_STR}</p>
+    <img src={logo} className="Logo"/>
+    
+    <Button className="LaunchAppButton" onClick={()=>{
+        signIn();}}>Launch App
+    <img src={nearLogo} style={{width:"100px",height:"auto",marginLeft:"10px",marginRight:"4px"}} />
+    TestNet
+    </Button>
+   
+    <Button className="LaunchAppButton" onClick={()=>{window.alert("Coming soon...")}}>Launch App
+    <img src={nearLogo} style={{width:"100px",height:"auto",marginLeft:"10px",marginRight:"4px"}} />
+    MainNet
+    </Button>
     </div>
 }

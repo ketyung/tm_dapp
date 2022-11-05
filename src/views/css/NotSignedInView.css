@@ -1,9 +1,42 @@
 .NotSignedInDiv {
     padding:10px;
-    border: 1px solid #aab;
+    border: 1px solid #ccd;
     max-width: 1200px;
     margin:auto;
     border-radius: 30px;
     margin-top: 30px;
-    background-color: #aab;
+    background-color: transparent;
+}
+
+.NotSignedInDiv .Logo {
+
+    max-width: 300px;
+    max-height: auto;
+    margin:auto;
+}
+
+.NotSignedInDiv .LaunchAppButton {
+
+    display: block;
+    margin: auto;
+    margin-top:30px;
+    background:#333; 
+    color:white;
+    height:50px;
+    padding: 2px 20px 2px 20px;
+    border-radius: 30px;
+
+}
+
+.NotSignedInDiv .LaunchAppButton:hover {
+
+    background:#348; 
+    color:white;
+}
+
+
+.NotSignedInDiv .LaunchAppButton:focus {
+
+    background:#533; 
+    color:white;   
 }
