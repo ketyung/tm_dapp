@@ -13,11 +13,11 @@ export const NotSignedInView : FC = () =>{
     const {signIn} = useWalletState();
 
     return <><TopNavBar/><div className="NotSignedInDiv">
-    <img src={logo} className="Logo" title="Ticket Mint..."/>
+    <a href="/" style={{textDecoration:"none"}}><img src={logo} className="Logo" title="Ticket Mint..."/></a>
 
     <div className="InfoView">
     <img src={noCode} style={{maxHeight:"100px",maxWidth:"auto",marginRight:"10px"}} /> 
-    <div>A no code platform for artists,<br/>event organizers to create their<br/>NFT tickets with ease...</div>   
+    <div>A <span style={{color:"#f92"}}>no code</span> platform for artists,<br/>event organizers to create their<br/>NFT tickets with ease...</div>   
     </div>
     
     <Button className="LaunchAppButton" onClick={()=>{
