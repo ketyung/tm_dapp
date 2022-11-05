@@ -84,13 +84,13 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
 
                 default :
 
-                    return <GSpinner text="Loading..." style={{margin:"auto",marginTop:"30px"}}/>
+                    return <GSpinner text="Loading..." style={{margin:"auto",marginTop:"100px"}}/>
 
             }
         }
     }
 
     return <>
-    {loading ? <GSpinner text="Loading..." style={{margin:"auto",marginTop:"30px"}}/> : switchView()}
+    {loading ? <GSpinner text="Loading..." style={{margin:"auto",marginTop:"100px"}}/> : switchView()}
     </>
 }

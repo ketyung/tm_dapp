@@ -3,7 +3,8 @@
   font-family: 'Raleway',sans-serif;
 }
 
-
 .ant-spin-dot-item {
   background-color: white;
 }
+
+.ant-spin-text { color: #999; }

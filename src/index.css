@@ -37,3 +37,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ant-spin-dot-item {
+  background-color: white;
+}
+
+.ant-spin-text { color: #999; }

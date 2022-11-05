@@ -206,14 +206,14 @@ export default function useUsersContractState() {
                                 if ( e instanceof Error){
     
                                     if (completion) completion(e);
-                                    setLoading(false);
+                                    //setLoading(false);
                                     return; 
                                 }
                                 else {
     
                                     if (completion) {
                                         completion(e);
-                                        setLoading(false);
+                                 //       setLoading(false);
                                     }
                                 }
                             }   
