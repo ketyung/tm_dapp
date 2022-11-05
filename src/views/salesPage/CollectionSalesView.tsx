@@ -2,6 +2,7 @@ import { Collection, ShortCorrectionInfo } from "../../models";
 import { FC, useEffect, useState, useCallback } from "react";
 import { Template1 } from "./templates/Template1";
 import { GSpinner } from "../components/GSpinner";
+import * as shortener from "../../utils/shortener";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
 import useWalletState from "../../hooks/useWalletState";
 
@@ -48,18 +49,26 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
         }
     },[id]);
 
-    const getShortCollectionInfo = () =>{
+    const getShortCollectionInfo = async () =>{
 
         if ( id ) {
-            let collInfo = b64ToShortCollectionInfo(id);
+            let s = await shortener.longUri(id);
+            let collInfo = b64ToShortCollectionInfo(s);
             setShortCollectionInfo(collInfo);
             return collInfo;
         }
     }
 
     useEffect(()=>{
-        let collInfo = getShortCollectionInfo();
-        checkIfSignedIn(collInfo);
+        setLoading(true);
+        getShortCollectionInfo().then((collInfo)=>{
+        
+            checkIfSignedIn(collInfo);
+        })
+        .catch(e=>{
+            console.error("Failed to convert from short to long",e, new Date());
+            setLoading(false);
+        })
     },[]);
 
 
