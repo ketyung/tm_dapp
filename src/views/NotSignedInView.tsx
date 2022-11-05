@@ -4,6 +4,7 @@ import { TopNavBar } from "./NSTopNavBar";
 import { InfoCircleFilled } from "@ant-design/icons";
 import useWalletState from "../hooks/useWalletState";
 import nearLogo from '../images/near_logo_wht.png';
+import noCode from '../images/no-code.png';
 import logo from '../images/logo1.png';
 import './css/NotSignedInView.css';
 
@@ -13,6 +14,11 @@ export const NotSignedInView : FC = () =>{
 
     return <><TopNavBar/><div className="NotSignedInDiv">
     <img src={logo} className="Logo" title="Ticket Mint..."/>
+
+    <div className="InfoView">
+    <img src={noCode} style={{maxHeight:"100px",maxWidth:"auto",marginRight:"10px"}} /> 
+    A no code platform for artists,<br/>event organizers to create their<br/>NFT tickets with ease...   
+    </div>
     
     <Button className="LaunchAppButton" onClick={()=>{
         signIn();}}>Launch App

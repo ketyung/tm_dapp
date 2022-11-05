@@ -1,7 +1,6 @@
 .NotSignedInDiv {
     padding:10px;
-    border: 1px solid #ccd;
-    max-width: 1200px;
+    max-width: 95%;
     margin:auto;
     border-radius: 30px;
     margin-top: 30px;
@@ -10,9 +9,22 @@
 
 .NotSignedInDiv .Logo {
 
-    max-width: 260px;
+    max-width: 160px;
     max-height: auto;
     margin:auto;
+}
+
+.InfoView {
+
+    max-width:600px;
+    margin: auto;
+    background-image: linear-gradient(to right, #07d , #222);
+    color:white;
+    font-weight: 600;
+    border-radius: 30px;
+    margin-top: 30px;
+    min-height: 120px;
+    font-size: 20px;
 }
 
 .NotSignedInDiv .LaunchAppButton {
