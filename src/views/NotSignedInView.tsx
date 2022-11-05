@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button } from "antd";
+import { TopNavBar } from "./NSTopNavBar";
 import useWalletState from "../hooks/useWalletState";
 import nearLogo from '../images/near_logo_wht.png';
 import logo from '../images/logo1.png';
@@ -9,7 +10,7 @@ export const NotSignedInView : FC = () =>{
 
     const {signIn} = useWalletState();
 
-    return <div className="NotSignedInDiv">
+    return <><TopNavBar/><div className="NotSignedInDiv">
     <img src={logo} className="Logo"/>
     
     <Button className="LaunchAppButton" onClick={()=>{
@@ -22,5 +23,5 @@ export const NotSignedInView : FC = () =>{
     <img src={nearLogo} style={{width:"100px",height:"auto",marginLeft:"10px",marginRight:"4px"}} />
     MainNet
     </Button>
-    </div>
+    </div></>
 }
