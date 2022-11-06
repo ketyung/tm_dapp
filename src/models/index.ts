@@ -156,6 +156,8 @@ export enum TicketAttributeType {
     Price = 'Price',
 
     UsedBy = 'UsedBy', 
+
+    TicketType = 'TicketType',
 }
 
 

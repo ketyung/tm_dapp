@@ -35,7 +35,7 @@ export const genTemplateImageDataUri = async (
                 endDate : endDate,
                 venue : venue,
                 imageSrc : collection.icon ?? imagePlaceHolder,  
-                ticketNo :ticketNo ?? "#000001",
+                ticketNo :ticketNo ?? "#000000",
                 ticketType : (collection.ticket_types) ? 
                     collection?.ticket_types[index ?? 0] : undefined
             });

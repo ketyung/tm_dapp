@@ -60,7 +60,7 @@ export const Template1 : FC <Props> = ({
 
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
-            await genTemplateImageDataUri(collection, "000001", 0, setTicketImage);
+            await genTemplateImageDataUri(collection, "000000", 0, setTicketImage);
      },[collection]);
  
      useEffect(()=>{

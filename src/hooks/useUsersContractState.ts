@@ -167,7 +167,9 @@ export default function useUsersContractState() {
 
                     let imgUri : string | undefined = undefined;
 
-                    await genTemplateImageDataUri(collection, ticketNumber, 0, (d)=>{
+                    let idx = collection.ticket_types?.indexOf(ticketType) ?? 0;
+
+                    await genTemplateImageDataUri(collection, ticketNumber, idx, (d)=>{
                         imgUri = d ;
                         if ( setTicketImageCallback) {
                             setTicketImageCallback(d);
