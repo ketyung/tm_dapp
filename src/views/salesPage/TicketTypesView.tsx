@@ -24,7 +24,7 @@ export const TicketTypesView : FC <Props> = ({
                 return <div className="row" key={"tp"+i}>
                     <div>{t.ticket_type}</div>
                     <div>{fromOnchainTicketPrice(t.price)} NEAR</div>
-                    {(selectedTicketType?.ticket_type ?? "Standard" ) === "Standard" ?
+                    {(selectedTicketType?.ticket_type ?? "Standard" ) === t.ticket_type ?
                     <CheckCircleFilled style={{cursor:"pointer"}}/> : 
                     <CheckCircleOutlined style={{cursor:"pointer"}}
                     onClick={()=>{
