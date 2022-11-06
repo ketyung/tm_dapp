@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CheckCircleFilled, CheckCircleOutlined } from "@ant-design/icons";
-import { fromTicketPrice } from "../../utils";
+import { fromOnchainTicketPrice } from "../../utils";
 import { Collection, TicketType } from "../../models";
 
 
@@ -23,7 +23,7 @@ export const TicketTypesView : FC <Props> = ({
             collection?.ticket_types?.map((t,i) => {
                 return <div className="row" key={"tp"+i}>
                     <div>{t.ticket_type}</div>
-                    <div>{fromTicketPrice(t.price)} NEAR</div>
+                    <div>{fromOnchainTicketPrice(t.price)} NEAR</div>
                     {(selectedTicketType?.ticket_type ?? "Standard" ) === "Standard" ?
                     <CheckCircleFilled style={{cursor:"pointer"}}/> : 
                     <CheckCircleOutlined style={{cursor:"pointer"}}

@@ -109,12 +109,12 @@ export const yoctoToNear = ( amount : string, decimalsCount? : number ) =>{
 }
 
 
-export const toTicketPrice = ( price : number ) : number =>{
+export const toOnchainTicketPrice = ( price : number ) : number =>{
 
 	return Math.round(price * 1000);
 }
 
-export const fromTicketPrice = ( onChainTicketPrice : number) : string => {
+export const fromOnchainTicketPrice = ( onChainTicketPrice : number) : string => {
 	return (onChainTicketPrice / 1000).toFixed(2);
 }
 

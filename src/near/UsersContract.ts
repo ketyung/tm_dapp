@@ -4,6 +4,7 @@ import { NEAR_TOKEN_DECIMALS } from "./const";
 import { Collection, CollectionId } from "../models";
 import { collectionIdToB64 } from "../utils";
 import { LocalStorage } from "../utils/local-storage";
+import { fromOnchainTicketPrice } from "../utils";
 
 const BN = require("bn.js");
 
@@ -171,7 +172,7 @@ export class UsersContract {
             }
 
             
-            let ticketPrc = (ticketType?.price ?? 0) / 1000;
+            let ticketPrc = parseFloat(fromOnchainTicketPrice(ticketType?.price ?? 0));
             let deposit = new BN((( ticketPrc * 1.02) * 
             (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
