@@ -4,7 +4,7 @@ import { NEAR_TOKEN_DECIMALS } from "./const";
 import { Collection, CollectionId } from "../models";
 import { collectionIdToB64 } from "../utils";
 import { LocalStorage } from "../utils/local-storage";
-import { fromOnchainTicketPrice } from "../utils";
+import { fromOnchainTicketPrice, toOnchainTicketPrice } from "../utils";
 
 const BN = require("bn.js");
 
@@ -118,6 +118,21 @@ export class UsersContract {
             }
         }
     }
+
+
+    toOnchainPriceTypes (collection : Collection) {
+
+         // convert all ticket prices to on chain prices
+         let tts = collection.ticket_types;
+         let new_tts : TicketType[] = [];
+         tts?.forEach((t)=>{
+             t.price = toOnchainTicketPrice(t.price);
+             new_tts.push(t);
+         });
+
+         collection.ticket_types = new_tts;
+         console.log("collection.ticket_types:",collection.ticket_types, new Date());
+    }
   
     async createCollectionAndDeploy ( 
         collection : Collection,
@@ -135,6 +150,8 @@ export class UsersContract {
 
             collection.owner = this.wallet?.accountId;
 
+            this.toOnchainPriceTypes(collection);
+
             let deposit = new BN(((initBalanceInNear * 1.02) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
@@ -143,7 +160,7 @@ export class UsersContract {
                 method: 'create_collection_and_deploy',
                 gas : "300000000000000", // max limit 
                 deposit : deposit,
-                args: { collection : collection },
+                args: { collection : collection, init_balance : initBalanceInNear },
             });
             if ( completion ) {
                 completion(res);
