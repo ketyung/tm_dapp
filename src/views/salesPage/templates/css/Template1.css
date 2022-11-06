@@ -1,6 +1,6 @@
 .Template1 {
     border-radius: 20px;
-    background-image: linear-gradient(to right, #336 , #359);
+    background-image: linear-gradient(to right, #336 , #2B65EC);
     padding:20px;
     max-width: 70%;
     margin: auto;
@@ -49,12 +49,21 @@
 
 
 .Template1 .BuyButton {
-    font-weight: 600;
+    font-weight:bolder;
     border-radius: 30px;
-    background:#396;
+    background:#369;
     color:white;
     margin-top:20px;
     min-width: 40%;
+    height:50px;
+    font-size: large;
+    min-width: 390px;
+}
+
+
+.Template1 .BuyButton:hover {
+    background:#396;
+    color:wheat;
 }
 
 .Template1 .Logo {
