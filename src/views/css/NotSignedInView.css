@@ -15,7 +15,7 @@
     margin:auto;
 }
 
-.InfoView {
+.NotSignedInDiv .InfoView {
     margin: auto;
     background-image: linear-gradient(to right, #07d , #222);
     color:white;
@@ -28,12 +28,12 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.InfoView:hover {
+.NotSignedInDiv .InfoView:hover {
     background-image: linear-gradient(to right, #063 , #222);
     cursor: pointer;
 }
 
-.InfoView .txt {
+.NotSignedInDiv .InfoView .txt {
     display: inline-block;
     text-align: justify;
     vertical-align: top;

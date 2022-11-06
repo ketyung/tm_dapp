@@ -112,6 +112,29 @@
     background-color: #345;
 }
 
+.TicketTypes {
+    margin: auto;
+    max-width: 400px;
+    padding:10px;
+}
+
+.TicketTypes .row {
+    margin:4px;
+    display: block;
+    background-color: #336;
+    color:wheat;
+    border-radius: 30px;
+    padding: 4px;
+}
+
+.TicketTypes .row div {
+    display: inline-block;
+    margin: 10px;
+    padding: 2px;
+}
+
+
+
 .ant-popover-inner {
     background-image: linear-gradient(to right,#349, #345 );
     border-radius: 30px;

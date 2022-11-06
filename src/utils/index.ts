@@ -108,6 +108,17 @@ export const yoctoToNear = ( amount : string, decimalsCount? : number ) =>{
 	return nearApiJs.utils.format.formatNearAmount(amount);
 }
 
+
+export const toTicketPrice = ( price : number ) : number =>{
+
+	return Math.round(price * 1000);
+}
+
+export const fromTicketPrice = ( onChainTicketPrice : number) : string => {
+	return (onChainTicketPrice / 1000).toFixed(2);
+}
+
+
 export const nearTimestampToDate = ( ts : number) : Date =>{
 
 	return new Date(ts/1000_000);

@@ -132,6 +132,7 @@ export class UsersContract {
                 }
             }
 
+            collection.owner = this.wallet?.accountId;
 
             let deposit = new BN(((initBalanceInNear * 1.02) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
