@@ -58,6 +58,18 @@ export const Template1 : FC <Props> = ({
         }
     }
 
+
+    const setSelectedTicketTypeNow = async (ticketType : TicketType) =>{
+
+        if ( collection) {
+
+            let idx = collection.ticket_types?.indexOf(ticketType) ?? 0;
+            await genTemplateImageDataUri(collection, "000000", idx, setTicketImage);
+            setSelectedTicketType(ticketType);
+        }
+      
+    }
+
     const obtainImageDataUri = useCallback(async ()=>{
         if ( collection)
             await genTemplateImageDataUri(collection, "000000", 0, setTicketImage);
@@ -87,7 +99,7 @@ export const Template1 : FC <Props> = ({
         <img src={ticketImage} className="TicketImage"/>    
         : <img src={shortCollectionInfo?.icon} className="Logo"/>}</div>
 
-        <TicketTypesView setSelectedTicketType={setSelectedTicketType}
+        <TicketTypesView setSelectedTicketType={setSelectedTicketTypeNow}
         selectedTicketType={selectedTicketType} collection={collection}/>
         { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();
