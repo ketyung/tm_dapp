@@ -44,7 +44,7 @@ export const ListRow : FC <Props> = ({
 
                 let cid = toB64OfShortCollectionInfo(collection);
                 let s = await shortener.shorten(cid);
-                window.open("/c/"+s,"_blank");
+                window.open("/c/"+ encodeURI(s),"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',
