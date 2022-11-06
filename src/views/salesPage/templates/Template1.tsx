@@ -101,14 +101,13 @@ export const Template1 : FC <Props> = ({
 
         <TicketTypesView setSelectedTicketType={setSelectedTicketTypeNow}
         selectedTicketType={selectedTicketType} collection={collection}/>
+        
         { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
-            e.preventDefault();
-            signIn();
+            e.preventDefault();signIn();
         }}>Connect Your Wallet</Button>
         : <Button className="BuyButton" disabled={clicked} onClick={async ()=>{
             setClicked(true);
             await mintTicketNow();
-
         }}>
         {loading ? <Spin size="small"/> 
         : <>Mint Ticket</>}</Button>}
