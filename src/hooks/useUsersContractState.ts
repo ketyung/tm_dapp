@@ -119,7 +119,7 @@ export default function useUsersContractState() {
 
         setLoading(true);
         await usersContractState.contract?.createCollectionAndDeploy(collection,
-            20, (e)=>{
+            22, (e)=>{
             if ( completion )
                 completion(e);
             setLoading(false);

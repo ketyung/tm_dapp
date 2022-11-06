@@ -152,6 +152,8 @@ export class UsersContract {
 
             this.toOnchainPriceTypes(collection);
 
+            let initBalInNearYoctoNear = initBalanceInNear * (10 ** NEAR_TOKEN_DECIMALS);
+
             let deposit = new BN(((initBalanceInNear * 1.02) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
@@ -160,7 +162,7 @@ export class UsersContract {
                 method: 'create_collection_and_deploy',
                 gas : "300000000000000", // max limit 
                 deposit : deposit,
-                args: { collection : collection, init_balance : initBalanceInNear },
+                args: { collection : collection, init_balance : initBalInNearYoctoNear },
             });
             if ( completion ) {
                 completion(res);
