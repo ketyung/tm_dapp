@@ -154,7 +154,7 @@ export class UsersContract {
 
             let initBal = initBalanceInNear * 1000;
 
-            let deposit = new BN(((initBalanceInNear * 1.02) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
+            let deposit = new BN(((initBalanceInNear * 1.025) * (10 ** NEAR_TOKEN_DECIMALS)).toLocaleString('fullwide', 
             {useGrouping:false}));
 
             let res = await this.wallet?.callMethod({
