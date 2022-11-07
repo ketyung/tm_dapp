@@ -5,10 +5,11 @@ import { useCallback, useEffect} from "react";
 import { initContract } from "../utils/sm/UsersContractActions";
 import { UsersContractState } from "../utils/sm/UsersContractReducer";
 import useWalletState from "./useWalletState";
-import { Collection, User, CollectionId, TicketType } from "../models";
+import { Collection, User, CollectionId, TicketType, AttributeType } from "../models";
 import useCollectionsContract from "./useCollectionsContract";
 import { genTemplateImageDataUri } from "../views/collection/templates/util";
 import { uploadImageToArweave } from "../arweave";
+import { max } from "rxjs";
 
 export default function useUsersContractState() {
 
@@ -142,6 +143,28 @@ export default function useUsersContractState() {
                 symbol : collection?.symbol ?? "",
             };
 
+
+            let aa = collection.attributes?.filter(a=>{
+                return a.name === AttributeType.MaxTicketPerWallet
+            });
+
+            if ( aa && (aa?.length ?? 0) > 0) {
+
+                let maxTicketPerWallet = parseInt(aa[0].value);
+                if ( !isNaN(maxTicketPerWallet)){
+
+                    let mintedTickets : any[] = await getMintedTicketsIn(collection);
+                    if (mintedTickets.length > maxTicketPerWallet){
+
+                        setLoading(false);
+                        if(completion)
+                            completion(new Error(`Exceeded the total number of tickets per wallet ${maxTicketPerWallet}`));
+                        return;
+                    }
+                }
+                
+            }
+            
 
             await genNextTicketNumber(collectionId, 6, async (e)=>{
 
