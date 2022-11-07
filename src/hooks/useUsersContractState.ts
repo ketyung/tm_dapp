@@ -9,7 +9,6 @@ import { Collection, User, CollectionId, TicketType, AttributeType } from "../mo
 import useCollectionsContract from "./useCollectionsContract";
 import { genTemplateImageDataUri } from "../views/collection/templates/util";
 import { uploadImageToArweave } from "../arweave";
-import { max } from "rxjs";
 
 export default function useUsersContractState() {
 
