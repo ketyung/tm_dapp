@@ -9,11 +9,11 @@
 }
 
 .NotSignedInDiv .Logo {
-
     max-width: 150px;
     max-height: auto;
     margin:auto;
 }
+
 
 .NotSignedInDiv .InfoView {
     margin: auto;
@@ -22,11 +22,55 @@
     font-weight:bolder;
     border-radius: 60px;
     margin-top: 15px;
-    min-height: 150px;
     max-width:600px;
     overflow: hidden;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
+@media only screen and (max-device-width: 700px){
+
+    .NotSignedInDiv .InfoView {
+        min-height: 250px;
+    }
+
+    .NotSignedInDiv .InfoView .txt{
+        display: block;
+        padding-left: 30px;
+        font-size: 24px;
+    }
+}
+
+
+@media only screen and (max-device-width: 450px){
+
+    .NotSignedInDiv .InfoView {
+        min-height: 220px;
+    }
+
+    .NotSignedInDiv .InfoView .txt{
+        display: block;
+        text-align: left;
+        padding-left: 10px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+}
+
+
+
+@media only screen and (min-device-width: 701px){
+
+    .NotSignedInDiv .InfoView {
+        min-height: 150px;
+    }
+
+    .NotSignedInDiv .InfoView .txt{
+        display: inline-block;
+        font-size: 24px;
+    }
+}
+
+
 
 .NotSignedInDiv .InfoView:hover {
     background-image: linear-gradient(to right, #063 , #222);
@@ -34,11 +78,9 @@
 }
 
 .NotSignedInDiv .InfoView .txt {
-    display: inline-block;
     text-align: justify;
     vertical-align: top;
     margin-left: 30px;
-    font-size: 24px;
     color: white;
 }
 
