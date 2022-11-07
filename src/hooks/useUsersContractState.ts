@@ -142,7 +142,6 @@ export default function useUsersContractState() {
                 symbol : collection?.symbol ?? "",
             };
 
-
             let aa = collection.attributes?.filter(a=>{
                 return a.name === AttributeType.MaxTicketPerWallet
             });
@@ -160,8 +159,7 @@ export default function useUsersContractState() {
                             completion(new Error(`Exceeded the total number of tickets per wallet ${maxTicketPerWallet}`));
                         return;
                     }
-                }
-                
+                } 
             }
             
 

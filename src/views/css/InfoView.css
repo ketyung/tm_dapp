@@ -6,6 +6,6 @@
     margin: auto;
     border: 1px solid #ccd;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
-    overflow-x: hidden;
+    overflow: hidden;
     margin-bottom: 10px;
 }

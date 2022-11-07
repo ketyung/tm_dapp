@@ -48,6 +48,7 @@ export const Template1 : FC <Props> = ({
                 selectedTicketType ?? collection.ticket_types[0], 
                 setTicketImage, (e)=>{
                     if (e instanceof Error) {
+                        setClicked(false);
                         setMessage({type : MessageType.Error, text : e.message});
                     }
                     else {
@@ -101,7 +102,9 @@ export const Template1 : FC <Props> = ({
 
         <TicketTypesView setSelectedTicketType={setSelectedTicketTypeNow}
         selectedTicketType={selectedTicketType} collection={collection}/>
-        
+
+        {message && <MessageView message={message}/>}
+ 
         { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();signIn();
         }}>Connect Your Wallet</Button>
@@ -112,8 +115,7 @@ export const Template1 : FC <Props> = ({
         {loading ? <Spin size="small"/> 
         : <>Mint Ticket</>}</Button>}
 
-        {message && <MessageView message={message}/>}
-
+       
         <InfoView style={{marginTop:"20px"}} infoTextStyle={{color:"white"}}
         infoTextTitle={"View TX on Explorer: "}/>
     </div></div>
