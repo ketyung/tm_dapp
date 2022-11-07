@@ -12,8 +12,8 @@ export const createImageDataUrl = async (
 
     if ( ctx !== null ) {
 
-        ctx.canvas.width = 650;
-        ctx.canvas.height = 390;
+        ctx.canvas.width = 600;
+        ctx.canvas.height = 360;
     
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         

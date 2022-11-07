@@ -7,9 +7,10 @@ export const genTemplateImageDataUri = async (
     collection: Collection,
     ticketNo? : string, 
     index? : number, 
-    setImageDataUriCallback? : (imageUri?: string) => void ) =>{
+    setImageDataUriCallback? : (imageUri?: string) => void,
+    _templateType? : number  ) =>{
 
-    let templateType = parseInt(collection.ticket_template_type?.value ?? "1");
+    let templateType = _templateType ? _templateType : parseInt(collection.ticket_template_type?.value ?? "1");
     
     let venue = collection.attributes?.filter(a=>{
         return a.name === AttributeType.Venue

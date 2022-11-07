@@ -90,6 +90,13 @@
 }
 
 
+.CollectionForm .TicketTemplateView .TicketTemplatesView {
+    
+    display: flex;
+    padding:10px;
+}
+
+
 .CollectionForm .SalesTemplateSelectView {
 
     padding:14px 10px 10px 22px;
