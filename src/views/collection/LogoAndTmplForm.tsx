@@ -22,7 +22,7 @@ export const LogoAndTmplForm : FC <Props> = ({
 
     return <>
     <LogoMediaView setImageDataCallback={setImageDataCallback} imageData={collection?.icon} />
-    <TemplateView collection={collection} index={selectedRow}/>
+    <TemplateView collection={collection} index={selectedRow} setCollection={setCollection}/>
     <SalesTemplateSelect collection={collection} setCollection={setCollection}/>
     </>
 }

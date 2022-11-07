@@ -1,4 +1,5 @@
-import { TicketTemplate, TicketTemplateType } from '../../models';
+import { TicketTemplateType } from '../../models';
+import { CheckCircleOutlined } from '@ant-design/icons';
 import { genTemplateImageDataUri } from './templates/util';
 import { FC, useEffect, useState,useCallback } from 'react';
 import { CollectionFormProps } from './Form';
@@ -34,6 +35,8 @@ export const TicketTemplateSelect : FC <Props> = ({
         }
        
     }}>
-     <img src={imageDataUri} style={{width:"200px",height:"120px"}}/>   
+     <img src={imageDataUri} style={{width:"200px",height:"120px"}}/> 
+     {parseInt(collection.ticket_template_type?.value ?? "1") === template && 
+     <div style={{marginLeft:"10px"}}><CheckCircleOutlined/></div>}  
     </div>
 }
