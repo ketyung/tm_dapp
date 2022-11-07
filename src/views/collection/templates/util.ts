@@ -1,5 +1,6 @@
 import { Collection , AttributeType} from "../../../models";
 import * as template1 from './template1';
+import * as template2 from './template2';
 import imagePlaceHolder from '../../../images/picture.png';
 
 export const genTemplateImageDataUri = async (
@@ -26,21 +27,28 @@ export const genTemplateImageDataUri = async (
 
     let img : string|undefined = undefined;
     
+    let ticketInfo = {
+        title: collection?.title ? collection?.title : "Event name...",
+        startDate : startDate,
+        endDate : endDate,
+        venue : venue,
+        imageSrc : collection.icon ?? imagePlaceHolder,  
+        ticketNo :ticketNo ?? "#000000",
+        ticketType : (collection.ticket_types) ? 
+            collection?.ticket_types[index ?? 0] : undefined
+    };
+
     switch (+templateType) {
 
         case 1 :
-            img =   await template1.createImageDataUrl({
-                title: collection?.title ? collection?.title : "Event name...",
-                startDate : startDate,
-                endDate : endDate,
-                venue : venue,
-                imageSrc : collection.icon ?? imagePlaceHolder,  
-                ticketNo :ticketNo ?? "#000000",
-                ticketType : (collection.ticket_types) ? 
-                    collection?.ticket_types[index ?? 0] : undefined
-            });
-
+            img =   await template1.createImageDataUrl(ticketInfo);
             break; 
+
+        case 2 :
+            img =   await template2.createImageDataUrl(ticketInfo);
+            break; 
+
+
         default :
             break; 
     }

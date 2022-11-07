@@ -10,8 +10,6 @@ import { MessageView } from "../MessageView";
 import { TicketTypesView } from "../TicketTypesView";
 import { InfoView } from "../../InfoView";
 import {Helmet} from "react-helmet";
-import { LocalStorage } from "../../../utils/local-storage";
-
 import './css/Template1.css';
 
 type Props = {
@@ -78,11 +76,6 @@ export const Template1 : FC <Props> = ({
  
      useEffect(()=>{
          obtainImageDataUri();
-
-         let testRs = LocalStorage.get("TestRes");
-         if ( testRs !== null)
-            console.log("testRs", testRs);
-
      },[collection]);
 
 
