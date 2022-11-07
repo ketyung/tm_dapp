@@ -8,7 +8,7 @@ export const TicketTemplatesView : FC <CollectionFormProps> = ({
 }) =>{
 
     return <div className="TicketTemplatesView">
-        <TicketTemplateSelect collection={collection} setCollection={setCollection} template={1}/>
-        <TicketTemplateSelect collection={collection} setCollection={setCollection} template={2}/>
+        <TicketTemplateSelect collection={collection} setCollection={setCollection} template={1} name="Aurora"/>
+        <TicketTemplateSelect collection={collection} setCollection={setCollection} template={2} name="Fire"/>
     </div>
 }
