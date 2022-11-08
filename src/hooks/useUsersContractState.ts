@@ -85,6 +85,26 @@ export default function useUsersContractState() {
        
     }
 
+
+    const updateCollection  = async ( 
+        collection : Collection,
+        completion? : (res : string|Error) => void ) => {
+
+        try {
+
+            setLoading(true);
+            await usersContractState.contract?.updateCollection(collection,(e)=>{
+                if ( completion )
+                    completion(e);
+                setLoading(false);
+            });
+        }
+        catch(e : any){
+            if ( completion )
+                completion(e);
+            setLoading(false);
+        }
+    }
    
 
     const createAndDeployNftContract  = async ( collection : Collection,
@@ -270,5 +290,5 @@ export default function useUsersContractState() {
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 
         createAndDeployNftContract, genNextTicketNumber, setLoading, ticketMint,
-        getMintedTicketsIn} as const;
+        getMintedTicketsIn,updateCollection} as const;
 }

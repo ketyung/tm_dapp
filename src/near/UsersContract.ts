@@ -131,7 +131,7 @@ export class UsersContract {
          });
 
          collection.ticket_types = new_tts;
-         console.log("collection.ticket_types:",collection.ticket_types, new Date());
+         //console.log("collection.ticket_types:",collection.ticket_types, new Date());
     }
   
     async createCollectionAndDeploy ( 
@@ -163,6 +163,52 @@ export class UsersContract {
                 gas : "300000000000000", // max limit 
                 deposit : deposit,
                 args: { collection : collection, init_balance : initBal },
+            });
+            if ( completion ) {
+                completion(res);
+            }
+        }
+        catch ( e : any ) {
+            if ( completion ) {
+                completion(e);
+            }
+        }
+    }
+
+
+    async updateCollection ( 
+        collection : Collection,
+        completion? : (res : string|Error) => void ) {
+
+        try {
+
+            if ( this.wallet === undefined) {
+                if ( completion ){
+                    completion(new Error("Wallet is undefined!!"));
+                    return;
+                }
+            }
+
+            collection.owner = this.wallet?.accountId;
+
+            this.toOnchainPriceTypes(collection);
+
+
+            let dataForUpdate = {
+                description : collection.description,
+                icon : collection.icon,
+                base_uri : collection.base_uri,
+                ticket_types : collection.ticket_types,
+                total_tickets : collection.total_tickets,
+                attributes : collection.attributes,
+                ticket_template_type : collection.ticket_template_type,
+                category : collection.category, 
+            };
+          
+            let res = await this.wallet?.callMethod({
+                contractId: this.contractId,
+                method: 'update_collection',
+                args: { data_for_update : dataForUpdate, title : collection.title, symbol : collection.symbol },
             });
             if ( completion ) {
                 completion(res);

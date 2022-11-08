@@ -29,7 +29,7 @@ export const InfoForm : FC <Props> = ({
         <tr>
             <td valign="top" style={{width:"70%"}}>
             <FormInput label="Event/Title" style={{minWidth:"180px"}} 
-            value={collection?.title} required={true}
+            value={collection?.title} required={true} readOnly={isEditMode}
             onChange={(e)=>{
                 let title = e.target.value
                 let a = acronym(title);

@@ -41,7 +41,7 @@ export const Form : FC <Props> = ({
 
     const [processing, setProcessing] = useState(false);    
     
-    const {createAndDeployNftContract} = useUsersContractState();
+    const {createAndDeployNftContract, updateCollection} = useUsersContractState();
 
     const setMessageAndDimiss = (message : Message, dismissAfterSeconds : number = 3000) =>{
 
@@ -72,9 +72,29 @@ export const Form : FC <Props> = ({
         })
     }
 
+    const updateCollectionNow = async () =>{
+
+        setProcessing(true);
+        setMessage(undefined);
+
+        await updateCollection(collection, (e)=>{
+
+            if ( e instanceof Error){
+
+                setMessageAndDimiss({text: e.message, type: MessageType.Error});    
+            }
+            else {
+
+                setMessageAndDimiss({text : "Success", type: MessageType.Info});
+            }
+
+            setProcessing(false);
+        })
+    }
+
     const saveCollection = async () =>{
         if ( isEditMode){
-
+            await updateCollectionNow();
         }
         else {
             await createCollection();
@@ -100,7 +120,9 @@ export const Form : FC <Props> = ({
             selectedRow={selectedRow} isEditMode={isEditMode}/>
         </div>  
         <div style={{textAlign:"center"}}>
-        <Button shape="round" onClick={async (e)=>{
+        <Button shape="round" 
+        disabled={processing}
+        onClick={async (e)=>{
             e.preventDefault();
             await saveCollection();
         }} style={{background:"#384",color:"white",
