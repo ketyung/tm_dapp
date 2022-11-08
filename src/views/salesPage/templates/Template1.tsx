@@ -2,12 +2,12 @@ import { FC, useState, useCallback, useEffect } from "react";
 import { Button, Spin } from "antd";
 import { Collection, MessageType, ShortCorrectionInfo, TicketType } from "../../../models";
 import { genTemplateImageDataUri } from "../../collection/templates/util";
-import useWalletState from "../../../hooks/useWalletState";
 import useUsersContractState from "../../../hooks/useUsersContractState";
 import { TopMenu } from "../TopMenu";
 import { Message } from "../../../models";
 import { MessageView } from "../MessageView";
 import { TicketTypesView } from "../TicketTypesView";
+import { MintButton } from "../MintButton";
 import { InfoView } from "../../InfoView";
 import {Helmet} from "react-helmet";
 import './css/Template1.css';
@@ -26,7 +26,6 @@ export const Template1 : FC <Props> = ({
     hasSignedIn, shortCollectionInfo, collection
 }) =>{
 
-    const {signIn} = useWalletState();
 
     const [ticketImage, setTicketImage] = useState<string>();
 
@@ -98,16 +97,9 @@ export const Template1 : FC <Props> = ({
 
         {message && <MessageView message={message}/>}
  
-        { !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
-            e.preventDefault();signIn();
-        }}>Connect Your Wallet</Button>
-        : <Button className="BuyButton" disabled={clicked} onClick={async ()=>{
-            setClicked(true);
-            await mintTicketNow();
-        }}>
-        {loading ? <Spin size="small"/> 
-        : <>Mint Ticket</>}</Button>}
-
+        <MintButton collection={collection} hasSignedIn={hasSignedIn}
+        setButtonDisabled={setClicked} buttonDisabled={clicked} loading={loading}
+        mintTicket={mintTicketNow}/>
        
         <InfoView style={{marginTop:"20px"}} infoTextStyle={{color:"white"}}
         infoTextTitle={"View TX on Explorer: "}/>

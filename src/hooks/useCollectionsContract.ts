@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import { Collection, CollectionId } from "../models";
+import { AttributeType, Collection, CollectionId } from "../models";
 import { CollectionsContract } from "../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../near/const";
 import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../utils";
@@ -31,6 +31,21 @@ export default function useCollectionsContract() {
         let coll =  await contract.getCollection(collectionId);
         setLoading(false);
         return coll;
+    }
+
+
+    const isCollectionReadyForSale = (collection? : Collection) : boolean =>{
+
+        let a = collection?.attributes?.filter(a =>{
+            return a.name === AttributeType.Status
+        })[0];
+
+        if (a) {
+
+            return a.value === "ReadyForSale";
+        }
+        // default is true if the attribute is NOT defined
+        return true; 
     }
 
 
@@ -72,5 +87,6 @@ export default function useCollectionsContract() {
     }
 
     return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
-    toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber} as const;
+    toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber,
+    isCollectionReadyForSale} as const;
 }
