@@ -3,6 +3,7 @@ import { CollectionFormProps } from "./Form";
 import { Attribute, AttributeType, Collection } from "../../models";
 import { FormInput } from "../components/FormInput";
 import { DatePicker } from "antd";
+import moment from 'moment';
 import { EnvironmentOutlined } from "@ant-design/icons";
 import './css/OtherInfoForm.css';
 
@@ -63,7 +64,7 @@ export const setCollectionAttribute = (
 
 
 export const OtherInfoForm : FC<CollectionFormProps> = ({
-    collection, setCollection
+    collection, setCollection, isEditMode
 }) =>{
 
 
@@ -81,6 +82,15 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
         }
     }
 
+
+    const startDate = moment(collection.attributes?.filter(a=>
+            a.name === AttributeType.StartDate
+        )[0]?.value, REQ_DATE_FORMAT) ;
+
+    const endDate = moment(collection.attributes?.filter(a=>
+        a.name === AttributeType.EndDate
+    )[0]?.value, REQ_DATE_FORMAT) ;
+
     return <div className="OtherInfoForm">
         <table cellPadding={3} cellSpacing={3}>
             <thead>
@@ -91,8 +101,9 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             <tbody>
             <tr>
                 <td style={{textAlign:"left"}} colSpan={3}>
-                <RangePicker showTime  
-                format={'DD/MMM/YY HH:mm'}
+                <RangePicker showTime 
+                value={isEditMode ? [startDate, endDate] : undefined}
+                format={REQ_DATE_FORMAT}
                 onChange={(e)=>{
 
                     let attrbs = setAttribValue(AttributeType.StartDate, 

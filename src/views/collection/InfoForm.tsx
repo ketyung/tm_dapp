@@ -77,7 +77,7 @@ export const InfoForm : FC <Props> = ({
         </tr>
         <tr>
             <td valign="top" colSpan={2} style={{width:"100%"}}>
-            <OtherInfoForm collection={collection} setCollection={setCollection}/>
+            <OtherInfoForm collection={collection} setCollection={setCollection} isEditMode={isEditMode}/>
             </td>
         </tr>
        
