@@ -59,6 +59,8 @@ export enum AttributeType {
     Facebook = 'Facebook',
 
     Website = 'Website',
+
+    Status = 'Status',
 }
 
 

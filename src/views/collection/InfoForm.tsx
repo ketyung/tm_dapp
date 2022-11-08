@@ -3,6 +3,7 @@ import { CollectionFormProps } from "./Form";
 import { PriceTypesForm } from "./PriceTypesForm";
 import { OtherInfoForm } from "./OtherInfoForm";
 import { CategoriesSelect } from "./CategoriesSelect";
+import { StatusSelect } from "./StatusSelect";
 import { FormInput } from "../components/FormInput";
 import { FormTextArea } from "../components/FormTextArea";
 import { Form } from "antd";
@@ -65,8 +66,11 @@ export const InfoForm : FC <Props> = ({
             </td>
         </tr>
         <tr>
-            <td valign="top" colSpan={2} style={{width:"100%",textAlign:"left"}}>
+            <td valign="top" style={{width:"70%",textAlign:"left"}}>
                 <CategoriesSelect collection={collection} setCollection={setCollection}/>
+            </td>
+            <td valign="top" style={{width:"30%",textAlign:"left"}}>
+                <StatusSelect collection={collection} setCollection={setCollection}/>
             </td>
         </tr>
         <tr>
