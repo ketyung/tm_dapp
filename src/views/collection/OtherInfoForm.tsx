@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC , useState, useEffect} from "react";
 import { CollectionFormProps } from "./Form";
 import { Attribute, AttributeType, Collection } from "../../models";
 import { FormInput } from "../components/FormInput";
@@ -83,13 +83,26 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
     }
 
 
-    const startDate = moment(collection.attributes?.filter(a=>
-            a.name === AttributeType.StartDate
-        )[0]?.value, REQ_DATE_FORMAT) ;
+    const [dateRange, setDateRange] = useState<{startDate: moment.Moment, endDate : moment.Moment }>();
 
-    const endDate = moment(collection.attributes?.filter(a=>
-        a.name === AttributeType.EndDate
-    )[0]?.value, REQ_DATE_FORMAT) ;
+    useEffect (()=>{
+
+        if ( isEditMode) {
+
+            const startDate = moment(collection.attributes?.filter(a=>
+                a.name === AttributeType.StartDate
+            )[0]?.value, REQ_DATE_FORMAT) ;
+        
+            const endDate = moment(collection.attributes?.filter(a=>
+                a.name === AttributeType.EndDate
+            )[0]?.value, REQ_DATE_FORMAT) ;
+                
+            setDateRange({startDate : startDate, endDate : endDate});
+        }
+
+    },[collection,isEditMode]);
+
+
 
     return <div className="OtherInfoForm">
         <table cellPadding={3} cellSpacing={3}>
@@ -102,7 +115,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             <tr>
                 <td style={{textAlign:"left"}} colSpan={3}>
                 <RangePicker showTime 
-                value={isEditMode ? [startDate, endDate] : undefined}
+                value={isEditMode && dateRange ? [dateRange?.startDate, dateRange?.endDate] : undefined}
                 format={REQ_DATE_FORMAT}
                 onChange={(e)=>{
 
