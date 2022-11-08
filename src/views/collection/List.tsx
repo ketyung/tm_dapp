@@ -5,7 +5,14 @@ import { ListRow } from "./ListRow";
 import { GSpinner } from "../components/GSpinner";
 import './css/List.css';
 
-export const List : FC = () =>{
+export type ListProps = {
+
+    setCollectionForEdit? : ( collection : Collection) => void,
+}
+
+export const List : FC <ListProps> = ({
+    setCollectionForEdit
+}) =>{
 
     const {getCollectionsOf, loading} = useCollectionsContract();
 
@@ -50,7 +57,7 @@ export const List : FC = () =>{
         {
             collections?.map((c,i)=>{
 
-                return <ListRow key={"ListRow"+i} collection={c} index={i}/>;
+                return <ListRow key={"ListRow"+i} collection={c} index={i} setCollectionForEdit={setCollectionForEdit}/>;
             })
         }
         { loading && <tr><td colSpan={6} style={{width:"100%"}}><GSpinner text="Loading..."/></td></tr>}

@@ -2,20 +2,19 @@ import { Collection, Page } from "../../models";
 import { Button, Image, Menu, Dropdown} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
+import { ListProps } from "./List";
 import * as shortener from '../../utils/shortener';
 import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { FC } from "react";
 
-type Props = {
+type Props = ListProps & {
 
     collection : Collection,
-
     index? : number,
-
-}
+};
 
 export const ListRow : FC <Props> = ({
-    collection, index,
+    collection, index,setCollectionForEdit
 }) =>{
 
     const {setPage} = usePage();
@@ -27,6 +26,9 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={()=>{
     
+                if ( setCollectionForEdit)
+                    setCollectionForEdit(collection);
+                    
             }}><EditOutlined style={{marginRight:"10px"}}/>Edit</div>,
             key: '0',
         },

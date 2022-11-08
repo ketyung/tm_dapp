@@ -15,16 +15,20 @@ export type CollectionFormProps = {
     collection : Collection
 
     setCollection? : (collection: Collection)=> void,
+
+    isEditMode? : boolean, 
 }
 
 
 type Props = {
 
     title? : string, 
+
+    isEditMode? : boolean, 
 }
 
 export const Form : FC <Props> = ({
-    title
+    title,isEditMode
 }) =>{
 
     const [collection, setCollection] = useState<Collection>({
@@ -72,11 +76,11 @@ export const Form : FC <Props> = ({
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>{title ?? "Create Your Ticket Collection"} </h3></div>
         <div className="formCol" style={{width:"55%"}}>
             <InfoForm setCollection={setCollection} collection={collection} 
-            setSelectedRowForPreview={setSelectedRow}/>
+            setSelectedRowForPreview={setSelectedRow} isEditMode={isEditMode}/>
         </div>   
         <div className="formCol" style={{width:"40%"}}>
             <LogoAndTmplForm collection={collection} setCollection={setCollection}
-            selectedRow={selectedRow}/>
+            selectedRow={selectedRow} isEditMode={isEditMode}/>
         </div>  
         <div style={{textAlign:"center"}}>
         <Button shape="round" onClick={async (e)=>{

@@ -9,7 +9,7 @@ type Props = CollectionFormProps & {selectedRow? : number};
 
 
 export const LogoAndTmplForm : FC <Props> = ({
-    collection, setCollection, selectedRow
+    collection, setCollection, selectedRow, isEditMode
 }) =>{
 
    
@@ -22,7 +22,7 @@ export const LogoAndTmplForm : FC <Props> = ({
 
     return <>
     <LogoMediaView setImageDataCallback={setImageDataCallback} imageData={collection?.icon} />
-    <TemplateView collection={collection} index={selectedRow} setCollection={setCollection}/>
-    <SalesTemplateSelect collection={collection} setCollection={setCollection}/>
+    <TemplateView collection={collection} index={selectedRow} setCollection={setCollection} isEditMode={isEditMode}/>
+    <SalesTemplateSelect collection={collection} setCollection={setCollection}  isEditMode={isEditMode}/>
     </>
 }

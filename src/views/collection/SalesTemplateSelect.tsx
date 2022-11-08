@@ -8,7 +8,7 @@ import { SALE_PAGE_TEMPLATES } from "../../models";
 const { Option } = Select;
 
 export const SalesTemplateSelect : FC <CollectionFormProps> = ({
-    collection, setCollection
+    collection, setCollection, isEditMode
 }) =>{
 
     const templates = SALE_PAGE_TEMPLATES;
