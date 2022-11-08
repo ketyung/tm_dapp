@@ -89,14 +89,17 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
 
         if ( isEditMode) {
 
-            const startDate = moment(collection.attributes?.filter(a=>
+            let startDate = moment(collection.attributes?.filter(a=>
                 a.name === AttributeType.StartDate
             )[0]?.value, REQ_DATE_FORMAT) ;
-        
-            const endDate = moment(collection.attributes?.filter(a=>
+               
+            let endDate = moment(collection.attributes?.filter(a=>
                 a.name === AttributeType.EndDate
             )[0]?.value, REQ_DATE_FORMAT) ;
-                
+            
+
+            console.log("endDate", endDate);
+            
             setDateRange({startDate : startDate, endDate : endDate});
         }
 
@@ -115,7 +118,9 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             <tr>
                 <td style={{textAlign:"left"}} colSpan={3}>
                 <RangePicker showTime 
-                value={isEditMode && dateRange ? [dateRange?.startDate, dateRange?.endDate] : undefined}
+                value={isEditMode && dateRange ? 
+                    [dateRange.startDate.isValid() ? dateRange.startDate : null, 
+                    dateRange.endDate.isValid() ? dateRange.endDate : null] : undefined}
                 format={REQ_DATE_FORMAT}
                 onChange={(e)=>{
 
