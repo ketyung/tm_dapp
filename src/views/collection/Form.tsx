@@ -72,6 +72,15 @@ export const Form : FC <Props> = ({
         })
     }
 
+    const saveCollection = async () =>{
+        if ( isEditMode){
+
+        }
+        else {
+            await createCollection();
+        }
+    }
+
     const [selectedRow, setSelectedRow] = useState<number>();
 
     useEffect(()=>{
@@ -93,10 +102,10 @@ export const Form : FC <Props> = ({
         <div style={{textAlign:"center"}}>
         <Button shape="round" onClick={async (e)=>{
             e.preventDefault();
-            await createCollection();
+            await saveCollection();
         }} style={{background:"#384",color:"white",
         minWidth:"260px",marginTop:"10px",fontWeight:600}}>
-        {processing ? <Spin size="small"/> : <>Create</>}    
+        {processing ? <Spin size="small"/> : <>{isEditMode ? "Update" : "Create"}</>}    
         </Button>
         <div style={{marginTop:"10px",background:message?.type===MessageType.Error ? "#d00" : "#56a",
         borderRadius:"20px",padding:"10px",color:"white",visibility:message ? "visible":"hidden", 
