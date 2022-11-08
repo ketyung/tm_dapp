@@ -10,7 +10,7 @@ import './css/OtherInfoForm.css';
 
 const { RangePicker } = DatePicker;
 
-const REQ_DATE_FORMAT = "DD/MMM/YY HH:mm";
+const REQ_DATE_FORMAT = "DD/MMM/YY HH:mm ZZ";
 
 
 export const setAttributeValue =(collection : Collection, attrbType : AttributeType, value : string) : Attribute[] => {
