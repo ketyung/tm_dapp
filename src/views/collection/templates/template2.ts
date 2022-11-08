@@ -95,7 +95,24 @@ export const createImageDataUrl = async (
             ctx.fillText(ticketInfo.ticketNo, txtXStart + 20, 154 );
       
         }
+
+        ctx.strokeStyle = "#700";
+               
+        roundRect2(ctx, txtXStart + 30, 280, 60, 25, 12) ;
+        ctx.fillStyle = "#700";
+        ctx.fill();
+    
+        roundRect2(ctx, txtXStart + 110, 280, 60, 25, 12) ;
+        ctx.fillStyle = "#700";
+        ctx.fill();
        
+        ctx.strokeStyle = "#960";
+               
+        roundRect2(ctx, txtXStart + 70, 300, 60, 25, 12) ;
+        ctx.fillStyle = "#960";
+        ctx.fill();
+    
+        
         let imgData = canvas.toDataURL('image/png');
 
         return imgData;

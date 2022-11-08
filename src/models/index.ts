@@ -211,4 +211,4 @@ export interface SalesPageTemplate{
 } 
 
 
-export const SALE_PAGE_TEMPLATES : SalesPageTemplate[] = [{id :1 , name : "Default"}];
+export const SALE_PAGE_TEMPLATES : SalesPageTemplate[] = [{id :1 , name : "Oceanic"}];

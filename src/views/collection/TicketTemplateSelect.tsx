@@ -27,13 +27,11 @@ export const TicketTemplateSelect : FC <Props> = ({
     },[obtainImageDataUri])
 
     return <div style={{cursor:"pointer"}} onClick={()=>{
-
         if ( collection && setCollection){
             setCollection({...collection, ticket_template_type : {
                 value :`${template}` , template_type : TicketTemplateType.Fixed
             }});
         }
-       
     }}>
      <img src={imageDataUri} style={{width:"200px",height:"120px"}}/> 
      <div style={{marginLeft:"10px"}}>{name}{parseInt(collection.ticket_template_type?.value ?? "1") === 
