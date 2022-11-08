@@ -8,10 +8,14 @@ import './css/List.css';
 export type ListProps = {
 
     setCollectionForEdit? : ( collection : Collection) => void,
+
+    toReloadList?: boolean,
+
+    setToReloadList? : (reload: boolean) => void,
 }
 
 export const List : FC <ListProps> = ({
-    setCollectionForEdit
+    setCollectionForEdit, toReloadList, setToReloadList
 }) =>{
 
     const {getCollectionsOf, loading} = useCollectionsContract();
@@ -28,6 +32,14 @@ export const List : FC <ListProps> = ({
     useEffect(()=>{
         loadCollections();
     },[]);
+
+    useEffect(()=>{
+        if ( toReloadList){
+            loadCollections();
+            if ( setToReloadList)
+                setToReloadList(false);
+        }
+    },[toReloadList]);
 
     return <div className="CollectionListDiv">
         <table className="CollectionList" cellPadding={3} cellSpacing={3}>

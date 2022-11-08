@@ -13,6 +13,8 @@ export const View : FC = () =>{
 
     const [collectionForEdit, setCollectionForEdit] = useState<Collection>();
 
+    const [toReloadList, setToReloadList] = useState(false);
+
     const openCollectionForEdit = (collection : Collection) => {
 
         setIsEditMode(true);
@@ -22,8 +24,10 @@ export const View : FC = () =>{
 
     const closeModal = () =>{
         setModalVisible(false); 
-        if(isEditMode) 
+        if(isEditMode) {
             setIsEditMode(false);
+            setToReloadList(true);
+        }
         setCollectionForEdit(undefined);
     }
 
@@ -50,7 +54,8 @@ export const View : FC = () =>{
         </Button>
         </div>
         <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Ticket Collections</h3>
-        <List setCollectionForEdit={openCollectionForEdit}/>
+        <List setCollectionForEdit={openCollectionForEdit} toReloadList={toReloadList}
+        setToReloadList={setToReloadList}/>
         {modal}
     </div>
 }

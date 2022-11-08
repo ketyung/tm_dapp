@@ -87,7 +87,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
 
     useEffect (()=>{
 
-        if ( isEditMode) {
+        if ( isEditMode ) {
 
             let startDate = moment(collection.attributes?.filter(a=>
                 a.name === AttributeType.StartDate
@@ -98,12 +98,12 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             )[0]?.value, REQ_DATE_FORMAT) ;
             
 
-            console.log("endDate", endDate);
+            console.log("endDate", endDate, new Date());
             
             setDateRange({startDate : startDate, endDate : endDate});
         }
 
-    },[]);
+    },[collection,isEditMode]);
 
 
 
