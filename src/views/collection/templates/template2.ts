@@ -112,7 +112,10 @@ export const createImageDataUrl = async (
         ctx.fillStyle = "#960";
         ctx.fill();
     
-        
+        roundRect2(ctx, txtXStart + 150, 300, 60, 25, 12) ;
+        ctx.fillStyle = "#960";
+        ctx.fill();
+    
         let imgData = canvas.toDataURL('image/png');
 
         return imgData;
