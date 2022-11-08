@@ -7,6 +7,7 @@ import { UsersContractState } from "../utils/sm/UsersContractReducer";
 import useWalletState from "./useWalletState";
 import { Collection, User, CollectionId, TicketType, AttributeType } from "../models";
 import useCollectionsContract from "./useCollectionsContract";
+import { fromOnchainTicketPrice } from "../utils";
 import { genTemplateImageDataUri } from "../views/collection/templates/util";
 import { uploadImageToArweave } from "../arweave";
 
@@ -16,7 +17,7 @@ export default function useUsersContractState() {
 
     const [loading, setLoading] = useState(false);
 
-    const {wallet}  = useWalletState();
+    const {wallet,accountBalance}  = useWalletState();
     
     const usersContractState : UsersContractState =  useSelector(
         (_state: any) => {return _state.usersContractReducer;}, shallowEqual
@@ -149,6 +150,9 @@ export default function useUsersContractState() {
 
     const {getNextTicketNumber} = useCollectionsContract();
 
+
+   
+
     const ticketMint = async ( collection : Collection, 
         ticketType : TicketType , 
         setTicketImageCallback? : (imgDataUri?: string) => void, 
@@ -165,6 +169,19 @@ export default function useUsersContractState() {
             let aa = collection.attributes?.filter(a=>{
                 return a.name === AttributeType.MaxTicketPerWallet
             });
+
+            let ticketPrc = parseFloat(fromOnchainTicketPrice(ticketType?.price ?? 0));
+           
+            let bal = await accountBalance();
+
+            if ( bal < ticketPrc){
+                if (completion) {
+                    setLoading(false);
+                    completion(new Error(
+                        `Your account balance ${bal.toFixed(2)} is less than the ticket price ${ticketPrc.toFixed(2)}`));
+                    return;
+                }
+            }
 
             if ( aa && (aa?.length ?? 0) > 0) {
 
