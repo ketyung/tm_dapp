@@ -114,8 +114,8 @@ export const toOnchainTicketPrice = ( price : number ) : number =>{
 	return Math.round(price * 1000);
 }
 
-export const fromOnchainTicketPrice = ( onChainTicketPrice : number) : string => {
-	return (onChainTicketPrice / 1000).toFixed(2);
+export const fromOnchainTicketPrice = ( onChainTicketPrice : number, decimals : number = 2) : string => {
+	return (onChainTicketPrice / 1000).toFixed(decimals);
 }
 
 
@@ -169,3 +169,8 @@ export const useQuery = () =>{
 
 	return new URLSearchParams(window.location.search);
 }
+
+
+export const deepCopy = <T extends object>(source: T) : T =>{
+	return JSON.parse(JSON.stringify(source));
+} 

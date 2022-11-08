@@ -2,7 +2,7 @@ import { Wallet } from "./Wallet";
 import { TicketType, User } from "../models";
 import { NEAR_TOKEN_DECIMALS } from "./const";
 import { Collection, CollectionId } from "../models";
-import { collectionIdToB64 } from "../utils";
+import { collectionIdToB64, deepCopy } from "../utils";
 import { LocalStorage } from "../utils/local-storage";
 import { fromOnchainTicketPrice, toOnchainTicketPrice } from "../utils";
 
@@ -141,6 +141,8 @@ export class UsersContract {
 
         try {
 
+            let _collection = deepCopy(collection) as Collection;
+
             if ( this.wallet === undefined) {
                 if ( completion ){
                     completion(new Error("Wallet is undefined!!"));
@@ -148,9 +150,9 @@ export class UsersContract {
                 }
             }
 
-            collection.owner = this.wallet?.accountId;
+            _collection.owner = this.wallet?.accountId;
 
-            this.toOnchainPriceTypes(collection);
+            this.toOnchainPriceTypes(_collection);
 
             let initBal = initBalanceInNear * 1000;
 
@@ -162,7 +164,7 @@ export class UsersContract {
                 method: 'create_collection_and_deploy',
                 gas : "300000000000000", // max limit 
                 deposit : deposit,
-                args: { collection : collection, init_balance : initBal },
+                args: { collection : _collection, init_balance : initBal },
             });
             if ( completion ) {
                 completion(res);
@@ -177,7 +179,7 @@ export class UsersContract {
 
 
     async updateCollection ( 
-        collection : Collection,
+        _collection : Collection,
         completion? : (res : string|Error) => void ) {
 
         try {
@@ -188,6 +190,8 @@ export class UsersContract {
                     return;
                 }
             }
+
+            let collection = deepCopy(_collection) as Collection;
 
             collection.owner = this.wallet?.accountId;
 

@@ -1,9 +1,10 @@
 import { DEFAULT_COLOR_CODE } from "./PriceTypesForm";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { TicketType } from "../../models";
 import { FormInput } from "../components/FormInput";
 import { EyeOutlined } from "@ant-design/icons";
 import { PriceTypeColorPicker } from "./PriceTypeColorPicker";
+import { fromOnchainTicketPrice } from "../../utils";
 import { CollectionFormProps } from "./Form";
 
 
@@ -13,6 +14,20 @@ setSelectedRowForPreview? : (index? : number) => void };
 export const PriceTypeRow : FC <Props> = ({
     index, collection, setCollection, ticketType, setSelectedRowForPreview, isEditMode
 }) =>{
+
+
+    useEffect(()=>{
+
+        if ( isEditMode ){
+
+            if ( setCollection && collection && collection.ticket_types && index!== undefined) {
+                let tts = collection.ticket_types;
+                tts[index].price = parseFloat(fromOnchainTicketPrice(tts[index].price));
+                setCollection({...collection, ticket_types: tts });
+            }
+        }
+    },[]);
+
 
     return <tr key={"ptype"+index}>
     <td style={{width:"2%"}}>{(index ?? 0)+1}</td>
@@ -32,7 +47,7 @@ export const PriceTypeRow : FC <Props> = ({
     paddingLeft:"12px"}}>
         <FormInput style={{maxWidth:"80px"}} 
         formItemStyle={{display:"inline"}}
-        isNumber={true} value={ isEditMode ? ((ticketType?.price ?? 0)/1000).toFixed(2) : ticketType?.price} onChange={(e)=>{
+        isNumber={true} value={  ticketType?.price } onChange={(e)=>{
             if ( setCollection && collection && collection.ticket_types && index!==undefined) {
                 let tts = collection.ticket_types;
                 let price = e;

@@ -103,7 +103,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             setDateRange({startDate : startDate, endDate : endDate});
         }
 
-    },[collection,isEditMode]);
+    },[]);
 
 
 
