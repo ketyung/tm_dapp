@@ -2,7 +2,7 @@ import { Collection } from "../../models";
 import { InfoForm } from "./InfoForm";
 import { LogoAndTmplForm } from "./LogoAndTmplForm";
 import { BulbOutlined } from "@ant-design/icons";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { Message, MessageType } from "../../models";
 import useUsersContractState from "../../hooks/useUsersContractState";
 import { Button, Spin } from "antd";
@@ -25,10 +25,12 @@ type Props = {
     title? : string, 
 
     isEditMode? : boolean, 
+
+    collectionForEdit? : Collection,
 }
 
 export const Form : FC <Props> = ({
-    title,isEditMode
+    title,isEditMode, collectionForEdit 
 }) =>{
 
     const [collection, setCollection] = useState<Collection>({
@@ -71,6 +73,12 @@ export const Form : FC <Props> = ({
     }
 
     const [selectedRow, setSelectedRow] = useState<number>();
+
+    useEffect(()=>{
+        
+       if (collectionForEdit)
+            setCollection(collectionForEdit); 
+    },[collectionForEdit]);
 
     return <div className="CollectionForm">
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>{title ?? "Create Your Ticket Collection"} </h3></div>

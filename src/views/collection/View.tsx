@@ -20,14 +20,21 @@ export const View : FC = () =>{
         setModalVisible(true);
     }
 
+    const closeModal = () =>{
+        setModalVisible(false); 
+        if(isEditMode) 
+            setIsEditMode(false);
+        setCollectionForEdit(undefined);
+    }
+
     const modal = <Modal closeIcon={<CloseCircleOutlined className="CloseButton" />}
     className="FormModal" closable={true} 
-    onCancel={() => {setModalVisible(false); if(isEditMode) setIsEditMode(false);}}
+    onCancel={() => {closeModal();}}
     destroyOnClose={true}
     footer={null}
     maskClosable={false}
     open={modalVisible}>
-    <Form isEditMode={isEditMode} 
+    <Form isEditMode={isEditMode} collectionForEdit={collectionForEdit}
     title={isEditMode ? `Edit Collection "${collectionForEdit?.title}"` : undefined}/>
     </Modal>
 
