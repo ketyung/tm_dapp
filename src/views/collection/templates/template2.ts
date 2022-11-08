@@ -106,6 +106,10 @@ export const createImageDataUrl = async (
         ctx.fillStyle = "#700";
         ctx.fill();
        
+        roundRect2(ctx, txtXStart + 190, 280, 60, 25, 12) ;
+        ctx.fillStyle = "#700";
+        ctx.fill();
+       
         ctx.strokeStyle = "#960";
                
         roundRect2(ctx, txtXStart + 70, 300, 60, 25, 12) ;
@@ -113,6 +117,10 @@ export const createImageDataUrl = async (
         ctx.fill();
     
         roundRect2(ctx, txtXStart + 150, 300, 60, 25, 12) ;
+        ctx.fillStyle = "#960";
+        ctx.fill();
+    
+        roundRect2(ctx, txtXStart + 230, 300, 60, 25, 12) ;
         ctx.fillStyle = "#960";
         ctx.fill();
     
