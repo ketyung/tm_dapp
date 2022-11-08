@@ -10,7 +10,7 @@ type Props = CollectionFormProps & {
     setSelectedRowForPreview? : (index? : number) => void };
     
 export const PriceTypesForm : FC <Props> = ({
-    collection,setCollection, setSelectedRowForPreview
+    collection,setCollection, setSelectedRowForPreview, isEditMode
 }) =>{
 
     useEffect(()=>{
@@ -83,7 +83,7 @@ export const PriceTypesForm : FC <Props> = ({
             collection?.ticket_types?.map((t,i) =>{
                 return <PriceTypeRow collection={collection} key={"prcRow"+i}
                 setCollection={setCollection} index={i} ticketType={t} 
-                setSelectedRowForPreview={setSelectedRowForPreview}/>
+                setSelectedRowForPreview={setSelectedRowForPreview} isEditMode={isEditMode}/>
             })
         }
         </tbody>

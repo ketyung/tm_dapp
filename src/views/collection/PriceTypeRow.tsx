@@ -11,7 +11,7 @@ type Props = CollectionFormProps & {index ? : number, ticketType? : TicketType,
 setSelectedRowForPreview? : (index? : number) => void };
 
 export const PriceTypeRow : FC <Props> = ({
-    index, collection, setCollection, ticketType, setSelectedRowForPreview
+    index, collection, setCollection, ticketType, setSelectedRowForPreview, isEditMode
 }) =>{
 
     return <tr key={"ptype"+index}>
@@ -32,7 +32,7 @@ export const PriceTypeRow : FC <Props> = ({
     paddingLeft:"12px"}}>
         <FormInput style={{maxWidth:"80px"}} 
         formItemStyle={{display:"inline"}}
-        isNumber={true} value={ticketType?.price} onChange={(e)=>{
+        isNumber={true} value={ isEditMode ? ((ticketType?.price ?? 0)/1000).toFixed(2) : ticketType?.price} onChange={(e)=>{
             if ( setCollection && collection && collection.ticket_types && index!==undefined) {
                 let tts = collection.ticket_types;
                 let price = e;

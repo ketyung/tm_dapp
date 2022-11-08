@@ -13,7 +13,7 @@ type Props = CollectionFormProps & {
 
 
 export const InfoForm : FC <Props> = ({
-    collection, setCollection, setSelectedRowForPreview
+    collection, setCollection, setSelectedRowForPreview,isEditMode
 }) =>{
 
     const formItemLayout = {
@@ -72,7 +72,7 @@ export const InfoForm : FC <Props> = ({
         <tr>
             <td valign="top" colSpan={2} style={{width:"100%"}}>
             <PriceTypesForm collection={collection} setCollection={setCollection}
-            setSelectedRowForPreview={setSelectedRowForPreview}/>
+            setSelectedRowForPreview={setSelectedRowForPreview} isEditMode={isEditMode}/>
             </td>
         </tr>
         <tr>
