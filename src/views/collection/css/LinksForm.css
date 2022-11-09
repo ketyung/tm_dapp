@@ -1,0 +1,10 @@
+.LinksForm {
+    max-width: 100%;
+    max-height:150px;
+    overflow-y: scroll;
+    border-radius: 20px;
+    border: 1px solid #ccd;
+    padding:10px;
+    margin-top: 10px;
+    text-align: left;
+}
