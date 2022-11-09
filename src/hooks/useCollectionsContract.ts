@@ -42,7 +42,7 @@ export default function useCollectionsContract() {
 
         if (a) {
 
-            return a.value === "ReadyForSale";
+            return a.value === "R";
         }
         // default is true if the attribute is NOT defined
         return true; 
