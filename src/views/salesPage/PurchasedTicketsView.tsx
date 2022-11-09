@@ -48,8 +48,7 @@ export const PurchasedTicketsView : FC <Props> = ({
     }} 
     onOpenChange={handleOpenChange}>
   
-    <Button shape="round" 
-    style={{background:"#239",color:"white",marginRight:"10px",minWidth:"280px"}}>
+    <Button className="PurchasedButton">
     <ShopOutlined style={{marginRight:"6px"}}/>
     Your Purchased Tickets {tickets.length > 0 && 
     <span className="TicketCount">{tickets?.length}</span>}</Button>

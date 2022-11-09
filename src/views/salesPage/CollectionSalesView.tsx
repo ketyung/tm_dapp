@@ -1,6 +1,7 @@
 import { Collection, ShortCorrectionInfo } from "../../models";
 import { FC, useEffect, useState, useCallback } from "react";
 import { Template1 } from "./templates/Template1";
+import { Template2 } from "./templates/Template2";
 import { GSpinner } from "../components/GSpinner";
 import * as shortener from "../../utils/shortener";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
@@ -79,7 +80,7 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             switch(+(shortCollectionInfo.templateId ?? 0)) {
 
                 case 1 :
-                    return <Template1 shortCollectionInfo={shortCollectionInfo}
+                    return <Template2 shortCollectionInfo={shortCollectionInfo}
                     collection={collection} hasSignedIn={hasSignedIn}/>
 
                 default :
