@@ -27,7 +27,7 @@ export const InfoForm : FC <Props> = ({
     return  <Form {...formItemLayout}><table cellPadding={1} cellSpacing={1}>
     <tbody>
         <tr>
-            <td valign="top" style={{width:"70%"}}>
+            <td valign="top" style={{width:"65%"}}>
             <FormInput label="Event/Title" style={{minWidth:"180px"}} 
             value={collection?.title} required={true} readOnly={isEditMode}
             onChange={(e)=>{
@@ -41,12 +41,12 @@ export const InfoForm : FC <Props> = ({
                 }
             }}/>
             </td>
-            <td valign="top" style={{width:"30%"}}>
+            <td valign="top" style={{width:"35%"}}>
             <FormInput label="Symbol" style={{maxWidth:"100px"}} readOnly={true} value={collection?.symbol ?? ""}/>
             </td>
         </tr>
         <tr>
-            <td valign="top" style={{width:"70%",textAlign:"left"}}>
+            <td valign="top" style={{width:"65%",textAlign:"left"}}>
             <FormTextArea style={{width:"320px",marginTop:"10px"}} rows={3} 
             minRows={2} maxRows={5}
             label="Description" 
@@ -55,7 +55,7 @@ export const InfoForm : FC <Props> = ({
                     setCollection({...collection, description : e.currentTarget.value})
             }}/>
             </td>
-            <td valign="top" style={{width:"30%", textAlign:"left"}}>
+            <td valign="top" style={{width:"35%", textAlign:"left"}}>
             <FormInput style={{width:"80px",marginTop:"10px"}} required={true}
             step={1000} isNumber={true} label={<>Total number<br/>of tickets</>} placeholder="1000" 
             min={1} max={50000} value={collection.total_tickets} onChange={(e)=>{
@@ -66,10 +66,10 @@ export const InfoForm : FC <Props> = ({
             </td>
         </tr>
         <tr>
-            <td valign="top" style={{width:"70%",textAlign:"left"}}>
+            <td valign="top" style={{width:"65%",textAlign:"left"}}>
                 <CategoriesSelect collection={collection} setCollection={setCollection}/>
             </td>
-            <td valign="top" style={{width:"30%",textAlign:"left"}}>
+            <td valign="top" style={{width:"35%",textAlign:"left"}}>
                 <StatusSelect collection={collection} setCollection={setCollection}/>
             </td>
         </tr>
