@@ -37,7 +37,7 @@ export const SalesTemplateSelect : FC <CollectionFormProps> = ({
     onClick={async ()=>{
         let templId = collection.attributes?.filter( (a)=> {
             return a.name === AttributeType.SalesPageTemplate;
-        })[0]?.value; 
+        })[0]?.value ?? "1"; 
         
         let cid = await shortCollectionUri(collection);
         let preview = `/collectionPreview/${cid}/${templId}`;
