@@ -48,6 +48,14 @@
     border: 0px;
 }
 
+.TopMenu .PurchasedButton:active {
+    background:#335;
+}
+
+.TopMenu .PurchasedButton:hover {
+    background:#335;
+}
+
 .Template2 .ConnectButton {
 
     background:#333;
@@ -144,6 +152,11 @@
     color:wheat;
     height:43px;
     border-radius: 30px;
+}
+
+
+.TicketTypes .row:hover {
+    background-color: #002;
 }
 
 .TicketTypes .row div {

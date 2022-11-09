@@ -21,16 +21,17 @@ export const TicketTypesView : FC <Props> = ({
         {
 
             collection?.ticket_types?.map((t,i) => {
-                return <div className="row" key={"tp"+i}>
-                    <div>{t.ticket_type}</div>
-                    <div>{fromOnchainTicketPrice(t.price)} NEAR</div>
-                    {(selectedTicketType?.ticket_type ?? "Standard" ) === t.ticket_type ?
-                    <CheckCircleFilled style={{cursor:"pointer"}}/> : 
-                    <CheckCircleOutlined style={{cursor:"pointer"}}
+                return <div className="row" key={"tp"+i} 
+                    style={{cursor:"pointer"}}
                     onClick={()=>{
                         if ( setSelectedTicketType)
                             setSelectedTicketType(t);
-                    }}/>}
+                    }}>
+                    <div>{t.ticket_type}</div>
+                    <div>{fromOnchainTicketPrice(t.price)} NEAR</div>
+                    {(selectedTicketType?.ticket_type ?? "Standard" ) === t.ticket_type ?
+                    <CheckCircleFilled/> : 
+                    <CheckCircleOutlined/>}
                 </div>
             })
         }

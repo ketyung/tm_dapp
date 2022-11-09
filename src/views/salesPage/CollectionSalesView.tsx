@@ -80,9 +80,12 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
             switch(+(shortCollectionInfo.templateId ?? 0)) {
 
                 case 1 :
+                    return <Template1 shortCollectionInfo={shortCollectionInfo}
+                    collection={collection} hasSignedIn={hasSignedIn}/>
+                case 2 :
                     return <Template2 shortCollectionInfo={shortCollectionInfo}
                     collection={collection} hasSignedIn={hasSignedIn}/>
-
+                    
                 default :
 
                     return <GSpinner text="Loading..." style={{margin:"auto",marginTop:"100px"}}/>
