@@ -36,7 +36,6 @@ export const SalesTemplateSelect : FC <CollectionFormProps> = ({
     style={{marginLeft:"10px",cursor:"pointer"}}
     onClick={async ()=>{
         let templId = collection.attributes?.filter( (a)=> {
-
             return a.name === AttributeType.SalesPageTemplate;
         })[0]?.value; 
         
