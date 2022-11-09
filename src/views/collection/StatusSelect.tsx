@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CollectionFormProps } from "./Form";
-import { Select, Form } from "antd";
+import { Select, Form, Tooltip } from "antd";
 import { QuestionCircleTwoTone} from "@ant-design/icons";
 import { AttributeType } from "../../models";
 import { setCollectionAttribute } from "./OtherInfoForm";
@@ -34,5 +34,7 @@ export const StatusSelect : FC <CollectionFormProps> = ({
             })
         }
 
-    </Select><QuestionCircleTwoTone style={{marginLeft:"6px",cursor:"pointer"}}/></Form.Item>
+    </Select><Tooltip color={"#359"} 
+    title={"Status must be set to 'Ready For Sale' in order for puchasers to purchase your tickets"}>
+    <QuestionCircleTwoTone style={{marginLeft:"6px",cursor:"pointer"}}/></Tooltip></Form.Item>
 }
