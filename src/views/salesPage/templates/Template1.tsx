@@ -84,7 +84,7 @@ export const Template1 : FC <Props> = ({
             <title>Mint your ticket for {shortCollectionInfo?.collectionId?.title}</title>       
         </Helmet>
         <Helmet bodyAttributes={{style: 'background-image:linear-gradient(to right, #001 , #35a)'}}/>
-        <TopMenu collection={collection}/>
+        <TopMenu collection={collection} className="TopMenu1"/>
         <div className="Template1">
         <h3>Buy your ticket for</h3>
         <h2>{shortCollectionInfo?.collectionId?.title}</h2>
