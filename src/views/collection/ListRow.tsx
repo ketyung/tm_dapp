@@ -3,7 +3,6 @@ import { Button, Image, Menu, Dropdown} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
 import { ListProps } from "./List";
-import * as shortener from '../../utils/shortener';
 import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { FC } from "react";
 
@@ -19,7 +18,7 @@ export const ListRow : FC <Props> = ({
 
     const {setPage} = usePage();
 
-    const {toB64OfShortCollectionInfo} = useCollectionsContract();
+    const {shortCollectionUri} = useCollectionsContract();
 
     const menu = (<Menu
         items={[
@@ -44,9 +43,8 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={async ()=>{
 
-                let cid = toB64OfShortCollectionInfo(collection);
-                let s = await shortener.shorten(cid);
-                window.open("/c/"+ encodeURI(s),"_blank");
+                let s = await shortCollectionUri(collection);
+                window.open("/collection/"+ encodeURI(s),"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',

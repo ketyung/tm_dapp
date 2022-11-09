@@ -8,7 +8,9 @@ export const Routes : FC = () =>{
    
     const [matchHome] = useRoute("/");
     
-    const [matchSalesPage] = useRoute("/c/:id");
+    const [matchSalesPage] = useRoute("/collection/:id");
+
+    const [matchSalesPagePreview] = useRoute("/collectionPreview/:id/:templateId");
 
     const pageTitle = () => {
 
@@ -17,6 +19,9 @@ export const Routes : FC = () =>{
         }
         else if (matchSalesPage){
             return "Mint Ticket...";
+        }
+        else if (matchSalesPagePreview){
+            return "Preview for ";
         }
         else {
 
@@ -35,9 +40,13 @@ export const Routes : FC = () =>{
         <Route path="/">
         <HomeView/>
         </Route>
-        <Route path="/c/:id">
+        <Route path="/collection/:id">
         {(params) => 
             <CollectionSalesView id={params.id}/>}
+        </Route>
+        <Route path="/collectionPreview/:id/:templateId">
+        {(params) => 
+            <CollectionSalesView id={params.id} previewTemplateId={params.templateId}/>}
         </Route>
     </Router>
 }

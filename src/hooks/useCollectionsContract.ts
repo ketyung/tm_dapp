@@ -5,6 +5,7 @@ import { CollectionsContract } from "../near/CollectionsContract";
 import { COLLECTIONS_CONTRACT_ID } from "../near/const";
 import { collectionIdToB64 as colIdToB64, b64ToCollectionId as b64ToColId } from "../utils";
 import { toB64OfShortInfo, b64ToShortInfo } from "../utils";
+import * as shortener from '../utils/shortener';
 
 export default function useCollectionsContract() {
 
@@ -86,7 +87,14 @@ export default function useCollectionsContract() {
         return toB64OfShortInfo(collection);
     }
 
+
+    const shortCollectionUri = async (collection? : Collection)  => {
+        let cid = toB64OfShortCollectionInfo(collection);
+        let s = await shortener.shorten(cid);
+        return s ; 
+    }
+
     return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
     toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber,
-    isCollectionReadyForSale} as const;
+    isCollectionReadyForSale, shortCollectionUri} as const;
 }

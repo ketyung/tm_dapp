@@ -10,9 +10,11 @@ import useWalletState from "../../hooks/useWalletState";
 
 type Props = {
     id?: string, 
+
+    previewTemplateId? : string,
 }
 
-export const CollectionSalesView : FC <Props> = ({id}) =>{
+export const CollectionSalesView : FC <Props> = ({id, previewTemplateId}) =>{
 
     const {isSignedIn, dateUpdated} = useWalletState();
 
@@ -72,12 +74,14 @@ export const CollectionSalesView : FC <Props> = ({id}) =>{
         })
     },[]);
 
-
+   
     const switchView = () =>{
+        
+        if (shortCollectionInfo) {    
 
-        if (shortCollectionInfo) {
-
-            switch(+(shortCollectionInfo.templateId ?? 0)) {
+            let templateId = previewTemplateId ?? (shortCollectionInfo?.templateId ?? 0);
+   
+            switch(+templateId) {
 
                 case 1 :
                     return <Template1 shortCollectionInfo={shortCollectionInfo}
