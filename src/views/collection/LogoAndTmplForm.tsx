@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { LogoMediaView } from "./LogoMediaView";
 import { TemplateView } from "./TemplateView";
-import { LinksForm } from "./LinksForm";
 import { SalesTemplateSelect } from "./SalesTemplateSelect";
 import { CollectionFormProps } from "./Form";
 
@@ -26,6 +25,5 @@ export const LogoAndTmplForm : FC <Props> = ({
     <LogoMediaView setImageDataCallback={setImageDataCallback} imageData={collection?.icon} />
     <TemplateView collection={collection} index={selectedRow} setCollection={setCollection} isEditMode={isEditMode}/>
     <SalesTemplateSelect collection={collection} setCollection={setCollection}  isEditMode={isEditMode}/>
-    <LinksForm collection={collection} setCollection={setCollection}/>
     </>
 }

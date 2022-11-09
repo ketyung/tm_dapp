@@ -11,24 +11,24 @@ export const LinksForm : FC <CollectionFormProps> = ({
 }) =>{
     return <div className="LinksForm">
         <div>Links</div>
-        <div><TwitterOutlined style={{marginRight:"6px"}}/>
-        <FormInput style={{maxWidth:"200px"}} formItemStyle={{display:"inline"}} onChange={(e)=>{
+        <div className="row"><FormInput style={{maxWidth:"500px"}} 
+        label={<TwitterOutlined style={{marginRight:"6px"}}/>}
+        formItemStyle={{display:"inline"}} onChange={(e)=>{
 
             setCollectionAttribute(AttributeType.Twitter, e.target.value, collection,
                 setCollection);
         }} value={collection?.attributes?.filter(a => 
         {return a.name === AttributeType.Twitter})[0]?.value}/>
         </div>
-        <div><FacebookOutlined style={{marginRight:"6px"}}/>
-        <FormInput style={{maxWidth:"200px"}} formItemStyle={{display:"inline"}} onChange={(e)=>{
-
+        <div className="row"><FormInput label={<FacebookOutlined style={{marginRight:"6px"}}/>}
+        style={{maxWidth:"500px"}} formItemStyle={{display:"inline"}} onChange={(e)=>{
             setCollectionAttribute(AttributeType.Facebook, e.target.value, collection,
                 setCollection);
         }} value={collection?.attributes?.filter(a => 
         {return a.name === AttributeType.Facebook})[0]?.value}/>
         </div>
-        <div><LinkOutlined style={{marginRight:"6px"}}/>
-        <FormInput style={{maxWidth:"200px"}} formItemStyle={{display:"inline"}} onChange={(e)=>{
+        <div className="row"><FormInput label={<LinkOutlined style={{marginRight:"6px"}}/>} 
+        style={{maxWidth:"500px"}} formItemStyle={{display:"inline"}} onChange={(e)=>{
 
             setCollectionAttribute(AttributeType.Website, e.target.value, collection,
                 setCollection);

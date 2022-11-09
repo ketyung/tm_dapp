@@ -6,6 +6,7 @@ import { CategoriesSelect } from "./CategoriesSelect";
 import { StatusSelect } from "./StatusSelect";
 import { FormInput } from "../components/FormInput";
 import { FormTextArea } from "../components/FormTextArea";
+import { LinksForm } from "./LinksForm";
 import { Form } from "antd";
 import { acronym } from "../../utils";
 
@@ -84,7 +85,13 @@ export const InfoForm : FC <Props> = ({
             <OtherInfoForm collection={collection} setCollection={setCollection} isEditMode={isEditMode}/>
             </td>
         </tr>
-       
+        <tr>
+            <td valign="top" colSpan={2} style={{width:"100%"}}>
+            <LinksForm collection={collection} setCollection={setCollection}/>
+            </td>
+        </tr>
+   
+
     </tbody>
 </table>
 </Form>
