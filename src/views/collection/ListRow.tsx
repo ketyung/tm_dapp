@@ -1,10 +1,11 @@
 import { Collection, Page } from "../../models";
-import { Button, Image, Menu, Dropdown} from "antd";
+import { Button, Image, Menu, Dropdown, Tooltip} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined, ShareAltOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
 import { ListProps } from "./List";
+import { ShareView } from "../components/ShareView";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
-import { FC } from "react";
+import { FC , useEffect, useState, useCallback} from "react";
 
 type Props = ListProps & {
 
@@ -17,6 +18,21 @@ export const ListRow : FC <Props> = ({
 }) =>{
 
     const {setPage} = usePage();
+
+    const [url, setUrl] = useState<string>();
+    
+    const getUrl = useCallback(async ()=>{
+
+        let s = await shortCollectionUri(collection);
+             
+        s = "/collection/"+ encodeURI(s);
+
+        setUrl(s);
+    },[collection]);
+
+    useEffect(()=>{
+        getUrl();
+    },[])
 
     const {shortCollectionUri} = useCollectionsContract();
 
@@ -41,22 +57,20 @@ export const ListRow : FC <Props> = ({
         },
 
         {
-            label: <div className="menuItem" onClick={async ()=>{
+            label: <div className="menuItem" onClick={()=>{
 
-                let s = await shortCollectionUri(collection);
-                window.open("/collection/"+ encodeURI(s),"_blank");
+                window.open(url,"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',
         },
       
         {
-            label: <div className="menuItem" onClick={async ()=>{
-
-                let s = await shortCollectionUri(collection);
-                window.open("/collection/"+ encodeURI(s),"_blank");
-    
-            }}><ShareAltOutlined style={{marginRight:"10px"}}/>Share Sales Page</div>,
+            label: <div className="menuItem">
+                <Tooltip title={<ShareView shareUrl={url}/>}>
+                <ShareAltOutlined style={{marginRight:"10px"}}/>Share Sales Page
+                </Tooltip>
+                </div>,
             key: '3',
         },
       

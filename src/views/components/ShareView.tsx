@@ -55,7 +55,7 @@ export const ShareView   : React.FC<Props> = ({shareUrl, quote, hashtag}) =>{
         }    
      }
 
-    return <div style={{textAlign:"center"}}>
+    return <div className="ShareView">
 
         {shareUrl && <>
         <FacebookShareButton  url={shareUrl}  
