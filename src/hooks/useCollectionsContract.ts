@@ -94,7 +94,18 @@ export default function useCollectionsContract() {
         return s ; 
     }
 
+
+    const getPageUriForCollection = async (collection : Collection) => {
+
+        let s = await shortCollectionUri(collection);
+
+        s = (s===undefined) ?  "/c/"+ encodeURI(toB64OfShortCollectionInfo(collection) ) :
+        "/collection/"+ encodeURI(s);
+
+        return s;
+    }
+
     return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
     toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber,
-    isCollectionReadyForSale, shortCollectionUri} as const;
+    isCollectionReadyForSale, shortCollectionUri, getPageUriForCollection} as const;
 }

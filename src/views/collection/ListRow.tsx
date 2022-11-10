@@ -21,22 +21,21 @@ export const ListRow : FC <Props> = ({
 
     const [url, setUrl] = useState<string>();
 
-    const {shortCollectionUri, toB64OfShortCollectionInfo} = useCollectionsContract();
+    const {getPageUriForCollection} = useCollectionsContract();
 
     
     const getUrl = useCallback(async ()=>{
 
-        let s = await shortCollectionUri(collection);
-
-        s = (s===undefined) ?  "/c/"+ encodeURI(toB64OfShortCollectionInfo(collection) ) :
-        "/collection/"+ encodeURI(s);
+        let s = await getPageUriForCollection(collection);
 
         setUrl(s);
+
+        //console.log("get.url",s, new Date());
     },[collection]);
 
     useEffect(()=>{
         getUrl();
-    },[])
+    },[getUrl])
 
   
     const menu = (<Menu
