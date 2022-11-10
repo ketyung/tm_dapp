@@ -2,6 +2,7 @@ import React from 'react';
 import {
     EmailShareButton,
     FacebookShareButton,
+    FacebookMessengerShareButton,
     PinterestShareButton,
     RedditShareButton,
     TelegramShareButton,
@@ -12,6 +13,7 @@ import {
 
 import {
     FacebookIcon, 
+    FacebookMessengerIcon,
     TwitterIcon, 
     PinterestIcon, 
     TelegramIcon, 
@@ -37,7 +39,8 @@ type Props = {
 
 export const ShareView   : React.FC<Props> = ({uri, quote, hashtag}) =>{
 
-    const shareUrl = window.location.protocol + "//" + window.location.host + uri;
+    const shareUrl = (uri?.startsWith("http://") || uri?.startsWith("https://"))
+    ? uri : window.location.protocol + "//" + window.location.host + uri;
 
 
     const [copied, setCopied] = React.useState(false);
@@ -60,33 +63,37 @@ export const ShareView   : React.FC<Props> = ({uri, quote, hashtag}) =>{
     return <div className="ShareView">
 
         {shareUrl && <>
-        <FacebookShareButton  url={shareUrl}  
-        quote={quote} hashtag={hashtag} className="shareIcon">
-             <FacebookIcon size={46} />
-        </FacebookShareButton>
-
         <TwitterShareButton  url={shareUrl} className="shareIcon">
              <TwitterIcon size={46} />
         </TwitterShareButton>
-    
+       
+        <TelegramShareButton  url={shareUrl} className="shareIcon">
+             <TelegramIcon size={46} />
+        </TelegramShareButton>
+       
         <WhatsappShareButton  url={shareUrl} className="shareIcon">
              <WhatsappIcon size={46} />
         </WhatsappShareButton>
 
         <br/>
+        <FacebookShareButton  url={shareUrl}  
+        quote={quote} hashtag={hashtag} className="shareIcon">
+             <FacebookIcon size={46} />
+        </FacebookShareButton>
+
+        <FacebookMessengerShareButton appId={"none"} url={shareUrl} className="shareIcon">
+             <FacebookMessengerIcon size={46} />
+        </FacebookMessengerShareButton>
+       
         <PinterestShareButton  url={shareUrl} media="" description={quote} className="shareIcon">
              <PinterestIcon size={46} />
         </PinterestShareButton>
 
+        <br/>
+
         <RedditShareButton  url={shareUrl}  className="shareIcon">
              <RedditIcon size={46} />
         </RedditShareButton>
-
-        <TelegramShareButton  url={shareUrl} className="shareIcon">
-             <TelegramIcon size={46} />
-        </TelegramShareButton>
-        
-        <br/>
 
         <LinkedinShareButton  url={shareUrl}  className="shareIcon">
              <LinkedinIcon size={46} />

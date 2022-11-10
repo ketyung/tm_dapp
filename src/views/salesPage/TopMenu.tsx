@@ -1,8 +1,10 @@
 import { FC } from "react";
-import { Button } from "antd";
-import { TwitterOutlined, FacebookOutlined, LinkOutlined } from "@ant-design/icons";
+import { Button, Tooltip } from "antd";
+import { ShareView } from "../components/ShareView";
+import { TwitterOutlined, FacebookOutlined, LinkOutlined, ShareAltOutlined } from "@ant-design/icons";
 import { PurchasedTicketsView } from "./PurchasedTicketsView";
 import { AttributeType, Collection } from "../../models";
+
 
 type Props = {
     collection? : Collection,
@@ -37,5 +39,8 @@ export const TopMenu : FC <Props> = ({
         href={fb ?? "https://facebook.com/ketyung"} target="_blank"/>
         <Button type="link" shape="circle" className="Icon" icon={<LinkOutlined/>}
         href={website ?? "https://techchee.com"} target="_blank"/>
+        <Tooltip title={<ShareView uri={window.location.href}/>} >
+        <Button type="link" shape="circle" className="Icon" icon={<ShareAltOutlined/>}/>
+        </Tooltip>
     </div>
 }
