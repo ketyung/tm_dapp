@@ -26,7 +26,7 @@ import "./css/ShareView.css";
 
 type Props = {
 
-    shareUrl? : string, 
+    uri? : string, 
 
     quote? : string, 
 
@@ -35,7 +35,9 @@ type Props = {
 }
 
 
-export const ShareView   : React.FC<Props> = ({shareUrl, quote, hashtag}) =>{
+export const ShareView   : React.FC<Props> = ({uri, quote, hashtag}) =>{
+
+    const shareUrl = window.location.protocol + "//" + window.location.host + uri;
 
 
     const [copied, setCopied] = React.useState(false);
@@ -71,9 +73,6 @@ export const ShareView   : React.FC<Props> = ({shareUrl, quote, hashtag}) =>{
              <WhatsappIcon size={46} />
         </WhatsappShareButton>
 
-        <TelegramShareButton  url={shareUrl} className="shareIcon">
-             <TelegramIcon size={46} />
-        </TelegramShareButton>
         <br/>
         <PinterestShareButton  url={shareUrl} media="" description={quote} className="shareIcon">
              <PinterestIcon size={46} />
@@ -82,6 +81,12 @@ export const ShareView   : React.FC<Props> = ({shareUrl, quote, hashtag}) =>{
         <RedditShareButton  url={shareUrl}  className="shareIcon">
              <RedditIcon size={46} />
         </RedditShareButton>
+
+        <TelegramShareButton  url={shareUrl} className="shareIcon">
+             <TelegramIcon size={46} />
+        </TelegramShareButton>
+        
+        <br/>
 
         <LinkedinShareButton  url={shareUrl}  className="shareIcon">
              <LinkedinIcon size={46} />

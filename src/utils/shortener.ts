@@ -7,8 +7,8 @@ export const shorten = async (s : string) => {
         let r = await ((await fetch(`${SHORTENER_URL}sv/${s}`))).json();
         return r.v;    
     }
-    catch(e : any) {
-        window.alert("Error::"+e.message);
+    catch(e : any) {     
+        console.error("E@shorten", e, new Date());
     }
 }
 
@@ -19,6 +19,6 @@ export const longUri = async (s : string) => {
         return r.v;    
     }
     catch(e : any){
-        window.alert("Error::"+e.message);
+        console.error("E@shorten", e, new Date());
     }
 }

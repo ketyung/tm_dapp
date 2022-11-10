@@ -7,10 +7,11 @@ import { AttributeType, Collection } from "../../models";
 type Props = {
     collection? : Collection,
     className? : string,
+    ticketsViewBackgroundColor? : string,
 }
 
 export const TopMenu : FC <Props> = ({
-    collection, className
+    collection, className, ticketsViewBackgroundColor
 }) =>{
 
     const twiter : string|undefined = collection?.attributes?.filter((e)=>{
@@ -28,7 +29,8 @@ export const TopMenu : FC <Props> = ({
 
 
     return <div className={ className ?? "TopMenu"}>
-        {collection && <PurchasedTicketsView collection={collection}/>}
+        {collection && <PurchasedTicketsView collection={collection} 
+        backgroundColor={ticketsViewBackgroundColor}/>}
         <Button type="link" shape="circle" className="Icon" icon={<TwitterOutlined/>}
         href={twiter ?? "https://twitter.com/techchee"} target="_blank"/>
         <Button type="link" shape="circle" className="Icon" icon={<FacebookOutlined/>}

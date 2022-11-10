@@ -160,14 +160,3 @@
     padding: 2px;
 }
 
-
-.ant-popover-inner {
-    background-image: linear-gradient(to right,#349, #002 );
-    border-radius: 30px;
-    padding:10px;
-    color:white;
-}
-
-.ant-popover-arrow {
-    background-image: linear-gradient(to right,#349, #002 );
-}

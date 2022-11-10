@@ -67,7 +67,7 @@ export const ListRow : FC <Props> = ({
       
         {
             label: <div className="menuItem">
-                <Tooltip title={<ShareView shareUrl={url}/>}>
+                <Tooltip color="#236" title={<ShareView uri={url} quote={collection.title}/>}>
                 <ShareAltOutlined style={{marginRight:"10px"}}/>Share Sales Page
                 </Tooltip>
                 </div>,
