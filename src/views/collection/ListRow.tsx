@@ -1,6 +1,6 @@
 import { Collection, Page } from "../../models";
 import { Button, Image, Menu, Dropdown} from "antd";
-import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined } from "@ant-design/icons";
+import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined, ShareAltOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
 import { ListProps } from "./List";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
@@ -48,6 +48,16 @@ export const ListRow : FC <Props> = ({
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',
+        },
+      
+        {
+            label: <div className="menuItem" onClick={async ()=>{
+
+                let s = await shortCollectionUri(collection);
+                window.open("/collection/"+ encodeURI(s),"_blank");
+    
+            }}><ShareAltOutlined style={{marginRight:"10px"}}/>Share Sales Page</div>,
+            key: '3',
         },
       
         ]}
