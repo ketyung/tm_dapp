@@ -10,16 +10,16 @@ import './css/MintsList.css';
 
 type Props = {
 
-    title : string,
+    title? : string,
 
-    symbol : string, 
+    symbol? : string, 
 }
 
 export const MintsList : FC <Props> = ({
     title, symbol
 }) =>{
 
-    const {getTicketMintsOf, loading} = useTicketMintsContract();
+    const {getTicketMintsOf, loading, getTicketMintsBy} = useTicketMintsContract();
 
     const [ticketMints, setTicketMints] = useState<TicketMint[]>();
 
@@ -27,7 +27,16 @@ export const MintsList : FC <Props> = ({
 
     const loadTicketMints = useCallback(async ()=>{
 
-        let tms = await getTicketMintsOf(title, symbol, 0);
+        let tms : TicketMint[]|undefined= undefined;
+
+        if (title && symbol){
+
+            tms = await getTicketMintsOf(title, symbol, 0);
+        }
+        else {
+
+            tms = await getTicketMintsBy(0);
+        }
         
         setTicketMints(tms);
 
@@ -44,7 +53,7 @@ export const MintsList : FC <Props> = ({
         <thead>
             <tr style={{borderBottom:"1px solid #bbb"}}>
                 <th style={{textAlign:"center"}} colSpan={5}>
-                Ticket Sales Of {title} ({symbol})
+                {title ? "Ticket Sales Of {title} ({symbol})" : "Recent Ticket Sales"}
                 </th>
             </tr>
             <tr>

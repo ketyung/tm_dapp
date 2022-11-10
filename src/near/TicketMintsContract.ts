@@ -39,4 +39,26 @@ export class TicketMintsContract {
     } 
 
  
+    async getTicketMintsBy( offset?: number, limit : number = 20 ) : Promise<TicketMint[]>{
+
+        try {
+
+            let accountId = this.wallet?.accountId;
+
+            let mints =  await this.wallet?.viewMethod({
+                contractId: this.contractId,
+                method: 'get_ticket_mints_by',
+                args: { owner : accountId, offset : offset, limit : limit }
+            });
+
+            return mints ;
+        }
+        catch( e: any) {
+          
+            console.error("ex", e, new Date());
+            return [];
+        }
+        
+    } 
+
 }

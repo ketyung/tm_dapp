@@ -23,5 +23,15 @@ export default function useTicketMintsContract() {
         return tms;
     } 
 
-    return {getTicketMintsOf, loading} as const;
+    const getTicketMintsBy = async (offset : number, limit: number = 20) : Promise<TicketMint[]>=> {
+        setLoading(true);
+
+        let contract = new TicketMintsContract ( TICKET_MINTS_CONTRACT_ID, wallet);
+
+        let tms =  await contract.getTicketMintsBy( offset, limit);
+        setLoading(false);
+        return tms;
+    } 
+
+    return {getTicketMintsOf, loading, getTicketMintsBy} as const;
 }
