@@ -20,12 +20,16 @@ export const ListRow : FC <Props> = ({
     const {setPage} = usePage();
 
     const [url, setUrl] = useState<string>();
+
+    const {shortCollectionUri, toB64OfShortCollectionInfo} = useCollectionsContract();
+
     
     const getUrl = useCallback(async ()=>{
 
         let s = await shortCollectionUri(collection);
-             
-        s = "/collection/"+ encodeURI(s);
+
+        s = (s===undefined) ?  "/c/"+ encodeURI(toB64OfShortCollectionInfo(collection) ) :
+        "/collection/"+ encodeURI(s);
 
         setUrl(s);
     },[collection]);
@@ -34,8 +38,7 @@ export const ListRow : FC <Props> = ({
         getUrl();
     },[])
 
-    const {shortCollectionUri} = useCollectionsContract();
-
+  
     const menu = (<Menu
         items={[
         {

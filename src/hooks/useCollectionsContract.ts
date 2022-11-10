@@ -45,8 +45,8 @@ export default function useCollectionsContract() {
 
             return a.value === "R";
         }
-        // default is true if the attribute is NOT defined
-        return true; 
+        // default is false if the attribute is NOT defined
+        return false; 
     }
 
 

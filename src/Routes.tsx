@@ -10,6 +10,8 @@ export const Routes : FC = () =>{
     
     const [matchSalesPage] = useRoute("/collection/:id");
 
+    const [matchSalesPageLong] = useRoute("/c/:id");
+
     const [matchSalesPagePreview] = useRoute("/collectionPreview/:id/:templateId");
 
     const pageTitle = () => {
@@ -17,7 +19,7 @@ export const Routes : FC = () =>{
         if (matchHome){
             return "TicketMaker ...";
         }
-        else if (matchSalesPage){
+        else if (matchSalesPage || matchSalesPageLong){
             return "Mint Ticket...";
         }
         else if (matchSalesPagePreview){
@@ -43,6 +45,10 @@ export const Routes : FC = () =>{
         <Route path="/collection/:id">
         {(params) => 
             <CollectionSalesView id={params.id}/>}
+        </Route>
+        <Route path="/c/:id">
+        {(params) => 
+            <CollectionSalesView id={params.id} urlNotShorten={true}/>}
         </Route>
         <Route path="/collectionPreview/:id/:templateId">
         {(params) => 

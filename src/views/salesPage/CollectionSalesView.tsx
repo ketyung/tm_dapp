@@ -9,12 +9,16 @@ import useWalletState from "../../hooks/useWalletState";
 
 
 type Props = {
+    
     id?: string, 
 
+    urlNotShorten? : boolean,
+
     previewTemplateId? : string,
+
 }
 
-export const CollectionSalesView : FC <Props> = ({id, previewTemplateId}) =>{
+export const CollectionSalesView : FC <Props> = ({id, previewTemplateId, urlNotShorten}) =>{
 
     const {isSignedIn, dateUpdated} = useWalletState();
 
@@ -55,7 +59,7 @@ export const CollectionSalesView : FC <Props> = ({id, previewTemplateId}) =>{
     const getShortCollectionInfo = async () =>{
 
         if ( id ) {
-            let s = await shortener.longUri(id);
+            let s = urlNotShorten ? id : await shortener.longUri(id);
             let collInfo = b64ToShortCollectionInfo(s);
             setShortCollectionInfo(collInfo);
             return collInfo;
