@@ -1,5 +1,6 @@
 import { TicketMint, TicketAttributeType } from "../../models";
 import { dateToTimeAgo, yoctoToNear, nearTimestampToDate } from "../../utils";
+import { Tooltip } from "antd";
 
 import { FC } from "react";
 
@@ -8,10 +9,12 @@ type Props = {
     ticketMint : TicketMint,
 
     index? : number,
+
+    showTooltipOfCollection? : boolean,
 }
 
 export const MintsListRow : FC <Props> = ({
-    ticketMint, index,
+    ticketMint, index, showTooltipOfCollection
 }) =>{
    
 
@@ -29,7 +32,10 @@ export const MintsListRow : FC <Props> = ({
         {((index ?? 0)+1)}.
         </td>
         <td style={{width:"20%"}}>
+        { showTooltipOfCollection ? <Tooltip 
+        color={"#669"} title={`In collection "${ticketMint.collection_id.title}"`}>
         {ticketMint.token_id}
+        </Tooltip> : <>{ticketMint.token_id}</> } 
         </td>
         <td style={{width:"30%",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
         {ticketMint.mint_by}

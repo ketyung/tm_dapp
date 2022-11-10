@@ -77,7 +77,8 @@ export const MintsList : FC <Props> = ({
         <tbody>
         {
             ticketMints?.map((t,i)=>{
-                return <MintsListRow key={"MListRow"+i} ticketMint={t} index={i}/>;
+                return <MintsListRow key={"MListRow"+i} ticketMint={t} index={i}
+                showTooltipOfCollection={title===undefined}/>;
             })
         }
         { loading && <tr><td colSpan={6} style={{width:"100%"}}><GSpinner text="Loading..."/></td></tr>}

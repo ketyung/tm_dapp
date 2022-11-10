@@ -57,7 +57,7 @@ export const View : FC = () =>{
         <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Ticket Collections</h3>
         <List setCollectionForEdit={openCollectionForEdit} toReloadList={toReloadList}
         setToReloadList={setToReloadList}/>
-        <br/>
+        <br/><br/>
         <h3 style={{textAlign:"left",fontWeight:"600"}}>Recent Ticket Sales</h3>
         <MintsList />
         
