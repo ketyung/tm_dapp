@@ -17,7 +17,7 @@ export const Routes : FC = () =>{
     const pageTitle = () => {
 
         if (matchHome){
-            return "TicketMaker ...";
+            return "TicketMaker - NFT Ticketing on Near Protocol";
         }
         else if (matchSalesPage || matchSalesPageLong){
             return "Mint Ticket...";
