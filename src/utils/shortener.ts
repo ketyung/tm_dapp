@@ -1,4 +1,4 @@
-const SHORTENER_URL = "http://localhost:3333/";
+const SHORTENER_URL = process.env.REACT_APP_SHORTENER_URL;
 
 export const shorten = async (s : string) => {
 
