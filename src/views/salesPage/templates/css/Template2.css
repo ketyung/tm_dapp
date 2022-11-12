@@ -25,7 +25,6 @@
     margin-top: 10px;
     background-color: transparent;
     color:wheat;
-    margin-left: 240px;
     text-align: left;
     min-height: 30px;
     width: 80%;
@@ -56,13 +55,38 @@
     background:#335;
 }
 
+
+@media only screen and (min-device-width: 612px){
+
+    .TopMenu {
+        margin-left: 240px;
+    }
+
+    .TopMenu .Buttons {
+        display: inline-block;
+    }
+    
+}
+
+
+@media only screen and (max-device-width: 611px){
+
+    .TopMenu {
+        margin-left: 20px;
+    }
+    
+    .TopMenu .Buttons {
+        display: block;
+    }
+    
+}
+
 .Template2 .ConnectButton {
 
     background:#333;
     color:white;
     margin-top:20px;
     border-radius: 30px;
-    min-width: 240px;
 }
 
 
@@ -74,7 +98,6 @@
     min-width: 40%;
     height:50px;
     font-size: large;
-    min-width: 390px;
     background-color: #002;
 }
 
@@ -82,6 +105,42 @@
 .Template2 .BuyButton:hover {
     background:#253;
     color:wheat;
+}
+
+@media only screen and (min-device-width: 612px){
+
+    .Template2 .BuyButton {
+        min-width: 380px;
+    }
+
+    .Template2 .ConnectButton {
+        min-width: 330px;
+    }
+    
+}
+
+
+@media only screen and (max-device-width: 611px){
+
+    .Template2 .BuyButton {
+        min-width: 220px;
+    }
+
+    .Template2 .ConnectButton {
+        min-width: 220px;
+    }
+}
+
+
+@media only screen and (max-device-width: 320px){
+
+    .Template2 .BuyButton {
+        min-width: 160px;
+    }
+
+    .Template2 .ConnectButton {
+        min-width: 160px;
+    }
 }
 
 .Template2 .Logo {
@@ -165,14 +224,3 @@
     padding: 2px;
 }
 
-
-.ant-popover-inner {
-    background-image: linear-gradient(to right,#349, #002 );
-    border-radius: 30px;
-    padding:10px;
-    color:white;
-}
-
-.ant-popover-arrow {
-    background-image: linear-gradient(to right,#349, #002 );
-}

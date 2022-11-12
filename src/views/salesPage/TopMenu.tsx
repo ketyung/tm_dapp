@@ -33,6 +33,7 @@ export const TopMenu : FC <Props> = ({
     return <div className={ className ?? "TopMenu"}>
         {collection && <PurchasedTicketsView collection={collection} 
         backgroundColor={ticketsViewBackgroundColor}/>}
+        <div className="Buttons">
         <Button type="link" shape="circle" className="Icon" icon={<TwitterOutlined/>}
         href={twiter ?? "https://twitter.com/techchee"} target="_blank"/>
         <Button type="link" shape="circle" className="Icon" icon={<FacebookOutlined/>}
@@ -42,5 +43,6 @@ export const TopMenu : FC <Props> = ({
         <Tooltip title={<ShareView uri={window.location.href}/>} >
         <Button type="link" shape="circle" className="Icon" icon={<ShareAltOutlined/>}/>
         </Tooltip>
+        </div>
     </div>
 }

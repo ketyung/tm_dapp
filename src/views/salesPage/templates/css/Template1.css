@@ -21,12 +21,12 @@
 }
 
 .TopMenu1 {
-    margin-top: 10px;
+    margin-top: 6px;
     background-color: transparent;
     color:wheat;
-    margin-right: 240px;
+    margin-right: 40px;
     text-align: right;
-    min-height: 30px;
+    min-height: 60px;
     width: 80%;
 }
 
@@ -47,6 +47,9 @@
     background:#333;
 }
 
+.TopMenu1 .Buttons {
+    display: block;
+}
 
 .TopMenu1 .Icon {
     width:40px;
@@ -62,7 +65,6 @@
     color:white;
     margin-top:20px;
     border-radius: 30px;
-    min-width: 240px;
 }
 
 
@@ -72,16 +74,51 @@
     background:#369;
     color:white;
     margin-top:20px;
-    min-width: 40%;
     height:50px;
     font-size: large;
-    min-width: 390px;
 }
 
 
 .Template1 .BuyButton:hover {
     background:#396;
     color:wheat;
+}
+
+
+@media only screen and (min-device-width: 612px){
+
+    .Template1 .BuyButton {
+        min-width: 380px;
+    }
+
+    .Template1 .ConnectButton {
+        min-width: 330px;
+    }
+    
+}
+
+
+@media only screen and (max-device-width: 611px){
+
+    .Template1 .BuyButton {
+        min-width: 220px;
+    }
+
+    .Template1 .ConnectButton {
+        min-width: 220px;
+    }
+}
+
+
+@media only screen and (max-device-width: 320px){
+
+    .Template1 .BuyButton {
+        min-width: 160px;
+    }
+
+    .Template2 .ConnectButton {
+        min-width: 160px;
+    }
 }
 
 .Template1 .Logo {
