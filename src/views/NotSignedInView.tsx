@@ -32,7 +32,7 @@ export const NotSignedInView : FC = () =>{
     MainNet
     </Button>
    
-    <Button className="LaunchAppButton" type="link" href="/" 
+    <Button className="LaunchAppButton" target="_blank" type="link" href={process.env.REACT_APP_DOCS_URL}
     icon={<div style={{paddingTop:"10px"}}>Docs <InfoCircleFilled style={{marginLeft:"10px"}}/></div>}/>
    
     </div></>

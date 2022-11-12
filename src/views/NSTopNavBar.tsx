@@ -15,7 +15,7 @@ export const TopNavBar : FC = () => {
         &nbsp;
         </span>
         <span className="frSpan">
-        <Button shape="circle" type="link" href="https://github.com/ticketMint22" target="_blank">
+        <Button shape="circle" type="link"  href={process.env.REACT_APP_GITHUB} target="_blank">
             <img src={gitHubLogo} style={{maxWidth:"30px",maxHeight:"auto"}}/>
         </Button>       
         </span>
