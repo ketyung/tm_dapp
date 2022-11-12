@@ -23,15 +23,22 @@ export const ListRow : FC <Props> = ({
 
     const {getPageUriForCollection} = useCollectionsContract();
 
+    const getUrlIfUndefined = async () => {
+
+        if ( url === undefined) {
+
+            let s = await getPageUriForCollection(collection);
+
+            setUrl(s);
+
+           // console.log("s::", s, new Date());
+        }
+ 
+    }
     
     const getUrl = useCallback(async ()=>{
-
-        let s = await getPageUriForCollection(collection);
-
-        setUrl(s);
-
-        //console.log("get.url",s, new Date());
-    },[collection]);
+       await getUrlIfUndefined();
+    },[collection, getUrlIfUndefined]);
 
     useEffect(()=>{
         getUrl();
@@ -61,7 +68,7 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={()=>{
 
-                window.open(url,"_blank");
+                window.open(url ,"_blank");
     
             }}><ShoppingOutlined style={{marginRight:"10px"}}/>Open Sales Page</div>,
             key: '2',
