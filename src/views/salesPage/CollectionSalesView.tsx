@@ -59,7 +59,7 @@ export const CollectionSalesView : FC <Props> = ({id, previewTemplateId, urlNotS
     const getShortCollectionInfo = async () =>{
 
         if ( id ) {
-            let s = urlNotShorten ? id : await shortener.longUri(id);
+            let s = urlNotShorten ? decodeURIComponent(id) : await shortener.longUri(id);
             let collInfo = b64ToShortCollectionInfo(s);
             setShortCollectionInfo(collInfo);
 

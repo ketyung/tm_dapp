@@ -99,8 +99,8 @@ export default function useCollectionsContract() {
 
         let s = await shortCollectionUri(collection);
 
-        s = (s===undefined) ?  "/c/"+ encodeURI(toB64OfShortCollectionInfo(collection) ) :
-        "/collection/"+ encodeURI(s);
+        s = (s===undefined) ?  "/c/"+ encodeURIComponent(toB64OfShortCollectionInfo(collection) ) :
+        "/collection/"+ encodeURIComponent(s);
 
         return s;
     }
