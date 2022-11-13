@@ -62,8 +62,10 @@ export const CollectionSalesView : FC <Props> = ({id, previewTemplateId, urlNotS
             let s = urlNotShorten ? id : await shortener.longUri(id);
             let collInfo = b64ToShortCollectionInfo(s);
             setShortCollectionInfo(collInfo);
+
             return collInfo;
         }
+        
     }
 
     useEffect(()=>{
