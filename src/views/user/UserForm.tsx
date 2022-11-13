@@ -168,13 +168,14 @@ export const UserForm : FC <Props> = ({
                 }}/>
                 </td>
             </tr>
+            {/* // temporarily commented out the profile image
             <tr>
                 <td style={{width:"30%",fontWeight:"bolder"}} valign="top">
                 Profile Image (Optional)
                 </td>
                 <td style={{width:"70%",fontWeight:"bolder",textAlign:"left"}}>
                 </td>
-            </tr>
+            </tr>*/}
             <tr>
                 <td colSpan={2} style={{width:"100%",textAlign:"center"}}>
                     <Button className="createButt" disabled={loading} onClick={async ()=>{
