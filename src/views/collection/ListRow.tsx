@@ -31,7 +31,7 @@ export const ListRow : FC <Props> = ({
 
             setUrl(s);
 
-           // console.log("s::", s, new Date());
+            console.log("s::", s, new Date());
         }
  
     }

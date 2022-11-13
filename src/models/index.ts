@@ -61,6 +61,8 @@ export enum AttributeType {
     Website = 'Website',
 
     Status = 'Status',
+
+    TicketStartingNumber = 'TicketStartingNumber',
 }
 
 

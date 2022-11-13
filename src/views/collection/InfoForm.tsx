@@ -5,10 +5,12 @@ import { OtherInfoForm } from "./OtherInfoForm";
 import { CategoriesSelect } from "./CategoriesSelect";
 import { StatusSelect } from "./StatusSelect";
 import { FormInput } from "../components/FormInput";
+import { setCollectionAttribute } from "./OtherInfoForm";
 import { FormTextArea } from "../components/FormTextArea";
 import { LinksForm } from "./LinksForm";
 import { Form } from "antd";
 import { acronym } from "../../utils";
+import { AttributeType } from "../../models";
 
 type Props = CollectionFormProps & {
     setSelectedRowForPreview? : (index? : number) => void };
@@ -47,8 +49,8 @@ export const InfoForm : FC <Props> = ({
             </td>
         </tr>
         <tr>
-            <td valign="top" style={{width:"65%",textAlign:"left"}}>
-            <FormTextArea style={{width:"320px",marginTop:"10px"}} rows={3} 
+            <td valign="top" style={{width:"100%",textAlign:"left"}} colSpan={2}>
+            <FormTextArea style={{maxWidth:"480px",marginTop:"10px"}} rows={2} 
             minRows={2} maxRows={5}
             label="Description" 
             value={collection.description} onChange={(e)=>{
@@ -56,14 +58,31 @@ export const InfoForm : FC <Props> = ({
                     setCollection({...collection, description : e.currentTarget.value})
             }}/>
             </td>
-            <td valign="top" style={{width:"35%", textAlign:"left"}}>
+        </tr>
+        <tr>
+            <td valign="top" colSpan={2} style={{width:"100%",textAlign:"left"}}>
             <FormInput style={{width:"80px",marginTop:"10px"}} required={true}
-            step={1000} isNumber={true} label={<>Total number<br/>of tickets</>} placeholder="1000" 
+            formItemStyle={{display:"inline-block"}}
+            step={1000} isNumber={true} label={<>Total number of tickets</>} placeholder="1000" 
             min={1} max={50000} value={collection.total_tickets} onChange={(e)=>{
                 let v = parseInt(e);
                 if ( setCollection && !isNaN(v))
                     setCollection({...collection, total_tickets : v});
             }}/>
+            { <FormInput style={{width:"80px",marginTop:"10px"}} 
+            formItemStyle={{marginLeft:"30px",display:"inline-block"}}
+            label={<>Ticket Starting Number</>} placeholder="1000" 
+            value={collection.attributes?.filter(a =>{
+                return a.name === AttributeType.TicketStartingNumber
+            })[0]?.value} onChange={(e)=>{
+
+                let n = parseInt(e.target.value);
+                if ( !isNaN(n)) {
+                    let v : string = `${n}` ;
+                    setCollectionAttribute(AttributeType.TicketStartingNumber,v ,collection, setCollection);
+                }
+            }}/> }
+
             </td>
         </tr>
         <tr>
