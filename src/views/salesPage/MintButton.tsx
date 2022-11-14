@@ -32,7 +32,7 @@ export const MintButton : FC <Props> = ({
         if ( setButtonDisabled)
             setButtonDisabled(true);
         if (mintTicket) mintTicket();
-    }}> {loading ? <Spin size="small"/> : <>Mint Ticket</>}</Button> :<>Not Ready For Sale</>
+    }}> {loading ? <Spin size="small"/> : <>Buy Ticket</>}</Button> :<>Not Ready For Sale</>
 
     return !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();signIn();

@@ -17,8 +17,8 @@ export const NotSignedInView : FC = () =>{
 
     <div className="InfoView">
     <img src={noCode} style={{maxHeight:"100px",maxWidth:"auto",marginRight:"10px"}} /> 
-    <div className="txt">A <span style={{color:"#f92"}}>no code</span> platform for
-    <br/>event organizers or businesses<br/>to create and sell NFT tickets<br/>with ease...</div>   
+    <div className="txt">A <span style={{color:"#f92"}}>no code</span> online tool<br/>for
+    event organizers<br/>to create &amp; sell NFT<br/>tickets with ease.</div>   
     </div>
     
     <Button className="LaunchAppButton" onClick={()=>{
