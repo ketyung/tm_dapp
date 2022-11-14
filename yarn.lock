@@ -1488,6 +1488,22 @@
   dependencies:
     rxjs "^7.5.5"
 
+"@near-wallet-selector/core@7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@near-wallet-selector/core/-/core-7.2.0.tgz#18317b1c3fdf622df07d8d4302c8def15c1c4c35"
+  integrity sha512-AfJOoTeQwzF+qNsvwq4MnB2ChJReKhRpf5w5zF5W9f1kl0S0nZB2hbHQr8WZRD2t2dmjHJ96tNvtt3/BpkXp6Q==
+  dependencies:
+    rxjs "^7.5.7"
+
+"@near-wallet-selector/here-wallet@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@near-wallet-selector/here-wallet/-/here-wallet-7.2.0.tgz#91bd1bffd7fb0cbc82ea2e0d5f3cbde3fd9393f9"
+  integrity sha512-IWpHIVr7OvZc6N3XoqPIDBuMPiM/Fe2YjCiEvOHf3YqGcK19VNhwPytOcQvlgNwOojGDHUKNKFtQIrsfYpPcdg==
+  dependencies:
+    "@near-wallet-selector/core" "7.2.0"
+    "@near-wallet-selector/wallet-utils" "7.2.0"
+    bn.js "^5.2.0"
+
 "@near-wallet-selector/modal-ui@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@near-wallet-selector/modal-ui/-/modal-ui-7.1.0.tgz#696dcd1f32cef32d1499a6ab7eb5e31f8d3f579f"
@@ -1506,6 +1522,14 @@
   dependencies:
     "@near-wallet-selector/core" "7.1.0"
     "@near-wallet-selector/wallet-utils" "7.1.0"
+
+"@near-wallet-selector/my-near-wallet@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@near-wallet-selector/my-near-wallet/-/my-near-wallet-7.2.0.tgz#a13c8e3dc44bc580767b844e9023f382b0e6d4e1"
+  integrity sha512-uxBgePNQLfb6BiyAUlIeGgXU2PKebwzGzGNfxOSCYwom3Mw+Gq5OVL2u0RZfiOjQ59hWTiMo1Z71HWXLRfF+8g==
+  dependencies:
+    "@near-wallet-selector/core" "7.2.0"
+    "@near-wallet-selector/wallet-utils" "7.2.0"
 
 "@near-wallet-selector/near-wallet@^7.1.0":
   version "7.1.0"
@@ -1529,6 +1553,14 @@
   integrity sha512-fqK0vNJrNBFoWm3Atm2aD2j60ek4tBD+BtLJSkHLdLVZg3U4FEi0X7phDkEslUl+iCHQM/lWg/nQG58KC9Mvuw==
   dependencies:
     "@near-wallet-selector/core" "7.1.0"
+    bn.js "^5.2.0"
+
+"@near-wallet-selector/wallet-utils@7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@near-wallet-selector/wallet-utils/-/wallet-utils-7.2.0.tgz#062a6a3222b2599f0f868ac3d30578edc8f48f22"
+  integrity sha512-B8hZO9snqwOr6V8oPbIAGaBLhtibPXc9ebUpHMgWJGpC/hU8RgVOw0XY9d/FOKAOPe1T6h1Wh4ppV/LQRlZbeA==
+  dependencies:
+    "@near-wallet-selector/core" "7.2.0"
     bn.js "^5.2.0"
 
 "@nodelib/fs.scandir@2.1.5":
