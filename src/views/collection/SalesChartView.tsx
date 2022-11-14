@@ -19,6 +19,7 @@ export const SalesChartView : FC = () =>{
 
         setConfig({
             data,
+            height:200,
             xField: 'date',
             yField: 'value',
             title: "Ticket Sales",
