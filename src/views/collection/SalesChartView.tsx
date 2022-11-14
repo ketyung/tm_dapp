@@ -13,7 +13,7 @@ export const SalesChartView : FC = () =>{
         let data : {date: string, value: string}[] = [];
 
         range.forEach(d=>{
-            data.push ({date : d.toDateString(), value:`${randomInt(1,12)}`});
+            data.push ({date : d.toDateString(), value:`${randomInt(1,32)}`});
         });
         
 
