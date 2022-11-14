@@ -30,7 +30,8 @@ export const SalesChartView : FC = () =>{
             title: "Ticket Sales",
             point: {
                 size: 5,
-                shape: 'diamond',
+                shape: 'circle',
+                color:"#00f",
             },
         });
 
