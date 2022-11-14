@@ -39,7 +39,7 @@ export const TopNavBar : FC = () => {
         <span className="flSpan whiteTxt">
         Balance : {balance.toFixed(3)} NEAR
         </span>
-        <span className="frSpan">{/** https://christopher-ket-yung-chee.gitbook.io/ticket-maker/how-to/ */}
+        <span className="frSpan">
         <Button shape="circle" title="How to..." style={{color:"white",width:"30px",height:"30px",marginRight:"10px"}} 
         icon={<QuestionCircleOutlined/>} type="link" href={process.env.REACT_APP_HOWTO_DOCS_URL} 
         target="_blank"/>
