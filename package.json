@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^4.7.0",
     "@near-wallet-selector/core": "^7.1.0",
     "@near-wallet-selector/here-wallet": "^7.2.0",
