@@ -55,6 +55,9 @@ export const List : FC <ListProps> = ({
                 Description
                 </th>
                 <th style={{width:"10%"}}>
+                Status
+                </th>
+                <th style={{width:"10%"}}>
                 Total Tickets
                 </th>
                 <th style={{width:"10%"}}>

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { CollectionFormProps } from "./Form";
 import { Select, Form, Tooltip } from "antd";
 import { QuestionCircleTwoTone} from "@ant-design/icons";
@@ -11,20 +11,33 @@ export const StatusSelect : FC <CollectionFormProps> = ({
     collection, setCollection,isEditMode
 }) =>{
 
-    const allStatus = isEditMode && 
-    collection?.attributes?.filter (a=> {return a.name === AttributeType.Status})[0]?.value !== "N"
-    ?
-    [{code:"R", text: "Ready For Sale"}, 
-    {code:"D", text:"Deactivated"}]
-    :
-    [{ code:"N", text: "New"}, {code:"R", text: "Ready For Sale"}, 
-    {code:"D", text:"Deactivated"}]
-    ;
+    const isCollectionNew = () =>{
+
+        let v = collection?.attributes?.filter (a=> {return a.name === AttributeType.Status})[0]?.value ;
+        let b = (v=== "N" || v===undefined || v=== "");
+        return b;
+    }
+
+    const [allStatus, setAllStatus] = useState<{code: string, text : string}[]>([{ code:"N", text: "New"}, {code:"R", text: "Ready For Sale"}, 
+    {code:"D", text:"Deactivated"}]);
+
+    useEffect (()=>{
+
+        if (isEditMode && 
+        !isCollectionNew()){
+
+            setAllStatus( [{code:"R", text: "Ready For Sale"}, 
+            {code:"D", text:"Deactivated"}]);
+        }
+    
+    },[collection,isEditMode]);
+
+   
 
     return <Form.Item label={"Status"} labelAlign={"right"} required={true}>   
     <Select value={collection?.attributes?.filter((a) =>{
        return a.name === AttributeType.Status
-    })[0]?.value ?? allStatus[0].code} style={{maxWidth:"100px",textAlign:"left",fontSize:"8pt"}}
+    })[0]?.value ?? allStatus[0]?.code} style={{maxWidth:"100px",textAlign:"left",fontSize:"8pt"}}
     onChange={(e)=>{
         setCollectionAttribute(AttributeType.Status,e, collection, setCollection);
     }}>

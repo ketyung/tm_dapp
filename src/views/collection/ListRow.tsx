@@ -1,4 +1,4 @@
-import { Collection, Page } from "../../models";
+import { AttributeType, Collection, Page } from "../../models";
 import { Button, Image, Menu, Dropdown, Tooltip} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined, ShareAltOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
@@ -30,8 +30,6 @@ export const ListRow : FC <Props> = ({
             let s = await getPageUriForCollection(collection);
 
             setUrl(s);
-
-            console.log("s::", s, new Date());
         }
  
     }
@@ -39,6 +37,12 @@ export const ListRow : FC <Props> = ({
     const getUrl = useCallback(async ()=>{
        await getUrlIfUndefined();
     },[collection, getUrlIfUndefined]);
+
+
+    const statusOfCollection = ( collection? : Collection) => {
+
+
+    }
 
     useEffect(()=>{
         getUrl();
@@ -98,6 +102,9 @@ export const ListRow : FC <Props> = ({
         </td>
         <td style={{width:"30%",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
         {collection.description}
+        </td>
+        <td style={{width:"10%"}}>
+        {collection.attributes?.filter(a => {return a.name === AttributeType.Status})[0]?.value }
         </td>
         <td style={{width:"10%"}}>
         {collection.total_tickets}

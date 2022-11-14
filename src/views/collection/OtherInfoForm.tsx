@@ -98,7 +98,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             )[0]?.value, REQ_DATE_FORMAT) ;
             
 
-            console.log("endDate", endDate, new Date());
+         //   console.log("endDate", endDate, new Date());
             
             setDateRange({startDate : startDate, endDate : endDate});
         }

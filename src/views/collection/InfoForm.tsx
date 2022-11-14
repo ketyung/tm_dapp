@@ -90,7 +90,7 @@ export const InfoForm : FC <Props> = ({
                 <CategoriesSelect collection={collection} setCollection={setCollection}/>
             </td>
             <td valign="top" style={{width:"35%",textAlign:"left"}}>
-                <StatusSelect collection={collection} setCollection={setCollection}/>
+                <StatusSelect collection={collection} setCollection={setCollection} isEditMode={isEditMode}/>
             </td>
         </tr>
         <tr>
