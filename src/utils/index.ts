@@ -174,3 +174,33 @@ export const useQuery = () =>{
 export const deepCopy = <T extends object>(source: T) : T =>{
 	return JSON.parse(JSON.stringify(source));
 } 
+
+export const addDays = (date : Date, days : number) : Date => {
+	date.setDate(date.getDate() + days);
+    return date;
+}
+
+
+export const subtractDays = (date : Date, days : number) : Date => {
+	date.setDate(date.getDate() - days);
+    return date;
+}
+
+
+
+export const getDates7DaysAgoTillNow = () => {
+
+	let endDate = new Date();
+	let startDate = subtractDays(endDate, 7);
+	return getDates(startDate, endDate);
+}
+
+export const getDates = (startDate : Date, endDate : Date) => {
+    let dateArray = new Array();
+    let currentDate = startDate;
+    while (currentDate <= endDate) {
+        dateArray.push(new Date (currentDate));
+        currentDate =addDays(currentDate, 1);
+    }
+    return dateArray;
+}
