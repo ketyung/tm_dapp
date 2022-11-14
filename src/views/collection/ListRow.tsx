@@ -41,7 +41,10 @@ export const ListRow : FC <Props> = ({
 
     const statusOfCollection = ( collection? : Collection) => {
 
-
+        let v = collection?.attributes?.filter(a => {return a.name === AttributeType.Status})[0]?.value;
+        if ( v === 'R') return 'Ready For Sale';
+        if (v === 'D') return 'Deactivated';
+        return 'New';
     }
 
     useEffect(()=>{
@@ -104,7 +107,7 @@ export const ListRow : FC <Props> = ({
         {collection.description}
         </td>
         <td style={{width:"10%"}}>
-        {collection.attributes?.filter(a => {return a.name === AttributeType.Status})[0]?.value }
+        {statusOfCollection(collection)}
         </td>
         <td style={{width:"10%"}}>
         {collection.total_tickets}
