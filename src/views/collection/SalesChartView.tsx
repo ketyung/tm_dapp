@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { getDates7DaysAgoTillNow } from "../../utils";
 
 
@@ -7,28 +7,25 @@ export const SalesChartView : FC = () =>{
 
     let range = getDates7DaysAgoTillNow();
 
-    const data = [
-        { year: '1991', value: 3 },
-        { year: '1992', value: 4 },
-        { year: '1993', value: 3.5 },
-        { year: '1994', value: 5 },
-        { year: '1995', value: 4.9 },
-        { year: '1996', value: 6 },
-        { year: '1997', value: 7 },
-        { year: '1998', value: 9 },
-        { year: '1999', value: 13 },
-      ];
+    const [data, setData] = useState<{date: string, value: string}[]>([]);
     
-      const config = {
+    const config = {
         data,
-        xField: 'year',
+        xField: 'date',
         yField: 'value',
         point: {
-          size: 5,
-          shape: 'diamond',
+            size: 5,
+            shape: 'diamond',
         },
-      };
-    
+    };
+
+    useEffect(()=>{
+
+        range.forEach(d=>{
+            setData([...data, {date : d.toDateString(), value:"1"}]);
+        });
+    },[]);
+
 
     return <>
     </>
