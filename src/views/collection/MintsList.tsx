@@ -53,7 +53,7 @@ export const MintsList : FC <Props> = ({
         <thead>
             <tr style={{borderBottom:"1px solid #bbb"}}>
                 <th style={{textAlign:"center"}} colSpan={5}>
-                {title ? "Ticket Sales Of {title} ({symbol})" : "Recent Ticket Sales"}
+                {title ? `Ticket Sales Of ${title} (${symbol})` : "Recent Ticket Sales"}
                 </th>
             </tr>
             <tr>
