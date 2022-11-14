@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { Button, Modal } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { List } from "./List";
+import { SalesChartView } from "./SalesChartView";
 import { MintsList } from "./MintsList";
 import { Form } from "./Form";
 import { Collection } from "../../models";
@@ -54,6 +55,7 @@ export const View : FC = () =>{
             Create New Ticket Collection
         </Button>
         </div>
+        <SalesChartView/><br/>
         <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Ticket Collections</h3>
         <List setCollectionForEdit={openCollectionForEdit} toReloadList={toReloadList}
         setToReloadList={setToReloadList}/>

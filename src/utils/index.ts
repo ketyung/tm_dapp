@@ -176,31 +176,45 @@ export const deepCopy = <T extends object>(source: T) : T =>{
 } 
 
 export const addDays = (date : Date, days : number) : Date => {
-	date.setDate(date.getDate() + days);
-    return date;
+
+	let ndate = new Date(date.getTime());// deep copy
+	ndate.setDate(date.getDate() + days);
+    return ndate;
 }
 
 
 export const subtractDays = (date : Date, days : number) : Date => {
-	date.setDate(date.getDate() - days);
-    return date;
+
+	let ndate = new Date(date.getTime()); // deep copy
+	let d = ndate.getDate() - days;
+	ndate.setDate(d);
+    return ndate;
 }
 
 
 
-export const getDates7DaysAgoTillNow = () => {
+export const getDatesDaysAgoTillNow = (numberOfDaysAgo : number = 5 ) => {
 
 	let endDate = new Date();
-	let startDate = subtractDays(endDate, 7);
+	let startDate = subtractDays(endDate, numberOfDaysAgo);
 	return getDates(startDate, endDate);
 }
 
 export const getDates = (startDate : Date, endDate : Date) => {
     let dateArray = new Array();
     let currentDate = startDate;
-    while (currentDate <= endDate) {
+
+	while (currentDate <= endDate) {
         dateArray.push(new Date (currentDate));
-        currentDate =addDays(currentDate, 1);
+        currentDate = addDays(currentDate, 1);
     }
+
     return dateArray;
+}
+
+
+export const randomInt = (min : number, max : number) =>{
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min); 
 }
