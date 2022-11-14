@@ -4,12 +4,6 @@ import { Line } from '@ant-design/charts';
 
 export const SalesChartView : FC = () =>{
 
-
-    const defaultData = [
-        { year: '1991', value: 3 },
-        { year: '1992', value: 4 },
-        { year: '1993', value: 3.5 }];
-
     const [config,setConfig]= useState<any>();
 
     useEffect(()=>{
