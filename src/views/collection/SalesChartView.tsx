@@ -18,9 +18,11 @@ export const SalesChartView : FC = () =>{
             setLoading(true);
             let data = await getSalesCountInRange();
     
+            console.log("data::", data, new Date());
             setConfig({
                 data,
                 height:200,
+                step:1,
                 xField: 'date',
                 yField: 'value',
                 title: "Ticket Sales",

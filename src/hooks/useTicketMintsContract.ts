@@ -44,17 +44,21 @@ export default function useTicketMintsContract() {
         let data : {date : string, value : number}[] = [];
         range.forEach(async (d) =>{
 
-            setTimeout(async ()=>{
-                let mts = getMinAndMaxTimes(d);
-                let cnt = await contract.getTicketMintsCount(mts[0], mts[1]);
-                data.push({date : shortDate(d), value : cnt});
-                console.log("cnt::", cnt, "forDate::", d);
+            let mts = getMinAndMaxTimes(d);
+            let cnt = await contract.getTicketMintsCount(mts[0], mts[1]);
+            data.push({date : shortDate(d), value : cnt});
+           
+        });
 
-            });
-            },[300]);
-
-            
-
+        data.sort((a: any,b: any)=>{
+            if ( a.date < b.date ){
+                return -1;
+              }
+              if ( a.date > b.date ){
+                return 1;
+              }
+              return 0;
+        })
         return data;
 
     }
