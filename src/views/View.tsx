@@ -42,7 +42,7 @@ export const View : FC = () =>{
     return  <Layout className="MainView" style={{margin:"0px",minWidth:"1400px"}}>
         <Sider trigger={null} collapsible collapsed={collapsed} width="250"
         style={{margin:"0px 10px"}}>
-            <SideBar setViewType={setViewType}/>
+            <SideBar setViewType={setViewType} viewType={viewType}/>
         </Sider>
         <Layout className="site-layout">
         <Content className="site-layout-background"

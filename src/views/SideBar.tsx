@@ -5,19 +5,21 @@ import { ViewType } from "./View";
 type Props = {
 
     setViewType? :(viewType : ViewType) => void,
+
+    viewType? : ViewType,
 }
 
 export const SideBar : FC <Props> = ({
-    setViewType
+    setViewType, viewType
 }) =>{
 
     return <div className="SideBar">
-        <div className="Menu" onClick={()=>{
+        <div className={viewType === ViewType.Dashboard ? "MenuSel" : "Menu"} onClick={()=>{
             if ( setViewType) setViewType(ViewType.Dashboard);  
         }}>
         Dashboard
         </div>
-        <div className="Menu" onClick={()=>{
+        <div className={viewType === ViewType.Collections ? "MenuSel" : "Menu"}  onClick={()=>{
             if ( setViewType) setViewType(ViewType.Collections);  
         }}>
         Your ticket collections
