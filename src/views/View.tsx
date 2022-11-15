@@ -54,7 +54,7 @@ export const View : FC = () =>{
     }, []);
 
     return  <Layout className="MainView" style={{margin:"0px", padding:"0px",minWidth:`${width}px`}}>
-        <Sider trigger={null} collapsible collapsed={collapsed} width="250"
+        <Sider trigger={null} collapsible collapsed={collapsed} width="240"
         style={{margin:"0px"}}>
             <SideBar setViewType={setViewType} viewType={viewType}/>
         </Sider>
