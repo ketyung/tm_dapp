@@ -18,7 +18,6 @@ export const SalesChartView : FC = () =>{
             setLoading(true);
             let data = await getSalesCountInRange();
     
-            console.log("data::", data, new Date());
             setConfig({
                 data,
                 height:200,
@@ -36,6 +35,7 @@ export const SalesChartView : FC = () =>{
             setLoading(false);
         }
        
+        console.log("config::", config, new Date());
     },[getSalesCountInRange]);
 
 
