@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { DashboardOutlined, BulbOutlined, InfoCircleOutlined, TeamOutlined } from "@ant-design/icons";
 import './css/SideBar.css';
 import { ViewType } from "./View";
 
@@ -17,18 +18,18 @@ export const SideBar : FC <Props> = ({
         <div className={viewType === ViewType.Dashboard ? "MenuSel" : "Menu"} onClick={()=>{
             if ( setViewType) setViewType(ViewType.Dashboard);  
         }}>
-        Dashboard
+        <DashboardOutlined style={{marginRight:"10px"}}/>Dashboard
         </div>
         <div className={viewType === ViewType.Collections ? "MenuSel" : "Menu"}  onClick={()=>{
             if ( setViewType) setViewType(ViewType.Collections);  
         }}>
-        Events
+        <BulbOutlined style={{marginRight:"10px"}}/>Events
         </div>
         <div className="Menu">
-        Customers
+        <TeamOutlined style={{marginRight:"10px"}}/>Customers
         </div>
         <div className="Menu">
-        <a href={process.env.REACT_APP_HOWTO_DOCS_URL} 
+        <InfoCircleOutlined style={{marginRight:"10px"}}/><a href={process.env.REACT_APP_HOWTO_DOCS_URL} 
         target="_blank">Documentations</a>
         </div>
    
