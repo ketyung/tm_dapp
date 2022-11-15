@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
 import {TicketMint} from "../models";
-import { getDatesDaysAgoTillNow, getMinAndMaxTimes} from "../utils";
+import { getDatesDaysAgoTillNow, getMinAndMaxTimes, shortDate} from "../utils";
 import { TicketMintsContract } from "../near/TicketMintsContract";
 import { TICKET_MINTS_CONTRACT_ID } from "../near/const";
 
@@ -47,7 +47,7 @@ export default function useTicketMintsContract() {
             setTimeout(async ()=>{
                 let mts = getMinAndMaxTimes(d);
                 let cnt = await contract.getTicketMintsCount(mts[0], mts[1]);
-                data.push({date : d.toDateString(), value : cnt});
+                data.push({date : shortDate(d), value : cnt});
                 console.log("cnt::", cnt, "forDate::", d);
 
             });

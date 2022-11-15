@@ -233,3 +233,12 @@ export const randomInt = (min : number, max : number) =>{
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min) + min); 
 }
+
+
+export const shortDate = ( date : Date) =>{
+
+	let day : number|string = date.getDate();
+    day = day < 10 ? '0' + day : day;
+	const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	return `${day}/${months[date.getMonth()]}`;
+}
