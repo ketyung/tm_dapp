@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { SideBar } from "./SideBar";
 import { Layout } from "antd";
 import { DashboardView } from "./collection/DashboardView";
@@ -22,6 +22,8 @@ export const View : FC = () =>{
 
     const [collapsed, setCollapsed] = useState(false);
 
+    const [width, setWidth] = useState(window.innerWidth);
+
     const switchView = () =>{
 
         switch(+viewType) {
@@ -39,7 +41,19 @@ export const View : FC = () =>{
 
     }
 
-    return  <Layout className="MainView" style={{margin:"0px",minWidth:"1400px"}}>
+    useEffect(() => {
+        
+        const reportWindowSize =() =>{
+            setWidth(window.innerWidth);
+            console.log("window.innerWidth:", window.innerWidth, new Date());
+        }
+    
+        window.addEventListener('resize', reportWindowSize)
+       
+        return () => window.removeEventListener('resize', reportWindowSize)
+    }, []);
+
+    return  <Layout className="MainView" style={{margin:"0px",minWidth:`${width}px`}}>
         <Sider trigger={null} collapsible collapsed={collapsed} width="250"
         style={{margin:"0px 10px"}}>
             <SideBar setViewType={setViewType} viewType={viewType}/>
