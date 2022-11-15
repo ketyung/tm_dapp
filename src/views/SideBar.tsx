@@ -22,10 +22,15 @@ export const SideBar : FC <Props> = ({
         <div className={viewType === ViewType.Collections ? "MenuSel" : "Menu"}  onClick={()=>{
             if ( setViewType) setViewType(ViewType.Collections);  
         }}>
-        Your ticket collections
+        Ticket collections
         </div>
         <div className="Menu">
-        Your customers
+        Customers
         </div>
+        <div className="Menu">
+        <a href={process.env.REACT_APP_HOWTO_DOCS_URL} 
+        target="_blank">Documentations</a>
+        </div>
+   
     </div>
 }

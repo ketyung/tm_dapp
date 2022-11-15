@@ -4,7 +4,7 @@ import usePage from "../hooks/usePage";
 import { Page } from "../models";
 import { Button } from "antd";
 import useWalletState from "../hooks/useWalletState";
-import { HomeOutlined,QuestionCircleOutlined} from "@ant-design/icons";
+import { HomeOutlined} from "@ant-design/icons";
 import './css/TopNavBar.css';
 
 export const TopNavBar : FC = () => {
@@ -39,11 +39,7 @@ export const TopNavBar : FC = () => {
         <span className="flSpan whiteTxt">
         Balance : {balance.toFixed(3)} NEAR
         </span>
-        <span className="frSpan">
-        <Button shape="circle" title="How to..." style={{color:"white",width:"30px",height:"30px",marginRight:"10px"}} 
-        icon={<QuestionCircleOutlined/>} type="link" href={process.env.REACT_APP_HOWTO_DOCS_URL} 
-        target="_blank"/>
-        
+        <span className="frSpan"> 
         <UsersSettingsView/>
         </span>
     </div>

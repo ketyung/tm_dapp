@@ -53,9 +53,9 @@ export const View : FC = () =>{
         return () => window.removeEventListener('resize', reportWindowSize)
     }, []);
 
-    return  <Layout className="MainView" style={{margin:"0px",minWidth:`${width}px`}}>
+    return  <Layout className="MainView" style={{margin:"0px", padding:"0px",minWidth:`${width}px`}}>
         <Sider trigger={null} collapsible collapsed={collapsed} width="250"
-        style={{margin:"0px 10px"}}>
+        style={{margin:"0px"}}>
             <SideBar setViewType={setViewType} viewType={viewType}/>
         </Sider>
         <Layout className="site-layout">

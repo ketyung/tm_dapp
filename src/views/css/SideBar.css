@@ -19,6 +19,11 @@
     padding-left: 30px;
 }
 
+.SideBar .Menu a {
+    text-decoration: none;
+    color:white;
+}
+
 .SideBar .MenuSel {
     max-height: 50px;
     padding:10px;
