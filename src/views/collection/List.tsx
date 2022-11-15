@@ -49,7 +49,7 @@ export const List : FC <ListProps> = ({
                 No.
                 </th>
                 <th style={{width:"24%",textAlign:"justify"}}>
-                Title
+                Event Name/Title
                 </th>
                 {
                 <th style={{width:"30%",textAlign:"justify"}}>
