@@ -22,7 +22,7 @@ export const SideBar : FC <Props> = ({
         <div className={viewType === ViewType.Collections ? "MenuSel" : "Menu"}  onClick={()=>{
             if ( setViewType) setViewType(ViewType.Collections);  
         }}>
-        Ticket collections
+        Events
         </div>
         <div className="Menu">
         Customers

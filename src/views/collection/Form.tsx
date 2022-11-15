@@ -110,7 +110,7 @@ export const Form : FC <Props> = ({
 
     return <div className="CollectionForm">
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>
-        {title ?? "Create Your Ticket Collection"} </h3></div>
+        {title ?? "Create New Event"} </h3></div>
         <div className="formCol" style={{width:"55%"}}>
             <InfoForm setCollection={setCollection} collection={collection} 
             setSelectedRowForPreview={setSelectedRow} isEditMode={isEditMode}/>

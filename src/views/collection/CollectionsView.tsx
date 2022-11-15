@@ -50,10 +50,10 @@ export const CollectionsView : FC = () =>{
     onClick={()=>{
         setModalVisible(true);
     }}>
-        Create New Ticket Collection
+        Create New Event
     </Button>
     </div>
-    <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Ticket Collections</h3>
+    <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Events</h3>
     <List setCollectionForEdit={openCollectionForEdit} toReloadList={toReloadList}
     setToReloadList={setToReloadList}/> 
     {modal}
