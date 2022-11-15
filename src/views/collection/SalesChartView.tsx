@@ -56,10 +56,6 @@ export const SalesChartView : FC = () =>{
                
             
         }
-        else {
-
-            console.log("config.is::", config, new Date());
-        }
         
     },[]);
 
