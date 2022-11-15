@@ -45,7 +45,7 @@ export const View : FC = () =>{
         
         const reportWindowSize =() =>{
             setWidth(window.innerWidth);
-            console.log("window.innerWidth:", window.innerWidth, new Date());
+            //console.log("window.innerWidth:", window.innerWidth, new Date());
         }
     
         window.addEventListener('resize', reportWindowSize)
