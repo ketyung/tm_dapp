@@ -13,38 +13,44 @@ export const SalesChartView : FC = () =>{
 
     const getSalesData = useCallback(async ()=>{
 
+        setLoading(true);
+
         if ( config === undefined) {
 
-            setLoading(true);
-            let data = await getSalesCountInRange();
-    
-            setConfig({
-                data,
-                height:200,
-                step:1,
-                xField: 'date',
-                yField: 'value',
-                title: "Ticket Sales",
-                point: {
-                    size: 5,
-                    shape: 'circle',
-                    color:"#00f",
-                },
-            });
-    
-            setLoading(false);
+            setTimeout(async ()=>{
+              
+            
+                let data = await getSalesCountInRange();
+        
+                setConfig({
+                    data,
+                    height:200,
+                    step:1,
+                    xField: 'date',
+                    yField: 'value',
+                    title: "Ticket Sales",
+                    point: {
+                        size: 5,
+                        shape: 'circle',
+                        color:"#00f",
+                    },
+                });
+        
+                setLoading(false);            
+               
+            },1000);
+        
         }
-       
-        console.log("config::", config, new Date());
+        
     },[getSalesCountInRange]);
 
 
     useEffect(()=>{
         getSalesData();
-    },[getSalesData]);
+    },[]);
 
 
     const chartView = config && <Line style={{maxHeight:"250px", maxWidth:"98%"}} {...config} />;
 
-    return <>{loading ? <GSpinner style={{marginTop:"30px"}}/> : chartView }</>;
+    return <>{loading ? <GSpinner style={{marginTop:"30px"}} text="Loading chart..."/> : chartView }</>;
 }
