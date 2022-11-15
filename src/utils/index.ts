@@ -224,7 +224,8 @@ export const getMinAndMaxTimes = (date : Date) =>{
 	endDate.setMinutes(59);
 	endDate.setSeconds(59);
 	
-	return [startDate.getTime() * 1000, endDate.getTime() * 1000];
+	let toNearScale = 1000_000;
+	return [startDate.getTime() * toNearScale, endDate.getTime() * toNearScale];
 }
 
 export const randomInt = (min : number, max : number) =>{

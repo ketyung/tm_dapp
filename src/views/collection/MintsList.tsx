@@ -47,8 +47,8 @@ export const MintsList : FC <Props> = ({
     },[]);
 
     return <div className="MintsListDiv">
-        <LeftCircleOutlined style={{float:"left",marginLeft:"14px",clear:"both"}} onClick={()=>{
-                    setPage(Page.Home);}}/>
+        {(title && symbol) && <LeftCircleOutlined style={{float:"left",marginLeft:"14px",clear:"both"}} onClick={()=>{
+                    setPage(Page.Home);}}/>}
         <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
             <tr style={{borderBottom:"1px solid #bbb"}}>
