@@ -98,14 +98,18 @@ export const ListRow : FC <Props> = ({
         <td style={{width:"5%"}}>
         {((index ?? 0)+1)}.
         </td>
-        <td style={{width:"20%"}}>
+        <td style={{width:"24%",textAlign:"justify",
+        whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",maxWidth:"80px"}}>
         {collection.icon && <Image src={collection.icon} placeholder="Loading..."
         style={{width:"30px",height:"30px",borderRadius:"30px",marginRight:"4px"}}/>}
         {collection.title}
         </td>
-        <td style={{width:"30%",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
+        {
+        <td style={{width:"30%",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",
+        textAlign:"justify", maxWidth:"120px"}}>
         {collection.description}
         </td>
+        }
         <td style={{width:"10%"}}>
         {statusOfCollection(collection)}
         </td>

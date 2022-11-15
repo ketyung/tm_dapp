@@ -1,7 +1,8 @@
 import { FC , useCallback, useEffect, useState} from "react";
 import useUsersContractState from "../hooks/useUsersContractState";
 import { UserForm } from "./user/UserForm";
-import { View } from "./collection/View";
+//import { View } from "./collection/View";
+import { View } from "./View";
 import { GSpinner } from "./components/GSpinner";
 
 export const UserPromptView : FC = () =>{

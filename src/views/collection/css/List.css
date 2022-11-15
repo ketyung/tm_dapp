@@ -13,7 +13,7 @@
     .CollectionList{
         margin:auto;
         padding:4px;
-        min-width: 1280px;
+        min-width: 99%;
         background-color: transparent;
     }
 }

@@ -33,5 +33,5 @@ export const SalesChartView : FC = () =>{
     },[]);
 
 
-    return <>{config && <Line style={{maxHeight:"250px"}} {...config} />}</>;
+    return <>{config && <Line style={{maxHeight:"250px", maxWidth:"98%"}} {...config} />}</>;
 }

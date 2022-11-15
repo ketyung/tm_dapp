@@ -48,12 +48,14 @@ export const List : FC <ListProps> = ({
                 <th style={{width:"5%"}}>
                 No.
                 </th>
-                <th style={{width:"20%"}}>
+                <th style={{width:"24%",textAlign:"justify"}}>
                 Title
                 </th>
-                <th style={{width:"30%"}}>
+                {
+                <th style={{width:"30%",textAlign:"justify"}}>
                 Description
                 </th>
+                }
                 <th style={{width:"10%"}}>
                 Status
                 </th>
