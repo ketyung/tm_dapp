@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
 import {TicketMint} from "../models";
+import { getDatesDaysAgoTillNow, getMinAndMaxTimes, randomInt } from "../utils";
 import { TicketMintsContract } from "../near/TicketMintsContract";
 import { TICKET_MINTS_CONTRACT_ID } from "../near/const";
 
@@ -33,5 +34,25 @@ export default function useTicketMintsContract() {
         return tms;
     } 
 
-    return {getTicketMintsOf, loading, getTicketMintsBy} as const;
+
+    const getSalesCountInRange = async (numberOfDaysAgo : number = 5) : Promise<{date : string, value : string}[]>=>{
+
+        let range = getDatesDaysAgoTillNow(numberOfDaysAgo);
+
+        let contract = new TicketMintsContract ( TICKET_MINTS_CONTRACT_ID, wallet);
+
+        let data : {date : string, value : string}[] = [];
+        range.forEach(async (d) =>{
+
+            let mts = getMinAndMaxTimes(d);
+            let cnt = await contract.getTicketMintsCount(mts[0], mts[1]);
+            data.push({date : d.toDateString(), value : `${cnt}`});
+
+        });
+
+        return data;
+
+    }
+
+    return {getTicketMintsOf, loading, getTicketMintsBy, getSalesCountInRange} as const;
 }

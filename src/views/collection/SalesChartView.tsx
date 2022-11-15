@@ -1,21 +1,16 @@
-import { FC, useEffect, useState} from "react";
-import { getDatesDaysAgoTillNow, randomInt } from "../../utils";
+import { FC, useEffect, useState, useCallback} from "react";
+import useTicketMintsContract from "../../hooks/useTicketMintsContract";
 import { Line } from '@ant-design/charts';
 
 export const SalesChartView : FC = () =>{
 
     const [config,setConfig]= useState<any>();
 
-    useEffect(()=>{
+    const {getSalesCountInRange} = useTicketMintsContract();
 
-        let range = getDatesDaysAgoTillNow();
+    const getSalesData = useCallback(async ()=>{
 
-        let data : {date: string, value: string}[] = [];
-
-        range.forEach(d=>{
-            data.push ({date : d.toDateString(), value:`${randomInt(1,32)}`});
-        });
-        
+        let data = await getSalesCountInRange();
 
         setConfig({
             data,
@@ -30,6 +25,11 @@ export const SalesChartView : FC = () =>{
             },
         });
 
+    },[getSalesCountInRange]);
+
+
+    useEffect(()=>{
+        getSalesData();
     },[]);
 
 

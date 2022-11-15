@@ -212,6 +212,20 @@ export const getDates = (startDate : Date, endDate : Date) => {
     return dateArray;
 }
 
+export const getMinAndMaxTimes = (date : Date) =>{
+
+	let startDate = new Date(date.getTime());
+	startDate.setHours(0);
+	startDate.setMinutes(0);
+	startDate.setSeconds(0);
+	
+	let endDate = new Date(date.getTime());
+	endDate.setHours(23);
+	endDate.setMinutes(59);
+	endDate.setSeconds(59);
+	
+	return [startDate.getTime() * 1000, endDate.getTime() * 1000];
+}
 
 export const randomInt = (min : number, max : number) =>{
 	min = Math.ceil(min);

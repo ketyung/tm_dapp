@@ -61,4 +61,27 @@ export class TicketMintsContract {
         
     } 
 
+    async getTicketMintsCount( dateStart?: number, dateEnd? : number) : Promise<number>{
+
+        try {
+
+            let accountId = this.wallet?.accountId;
+
+            let cnt =  await this.wallet?.viewMethod({
+                contractId: this.contractId,
+                method: 'get_ticket_mints_count',
+                args: { owner : accountId, date_start : dateStart, 
+                    date_end : dateEnd }
+            });
+
+            return cnt ;
+        }
+        catch( e: any) {
+          
+            console.error("ex", e, new Date());
+            return 0;
+        }
+        
+    } 
+
 }
