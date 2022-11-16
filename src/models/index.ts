@@ -63,6 +63,8 @@ export enum AttributeType {
     Status = 'Status',
 
     TicketStartingNumber = 'TicketStartingNumber',
+
+    BuyerRequiredToSignUp = 'BuyerRequiredToSignUp',
 }
 
 

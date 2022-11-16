@@ -116,7 +116,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             </thead>
             <tbody>
             <tr>
-                <td style={{textAlign:"left"}} colSpan={3}>
+                <td style={{textAlign:"left"}} colSpan={2}>
                 <RangePicker showTime style={{minWidth:"400px"}}
                 value={isEditMode && dateRange ? 
                     [dateRange.startDate.isValid() ? dateRange.startDate : null, 
@@ -142,8 +142,8 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
                 </td>
             </tr>
             <tr>
-                <td style={{textAlign:"left",width:"45%"}}>
-                <FormInput style={{maxWidth:"200px"}} label="Venue" 
+                <td style={{textAlign:"left",width:"88%"}}>
+                <FormInput style={{maxWidth:"400px"}} label="Venue" 
                 formItemStyle={{display:"inline"}}
                 value  ={ (collection && collection.attributes) ? 
                     collection.attributes.filter((e)=>{
@@ -157,21 +157,6 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
                 </td>
                 <td style={{width:"10%",textAlign:"left"}}>
                   <EnvironmentOutlined style={{marginLeft:"6px",display:"inline-block",cursor:"pointer"}}/>
-                </td>
-                <td style={{textAlign:"left",width:"45%"}}>
-                <FormInput isNumber={true} style={{maxWidth:"100px"}} 
-                formItemStyle={{display:"inline"}}
-                label="Max Ticket Per Wallet" min={1} max={10} step={1}
-                value  ={ (collection && collection.attributes) ? 
-                    collection.attributes.filter((e)=>{
-                        return e.name === AttributeType.MaxTicketPerWallet
-                    })[0]?.value : 1
-                }
-                
-                onChange={(e)=>{
-                    setCollectionAttrib(AttributeType.MaxTicketPerWallet, e + "");
-                }}
-                />
                 </td>
             </tr>
             </tbody>
