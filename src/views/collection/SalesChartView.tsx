@@ -1,4 +1,4 @@
-import { FC, useEffect, useState} from "react";
+import { FC, useEffect, useState, useCallback} from "react";
 import useTicketMintsContract from "../../hooks/useTicketMintsContract";
 import { GSpinner } from "../components/GSpinner";
 import { Line } from '@ant-design/charts';
@@ -12,7 +12,7 @@ export const SalesChartView : FC = () =>{
             height:200,
             step:1,
             xField: 'date',
-            yField: 'value',
+            yField: 'count',
             title: "Ticket Sales",
             point: {
                 size: 5,
@@ -27,36 +27,30 @@ export const SalesChartView : FC = () =>{
    
     const {getSalesCountInRange} = useTicketMintsContract();
 
-    useEffect(()=>{
+    const fetchSalesCountNow = async () =>{
 
         setLoading(true);
 
-        if ( config === undefined || config.data.length < 6) {
+        let data = await getSalesCountInRange();
 
-            
-            getSalesCountInRange()
-            .then((data:any) =>{
+        setConfig({...config, 
+            data
+        });
 
-                setConfig({...config, 
-                    data
-                });
-        
-                setTimeout(()=>{
-                    setLoading(false);
-                },300);         
+        setTimeout(()=>{
+            setLoading(false);
+        },300);             
+                               
+    }
 
-            })
-            .catch((e : Error)=>{
+    const fetchSalesCount = useCallback (async ()=>{
 
-                window.alert(e.message);
-                setLoading(false);            
-            
-            })
-    
-               
-            
-        }
-        
+        await fetchSalesCountNow();
+
+    },[fetchSalesCountNow]);
+
+    useEffect(()=>{
+        fetchSalesCount();      
     },[]);
 
 

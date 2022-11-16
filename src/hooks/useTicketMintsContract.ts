@@ -35,30 +35,28 @@ export default function useTicketMintsContract() {
     } 
 
 
-    const getSalesCountInRange = async (numberOfDaysAgo : number = 5) : Promise<{date : string, value : number }[]>=>{
+    const getSalesCountInRange = async (numberOfDaysAgo : number = 5) : 
+    Promise<{date? : string, count : number }[]>=>{
 
         let range = getDatesDaysAgoTillNow(numberOfDaysAgo);
 
         let contract = new TicketMintsContract ( TICKET_MINTS_CONTRACT_ID, wallet);
 
-        let data : {date : string, value : number}[] = [];
+        let data : {date? : string, count : number}[] = [];
+        let dateRanges : {date? : string, 
+            start_date_timestamp? : number, end_date_timestamp? : number }[] = [];
+
         range.forEach(async (d) =>{
 
             let mts = getMinAndMaxTimes(d);
-            let cnt = await contract.getTicketMintsCount(mts[0], mts[1]);
-            data.push({date : shortDate(d), value : cnt});
+            dateRanges.push({date : shortDate(d), start_date_timestamp :
+            mts[0], end_date_timestamp : mts[1]});
            
         });
 
-        data.sort((a: any,b: any)=>{
-            if ( a.date < b.date ){
-                return -1;
-              }
-              if ( a.date > b.date ){
-                return 1;
-              }
-              return 0;
-        })
+        data = await contract.getTicketMintsCountFor(dateRanges);
+          
+
         return data;
 
     }
