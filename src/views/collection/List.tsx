@@ -2,6 +2,7 @@ import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { Collection } from "../../models";
 import { ListRow } from "./ListRow";
+import { ViewType } from "../View";
 import { GSpinner } from "../components/GSpinner";
 import './css/List.css';
 
@@ -12,10 +13,12 @@ export type ListProps = {
     toReloadList?: boolean,
 
     setToReloadList? : (reload: boolean) => void,
+
+    setViewType? : (viewType : ViewType, param?: any ) => void,
 }
 
 export const List : FC <ListProps> = ({
-    setCollectionForEdit, toReloadList, setToReloadList
+    setCollectionForEdit, toReloadList, setToReloadList, setViewType
 }) =>{
 
     const {getCollectionsOf, loading} = useCollectionsContract();
@@ -74,7 +77,9 @@ export const List : FC <ListProps> = ({
         {
             collections?.map((c,i)=>{
 
-                return <ListRow key={"ListRow"+i} collection={c} index={i} setCollectionForEdit={setCollectionForEdit}/>;
+                return <ListRow key={"ListRow"+i} collection={c} index={i} 
+                setViewType={setViewType}
+                setCollectionForEdit={setCollectionForEdit}/>;
             })
         }
         { loading && <tr><td colSpan={6} style={{width:"100%"}}><GSpinner text="Loading..."/></td></tr>}

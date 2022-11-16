@@ -1,29 +1,28 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import { MintsListRow } from "./MintsListRow";
 import { GSpinner } from "../components/GSpinner";
-import { Page } from "../../models";
-import usePage from "../../hooks/usePage";
 import { LeftCircleOutlined } from "@ant-design/icons";
 import useTicketMintsContract from "../../hooks/useTicketMintsContract";
 import { TicketMint } from "../../models";
 import './css/MintsList.css';
+import { ViewType } from "../View";
 
 type Props = {
 
     title? : string,
 
     symbol? : string, 
+
+    setViewType? : (viewType: ViewType) => void, 
 }
 
 export const MintsList : FC <Props> = ({
-    title, symbol
+    title, symbol, setViewType
 }) =>{
 
     const {getTicketMintsOf, loading, getTicketMintsBy} = useTicketMintsContract();
 
     const [ticketMints, setTicketMints] = useState<TicketMint[]>();
-
-    const {setPage} = usePage();
 
     const loadTicketMints = useCallback(async ()=>{
 
@@ -48,7 +47,7 @@ export const MintsList : FC <Props> = ({
 
     return <div className="MintsListDiv">
         {(title && symbol) && <LeftCircleOutlined style={{float:"left",marginLeft:"14px",clear:"both"}} onClick={()=>{
-                    setPage(Page.Home);}}/>}
+                    if(setViewType) setViewType(ViewType.Collections);}}/>}
         <table className="MintsList" cellPadding={3} cellSpacing={3}>
         <thead>
             <tr style={{borderBottom:"1px solid #bbb"}}>

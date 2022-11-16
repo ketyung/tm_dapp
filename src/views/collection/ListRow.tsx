@@ -3,6 +3,7 @@ import { Button, Image, Menu, Dropdown, Tooltip} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined, ShareAltOutlined } from "@ant-design/icons";
 import usePage from "../../hooks/usePage";
 import { ListProps } from "./List";
+import { ViewType } from "../View";
 import { ShareView } from "../components/ShareView";
 import useCollectionsContract from "../../hooks/useCollectionsContract";
 import { FC , useEffect, useState, useCallback} from "react";
@@ -11,10 +12,11 @@ type Props = ListProps & {
 
     collection : Collection,
     index? : number,
+    setViewType? : (viewType : ViewType, param?: any ) => void,
 };
 
 export const ListRow : FC <Props> = ({
-    collection, index,setCollectionForEdit
+    collection, index,setCollectionForEdit, setViewType
 }) =>{
 
     const {setPage} = usePage();
@@ -66,8 +68,11 @@ export const ListRow : FC <Props> = ({
         {
             label: <div className="menuItem" onClick={()=>{
 
-                setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
+               // setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
     
+               if ( setViewType) {
+                    setViewType(ViewType.Sales, {title : collection.title, symbol : collection.symbol});
+               }
             }}><EyeOutlined style={{marginRight:"10px"}}/>Ticket Sales</div>,
             key: '1',
         },
@@ -118,7 +123,10 @@ export const ListRow : FC <Props> = ({
         </td>
         <td style={{width:"10%"}}>
         <Button type="link" onClick={()=>{
-            setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
+           // setPage(Page.TicketSales, {title : collection.title, symbol : collection.symbol});
+           if ( setViewType) {
+            setViewType(ViewType.Sales, {title : collection.title, symbol : collection.symbol});
+       }
         }}>{collection.tickets_sold}</Button>
         </td>
         <td style={{width:"10%"}}><Dropdown overlay={menu} trigger={['click']}>

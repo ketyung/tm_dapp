@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import { DashboardViewTypeStorage } from "../utils/local-storage";
 import { DashboardView } from "./collection/DashboardView";
 import { CollectionsView } from "./collection/CollectionsView";
+import { MintsList } from "./collection/MintsList";
 
 export enum ViewType {
 
@@ -12,6 +13,8 @@ export enum ViewType {
     Collections = 2,
 
     Customers = 3,
+
+    Sales = 4, 
 }
 
 const { Sider, Content } = Layout;
@@ -21,11 +24,19 @@ export const View : FC = () =>{
 
     const [viewType, setViewType] = useState<ViewType>(ViewType.Dashboard);
 
+    const [collectionParam, setCollectionParam] = useState<any>();
+
 
     const setViewTypeNow = ( viewType : ViewType) =>{
 
         setViewType(viewType);
         DashboardViewTypeStorage.setViewType(viewType);
+    }
+
+    const setViewTypeWithParam = ( viewType : ViewType, param? : any) =>{
+
+        setViewTypeNow(viewType);
+        setCollectionParam(param);
     }
 
     const [collapsed, setCollapsed] = useState(false);
@@ -41,7 +52,15 @@ export const View : FC = () =>{
 
             case ViewType.Collections :
 
-                return <CollectionsView/>
+                return <CollectionsView setViewType={setViewTypeWithParam}/>
+
+            case ViewType.Sales :
+
+                if (collectionParam)
+                    return <MintsList title={collectionParam?.title} symbol={collectionParam.symbol}
+                    setViewType={setViewTypeNow}/>;
+                else
+                    return <CollectionsView setViewType={setViewTypeWithParam}/>;
 
             default :
                 return <DashboardView/>

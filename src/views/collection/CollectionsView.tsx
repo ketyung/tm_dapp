@@ -4,8 +4,17 @@ import { CloseCircleOutlined } from "@ant-design/icons";
 import { List } from "./List";
 import { Form } from "./Form";
 import { Collection } from "../../models";
+import { ViewType } from "../View";
 
-export const CollectionsView : FC = () =>{
+
+type Props = {
+
+    setViewType? : (viewType : ViewType, param?: any ) => void,
+}
+
+export const CollectionsView : FC <Props> = ({
+    setViewType
+}) =>{
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -55,7 +64,7 @@ export const CollectionsView : FC = () =>{
     </div>
     <h3 style={{textAlign:"left",fontWeight:"600"}}>Your Events</h3>
     <List setCollectionForEdit={openCollectionForEdit} toReloadList={toReloadList}
-    setToReloadList={setToReloadList}/> 
+    setToReloadList={setToReloadList} setViewType={setViewType}/> 
     {modal}
 </div>
 }
