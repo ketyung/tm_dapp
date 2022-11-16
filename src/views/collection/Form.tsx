@@ -1,11 +1,12 @@
 import { Collection } from "../../models";
-import { InfoForm } from "./InfoForm";
+//import { InfoForm } from "./InfoForm";
 import { LogoAndTmplForm } from "./LogoAndTmplForm";
 import { BulbOutlined } from "@ant-design/icons";
 import { FC, useState, useEffect } from "react";
 import { Message, MessageType } from "../../models";
 import useUsersContractState from "../../hooks/useUsersContractState";
 import { Button, Spin } from "antd";
+import { EventTabbedForm } from "./EventTabbedForm";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import './css/Form.css';
 
@@ -17,6 +18,9 @@ export type CollectionFormProps = {
     setCollection? : (collection: Collection)=> void,
 
     isEditMode? : boolean, 
+
+    style? : React.CSSProperties ,
+    
 }
 
 
@@ -112,8 +116,8 @@ export const Form : FC <Props> = ({
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>
         {title ?? "Create New Event"} </h3></div>
         <div className="formCol" style={{width:"55%"}}>
-            <InfoForm setCollection={setCollection} collection={collection} 
-            setSelectedRowForPreview={setSelectedRow} isEditMode={isEditMode}/>
+            {<EventTabbedForm setCollection={setCollection} collection={collection} 
+            setSelectedRowForPreview={setSelectedRow} isEditMode={isEditMode}/>}
         </div>   
         <div className="formCol" style={{width:"40%"}}>
             <LogoAndTmplForm collection={collection} setCollection={setCollection}

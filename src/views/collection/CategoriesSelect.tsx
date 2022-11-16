@@ -8,7 +8,7 @@ export const CategoriesSelect : FC <CollectionFormProps> = ({
     collection, setCollection
 }) =>{
 
-    const categories = ["Concert Ticket", "Event Ticket"];
+    const categories = ["Concert", "Event", "Seminar"];
 
     return <Form.Item label={"Category"} labelAlign={"right"} required={true}>   
     <Select value={collection.category ?? ""} style={{maxWidth:"320px",textAlign:"left"}}

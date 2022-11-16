@@ -8,7 +8,7 @@ import { setCollectionAttribute } from "./OtherInfoForm";
 const { Option } = Select;
 
 export const StatusSelect : FC <CollectionFormProps> = ({
-    collection, setCollection,isEditMode
+    collection, setCollection,isEditMode, style 
 }) =>{
 
     const isCollectionNew = () =>{
@@ -37,7 +37,7 @@ export const StatusSelect : FC <CollectionFormProps> = ({
     return <Form.Item label={"Status"} labelAlign={"right"} required={true}>   
     <Select value={collection?.attributes?.filter((a) =>{
        return a.name === AttributeType.Status
-    })[0]?.value ?? allStatus[0]?.code} style={{maxWidth:"100px",textAlign:"left",fontSize:"8pt"}}
+    })[0]?.value ?? allStatus[0]?.code} style={style ?? {maxWidth:"100px",textAlign:"left",fontSize:"8pt"}}
     onChange={(e)=>{
         setCollectionAttribute(AttributeType.Status,e, collection, setCollection);
     }}>
