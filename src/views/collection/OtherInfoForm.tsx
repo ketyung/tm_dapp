@@ -117,7 +117,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
             <tbody>
             <tr>
                 <td style={{textAlign:"left"}} colSpan={3}>
-                <RangePicker showTime 
+                <RangePicker showTime style={{minWidth:"400px"}}
                 value={isEditMode && dateRange ? 
                     [dateRange.startDate.isValid() ? dateRange.startDate : null, 
                     dateRange.endDate.isValid() ? dateRange.endDate : null] : undefined}
