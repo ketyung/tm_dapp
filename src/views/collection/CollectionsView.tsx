@@ -48,7 +48,7 @@ export const CollectionsView : FC <Props> = ({
     maskClosable={false}
     open={modalVisible}>
     <Form isEditMode={isEditMode} collectionForEdit={collectionForEdit}
-    title={isEditMode ? `Edit Collection "${collectionForEdit?.title}"` : undefined}/>
+    title={isEditMode ? `Edit Event "${collectionForEdit?.title}"` : undefined}/>
     </Modal>
 
 

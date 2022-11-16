@@ -24,7 +24,7 @@ export const EventInfoForm : FC <CollectionFormProps>= ({
     <tbody>
         <tr>
             <td valign="top" style={{width:"100%",textAlign:"left"}}>
-            <FormInput label="Event/Title" style={{minWidth:"150px"}} 
+            <FormInput label="Name/Title" style={{maxWidth:"360px"}} 
             value={collection?.title} required={true} readOnly={isEditMode}
             onChange={(e)=>{
                 let title = e.target.value
