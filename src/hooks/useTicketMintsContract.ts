@@ -35,7 +35,7 @@ export default function useTicketMintsContract() {
     } 
 
 
-    const getSalesCountInRange = async (numberOfDaysAgo : number = 5) : 
+    const getSalesCountInRange = async (numberOfDaysAgo : number = 7) : 
     Promise<{date? : string, count : number }[]>=>{
 
         let range = getDatesDaysAgoTillNow(numberOfDaysAgo);

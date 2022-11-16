@@ -1,16 +1,17 @@
 import { FC, useState, useEffect } from "react";
 import { SideBar } from "./SideBar";
 import { Layout } from "antd";
+import { DashboardViewTypeStorage } from "../utils/local-storage";
 import { DashboardView } from "./collection/DashboardView";
 import { CollectionsView } from "./collection/CollectionsView";
 
 export enum ViewType {
 
-    Dashboard,
+    Dashboard = 1,
 
-    Collections,
+    Collections = 2,
 
-    Customers,
+    Customers = 3,
 }
 
 const { Sider, Content } = Layout;
@@ -19,6 +20,13 @@ export const View : FC = () =>{
 
 
     const [viewType, setViewType] = useState<ViewType>(ViewType.Dashboard);
+
+
+    const setViewTypeNow = ( viewType : ViewType) =>{
+
+        setViewType(viewType);
+        DashboardViewTypeStorage.setViewType(viewType);
+    }
 
     const [collapsed, setCollapsed] = useState(false);
 
@@ -45,18 +53,24 @@ export const View : FC = () =>{
         
         const reportWindowSize =() =>{
             setWidth(window.innerWidth);
-            //console.log("window.innerWidth:", window.innerWidth, new Date());
         }
-    
+
+        let vType = DashboardViewTypeStorage.getViewType();
+        if ( vType !== undefined){
+            setViewType( vType );
+        }
+
         window.addEventListener('resize', reportWindowSize)
        
-        return () => window.removeEventListener('resize', reportWindowSize)
+        return () => window.removeEventListener('resize', reportWindowSize);
+
+       
     }, []);
 
     return  <Layout className="MainView" style={{margin:"0px", padding:"0px",minWidth:`${width}px`}}>
         <Sider trigger={null} collapsible collapsed={collapsed} width="240"
         style={{margin:"0px"}}>
-            <SideBar setViewType={setViewType} viewType={viewType}/>
+            <SideBar setViewType={setViewTypeNow} viewType={viewType}/>
         </Sider>
         <Layout className="site-layout">
         <Content className="site-layout-background"

@@ -1,4 +1,5 @@
 import { Page } from "../models";
+import { ViewType } from "../views/View";
 
 export class LocalStorage {
 	static get(name: string) {
@@ -18,13 +19,15 @@ export class LocalStorage {
 
 export class PageStorage {
 	
+    private static key : string = "CurrentPage";
+
     static setPage(page : Page ) {
 		
-		LocalStorage.set("CurrentPage", page);
+		LocalStorage.set(this.key, page);
 	}
 
 	static getPage(): Page|undefined  {
-		let p = LocalStorage.get("CurrentPage");
+		let p = LocalStorage.get(this.key);
         if ( p !== null){
 
             let pp = parseInt(p);
@@ -42,6 +45,27 @@ export class PageStorage {
                         return Page.Home;
                 }
             }
+        }
+
+        return undefined;
+    }
+}
+
+
+export class DashboardViewTypeStorage {
+	
+    private static key : string = "CurrentViewType";
+
+    static setViewType(viewType : ViewType ) {
+		
+		LocalStorage.set(this.key, viewType);
+	}
+
+	static getViewType(): ViewType|undefined  {
+		let p = LocalStorage.get(this.key);
+        if ( p !== null){
+
+            return parseInt(p); 
         }
 
         return undefined;
