@@ -1,7 +1,8 @@
 import { Buyer} from "../../models";
 import useUsersContractState from "../../hooks/useUsersContractState";
 import { FC , useEffect, useState, useCallback} from "react";
-import { dateToTimeAgo, yoctoToNear, nearTimestampToDate } from "../../utils";
+import { MessageOutlined } from "@ant-design/icons";
+import { dateToTimeAgo, nearTimestampToDate } from "../../utils";
 
 type Props = {
 
@@ -41,7 +42,9 @@ export const ListRow : FC <Props> = ({
         {buyer.account_id}
         </td>
         <td style={{width:"30%", textAlign:"justify"}}>
-        {buyerName ? buyerName : "Not Signed Up"}
+        {buyerName ? <><MessageOutlined title="Message customer... coming soon..."
+        style={{cursor:"pointer",marginRight:"6px"}}/>{buyerName}</> : 
+        <span style={{color:"#d00"}}>Not Signed Up</span>}
         </td>
         <td style={{width:"10%"}} title={nearTimestampToDate(buyer.last_puchase_date ?? 0).toLocaleString()}>
         {dateToTimeAgo( nearTimestampToDate(buyer.last_puchase_date ?? 0)).short}  
