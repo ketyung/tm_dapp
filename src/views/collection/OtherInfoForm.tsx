@@ -111,7 +111,7 @@ export const OtherInfoForm : FC<CollectionFormProps> = ({
         <table cellPadding={3} cellSpacing={3}>
             <thead>
                 <tr>
-                    <td colSpan={2}>Other Event's Info</td>
+                    <td colSpan={2}>Dates &amp; Venue</td>
                 </tr>
             </thead>
             <tbody>
