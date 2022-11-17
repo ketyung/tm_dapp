@@ -39,6 +39,23 @@ export class UsersContract {
         
     } 
 
+    async getUserBy(accountId: string ) : Promise<User>{
+
+        try {
+
+            return await this.wallet?.viewMethod({
+                contractId: this.contractId,
+                method: 'get_user',
+                args: { user_id:  accountId}
+            });
+        }
+        catch(e : any) {
+            
+            console.log("err@getUser@", e, new Date());
+          
+            return {};
+        }
+    } 
 
     async getUser() : Promise<User>{
 

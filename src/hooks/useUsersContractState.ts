@@ -49,6 +49,14 @@ export default function useUsersContractState() {
         return b;
     } 
 
+    const getUserBy = async (accountId : string) : Promise<User|undefined>=> {
+        setLoading(true);
+        let b =  await usersContractState.contract?.getUserBy(accountId);
+        setLoading(false);
+        return b;
+    } 
+
+
     const signUpUser = async (user : User, completion? : (res : string|Error) => void) =>{
 
         setLoading(true);
@@ -324,5 +332,5 @@ export default function useUsersContractState() {
 
     return {init,hasUser, signUpUser, loading, isInitialized, getUser, updateUser, 
         createAndDeployNftContract, genNextTicketNumber, setLoading, ticketMint,
-        getMintedTicketsIn,updateCollection} as const;
+        getMintedTicketsIn,updateCollection, getUserBy} as const;
 }

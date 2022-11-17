@@ -16,12 +16,14 @@ export const ListRow : FC <Props> = ({
 
     const [buyerName, setBuyerName] = useState<string>();
 
-    const {getUser} = useUsersContractState();
+    const {getUserBy} = useUsersContractState();
 
     const getUserName =  useCallback(async ()=>{
-        let u = await getUser();
-        setBuyerName(`${u?.first_name} ${u?.last_name}`);
-    },[getUser]);
+        let u = await getUserBy(buyer.account_id ?? "");
+        if ( u )
+            setBuyerName(`${u?.first_name} ${u?.last_name}`);
+
+    },[getUserBy]);
 
  
     useEffect(()=>{
@@ -39,7 +41,7 @@ export const ListRow : FC <Props> = ({
         {buyer.account_id}
         </td>
         <td style={{width:"30%", textAlign:"justify"}}>
-        {buyerName}
+        {buyerName ? buyerName : "Not Signed Up"}
         </td>
         <td style={{width:"10%"}} title={nearTimestampToDate(buyer.last_puchase_date ?? 0).toLocaleString()}>
         {dateToTimeAgo( nearTimestampToDate(buyer.last_puchase_date ?? 0)).short}  
