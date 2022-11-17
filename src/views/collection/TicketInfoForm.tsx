@@ -67,8 +67,9 @@ export const TicketInfoForm : FC <Props> = ({
         </td>
         <td style={{textAlign:"left",width:"50%"}} valign="top">
         Buyer is required to sign up? <Checkbox checked={
+            isEditMode ?
             collection.attributes?.filter(a => { return a.name === AttributeType.BuyerRequiredToSignUp})[0]?.value 
-            === "true"
+            === "true" : true 
         } onChange={(e)=>{
 
             if (e.target.checked) {
