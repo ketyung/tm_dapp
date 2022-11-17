@@ -152,6 +152,30 @@ export default function useUsersContractState() {
 
 
    
+    const checkHasExceededMaxTicketPerWallet = async (collection : Collection) : 
+    Promise<{exceeded:boolean, maxTicketPerWallet? : number}>=>{
+
+        let aa = collection.attributes?.filter(a=>{
+            return a.name === AttributeType.MaxTicketPerWallet
+        });
+
+        if ( aa && (aa?.length ?? 0) > 0) {
+
+            let maxTicketPerWallet = parseInt(aa[0].value);
+            if ( !isNaN(maxTicketPerWallet)){
+
+                let mintedTickets : any[] = await getMintedTicketsIn(collection);
+                if (mintedTickets.length >= maxTicketPerWallet){
+                    return { exceeded:true, maxTicketPerWallet : maxTicketPerWallet} ;
+                }
+            } 
+        }
+
+        return { exceeded:false } ;
+       
+
+    }
+
 
     const ticketMint = async ( collection : Collection, 
         ticketType : TicketType , 
@@ -166,10 +190,18 @@ export default function useUsersContractState() {
                 symbol : collection?.symbol ?? "",
             };
 
-            let aa = collection.attributes?.filter(a=>{
-                return a.name === AttributeType.MaxTicketPerWallet
-            });
 
+            let hasExceedMtpw = await checkHasExceededMaxTicketPerWallet(collection);
+
+            if ( hasExceedMtpw.exceeded ) {
+
+                setLoading(false);
+                if(completion)
+                    completion(new 
+                        Error(`Exceeded the total number of tickets per wallet ${hasExceedMtpw.maxTicketPerWallet}`));
+                return;            
+            }
+           
             let ticketPrc = parseFloat(fromOnchainTicketPrice(ticketType?.price ?? 0));
            
             let bal = await accountBalance();
@@ -183,21 +215,6 @@ export default function useUsersContractState() {
                 }
             }
 
-            if ( aa && (aa?.length ?? 0) > 0) {
-
-                let maxTicketPerWallet = parseInt(aa[0].value);
-                if ( !isNaN(maxTicketPerWallet)){
-
-                    let mintedTickets : any[] = await getMintedTicketsIn(collection);
-                    if (mintedTickets.length > maxTicketPerWallet){
-
-                        setLoading(false);
-                        if(completion)
-                            completion(new Error(`Exceeded the total number of tickets per wallet ${maxTicketPerWallet}`));
-                        return;
-                    }
-                } 
-            }
             
 
             await genNextTicketNumber(collectionId, 6, async (e)=>{
