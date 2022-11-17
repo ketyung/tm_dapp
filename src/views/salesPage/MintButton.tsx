@@ -65,7 +65,7 @@ export const MintButton : FC <Props> = ({
         className="FormModal" closable={true} 
         onCancel={() => { setUserFormVisible(false);}}
         destroyOnClose={true}
-        footer={null}
+        footer={null} style={{background:"transparent"}}
         maskClosable={false}
         open={userFormVisible}>
         <UserForm title="Please sign up for an account first"/>
@@ -77,8 +77,8 @@ export const MintButton : FC <Props> = ({
         await mintTicketNow();
     }}> {loading ? <Spin size="small"/> : <>Buy Ticket</>}</Button> :<>Not Ready For Sale</>
 
-    return !hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
+    return <>{!hasSignedIn ? <Button className="ConnectButton" onClick={(e)=>{
             e.preventDefault();signIn();
         }}>Connect Your Wallet</Button>
-        : mintButton;
+        : mintButton}{modal}</>;
 }

@@ -115,6 +115,12 @@ export const Form : FC <Props> = ({
     return <div className="CollectionForm">
         <div className="title"><h3><BulbOutlined style={{marginRight:"6px"}}/>
         {title ?? "Create New Event"} </h3></div>
+        <div style={{marginTop:"10px",background:message?.type===MessageType.Error ? "#d00" : "#56a",
+        borderRadius:"20px",padding:"10px",color:"white", display:message ? "block":"none", 
+        transition:"height 1.5s ease", marginBottom:"10px"}}>
+        {message?.type===MessageType.Error && <ExclamationCircleOutlined style={{marginRight:"10px"}}/>} 
+        {message?.text}</div>
+      
         <div className="formCol" style={{width:"55%"}}>
             {<EventTabbedForm setCollection={setCollection} collection={collection} 
             setSelectedRowForPreview={setSelectedRow} isEditMode={isEditMode}/>}
@@ -133,11 +139,6 @@ export const Form : FC <Props> = ({
         minWidth:"260px",marginTop:"10px",fontWeight:600}}>
         {processing ? <Spin size="small"/> : <>{isEditMode ? "Update" : "Create"}</>}    
         </Button>
-        <div style={{marginTop:"10px",background:message?.type===MessageType.Error ? "#d00" : "#56a",
-        borderRadius:"20px",padding:"10px",color:"white",visibility:message ? "visible":"hidden", 
-        transition:"height 1.5s ease"}}>
-        {message?.type===MessageType.Error && <ExclamationCircleOutlined style={{marginRight:"10px"}}/>} 
-        {message?.text}</div>
         </div>
       
     </div>
