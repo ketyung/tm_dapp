@@ -12,6 +12,7 @@ export default function useCollectionsContract() {
     const [loading, setLoading] = useState(false);
 
     const {wallet}  = useWalletState();
+
     
 
     const getCollectionsOf = async (offset : number, limit: number = 20) : Promise<Collection[]>=> {
@@ -44,6 +45,20 @@ export default function useCollectionsContract() {
         if (a) {
 
             return a.value === "R";
+        }
+        // default is false if the attribute is NOT defined
+        return false; 
+    }
+
+
+    const isBuyerRequiredToSignUp = (collection? : Collection) : boolean =>{
+
+        let a = collection?.attributes?.filter(a =>{
+            return a.name === AttributeType.BuyerRequiredToSignUp
+        })[0];
+
+        if (a) {
+            return a.value === "true";
         }
         // default is false if the attribute is NOT defined
         return false; 
@@ -107,5 +122,6 @@ export default function useCollectionsContract() {
 
     return {getCollectionsOf, loading, getCollection, collectionIdToB64, b64ToCollectionId,
     toB64OfShortCollectionInfo, b64ToShortCollectionInfo, getNextTicketNumber,
-    isCollectionReadyForSale, shortCollectionUri, getPageUriForCollection} as const;
+    isCollectionReadyForSale, shortCollectionUri, getPageUriForCollection,
+    isBuyerRequiredToSignUp} as const;
 }
