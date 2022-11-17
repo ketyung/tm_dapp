@@ -5,6 +5,7 @@ import { DashboardViewTypeStorage } from "../utils/local-storage";
 import { DashboardView } from "./collection/DashboardView";
 import { CollectionsView } from "./collection/CollectionsView";
 import { MintsList } from "./collection/MintsList";
+import { List as CustomerList } from "./customer/List";
 
 export enum ViewType {
 
@@ -53,6 +54,9 @@ export const View : FC = () =>{
             case ViewType.Collections :
 
                 return <CollectionsView setViewType={setViewTypeWithParam}/>
+
+            case ViewType.Customers :
+                return <CustomerList/>
 
             case ViewType.Sales :
 

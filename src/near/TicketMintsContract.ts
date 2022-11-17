@@ -1,5 +1,5 @@
 import { Wallet } from "./Wallet";
-import { TicketMint, CollectionId } from "../models";
+import { TicketMint, CollectionId, BuyerResult } from "../models";
 
 export class TicketMintsContract {
 
@@ -109,5 +109,27 @@ export class TicketMintsContract {
         
     } 
 
+
+    async getTicketsBuyers( offset? : number, limit : number = 10) : Promise<BuyerResult>{
+
+        try {
+
+            let accountId = this.wallet?.accountId;
+
+            let res =  await this.wallet?.viewMethod({
+                contractId: this.contractId,
+                method: 'get_tickets_buyers',
+                args: { owner : accountId, offset: offset, limit : limit  }
+            });
+
+            return res ;
+        }
+        catch( e: any) {
+          
+            console.error("ex", e, new Date());
+            return {};
+        }
+        
+    } 
 
 }

@@ -214,8 +214,30 @@ export interface SalesPageTemplate{
     name : string, 
 } 
 
-
 export const SALE_PAGE_TEMPLATES : SalesPageTemplate[] = [
     {id :1 , name : "Oceanic"},
     {id :2 , name : "Dark Knight"}
 ];
+
+
+export interface Buyer {
+
+    account_id? : string,
+
+    last_puchase_date? : number, 
+
+}
+
+
+export interface BuyerResult {
+
+    buyers? : Buyer[],
+
+    total? : number, 
+
+    offset? : number,
+
+    limit? : number,
+}
+
+

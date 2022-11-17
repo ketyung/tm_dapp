@@ -1,0 +1,84 @@
+.BuyerListDiv {
+    border-radius: 20px;
+    min-width: 99%;
+    padding:26px 4px 26px 4px;
+    border: 1px solid #ccd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(100, 100, 100, 0.3) 0px 30px 60px -30px;
+    overflow-x: hidden;
+}
+
+
+@media only screen and (min-device-width: 868px){
+
+    .BuyerList{
+        margin:auto;
+        padding:4px;
+        min-width: 99%;
+        background-color: transparent;
+    }
+}
+
+.BuyerList thead {
+    font-weight: bolder;
+}
+
+.BuyerList tbody tr {
+
+    color:black;
+    background-color: transparent;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
+}
+
+.BuyerList tbody tr:hover {
+
+    background-color: #ded;
+    color:#458;
+    cursor: pointer;
+    height : 50px;
+    border-bottom: 1px solid #ccd;
+}
+
+
+.BuyerList thead tr {
+    height:40px;
+}
+
+
+@media only screen and (max-device-width: 867px){
+
+
+    .BuyerList{
+        margin:auto;
+        padding:4px;
+        width:90%;
+        background-color: transparent;
+    }
+
+    .BuyerList td:nth-child(3){
+        display: none;
+    }
+
+
+    .BuyerList td:nth-child(4){
+        display: none;
+    }
+
+
+    .BuyerList td:nth-child(5){
+        display: none;
+    }
+
+    .BuyerList th:nth-child(3){
+        display: none;
+    }
+
+    .BuyerList th:nth-child(4){
+        display: none;
+    }
+
+    .BuyerList th:nth-child(5){
+        display: none;
+    }
+
+}

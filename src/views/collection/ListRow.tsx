@@ -1,7 +1,6 @@
-import { AttributeType, Collection, Page } from "../../models";
+import { AttributeType, Collection} from "../../models";
 import { Button, Image, Menu, Dropdown, Tooltip} from "antd";
 import { MoreOutlined, EditOutlined, EyeOutlined, ShoppingOutlined, ShareAltOutlined } from "@ant-design/icons";
-import usePage from "../../hooks/usePage";
 import { ListProps } from "./List";
 import { ViewType } from "../View";
 import { ShareView } from "../components/ShareView";
@@ -18,8 +17,6 @@ type Props = ListProps & {
 export const ListRow : FC <Props> = ({
     collection, index,setCollectionForEdit, setViewType
 }) =>{
-
-    const {setPage} = usePage();
 
     const [url, setUrl] = useState<string>();
 

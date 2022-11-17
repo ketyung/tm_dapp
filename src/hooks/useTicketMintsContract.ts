@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useWalletState from "./useWalletState";
-import {TicketMint} from "../models";
+import {TicketMint, BuyerResult} from "../models";
 import { getDatesDaysAgoTillNow, getMinAndMaxTimes, shortDate} from "../utils";
 import { TicketMintsContract } from "../near/TicketMintsContract";
 import { TICKET_MINTS_CONTRACT_ID } from "../near/const";
@@ -61,5 +61,15 @@ export default function useTicketMintsContract() {
 
     }
 
-    return {getTicketMintsOf, loading, getTicketMintsBy, getSalesCountInRange} as const;
+    const getTicketsBuyers = async ( offset? : number, limit : number = 10) : Promise<BuyerResult> =>{
+
+        setLoading(true);
+        let contract = new TicketMintsContract ( TICKET_MINTS_CONTRACT_ID, wallet);
+
+        let buyers =  await contract.getTicketsBuyers( offset, limit);
+        setLoading(false);
+        return buyers;
+    }
+
+    return {getTicketMintsOf, loading, getTicketMintsBy, getSalesCountInRange, getTicketsBuyers} as const;
 }

@@ -25,7 +25,9 @@ export const SideBar : FC <Props> = ({
         }}>
         <BulbOutlined style={{marginRight:"10px"}}/>Events
         </div>
-        <div className="Menu">
+        <div className={viewType === ViewType.Customers ? "MenuSel" : "Menu"} onClick={()=>{
+            if ( setViewType) setViewType(ViewType.Customers);  
+        }}>
         <TeamOutlined style={{marginRight:"10px"}}/>Customers
         </div>
         <div className="Menu">
