@@ -114,8 +114,10 @@ export default function useCollectionsContract() {
 
         let s = await shortCollectionUri(collection);
 
-        s = (s===undefined) ?  "/c/"+ encodeURIComponent(toB64OfShortCollectionInfo(collection) ) :
-        "/collection/"+ encodeURIComponent(s);
+        let host = process.env.REACT_APP_BUY_SITE_HOST ?? "";
+
+        s = (s===undefined) ?  host + "/c/"+ encodeURIComponent(toB64OfShortCollectionInfo(collection) ) :
+        host + "/collection/"+ encodeURIComponent(s);
 
         return s;
     }

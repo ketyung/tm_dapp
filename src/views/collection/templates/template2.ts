@@ -28,7 +28,7 @@ export const createImageDataUrl = async (
         ctx.fill();
     
         // Draw the text
-        ctx.font = "24px Turismo";
+        ctx.font = "20px Turismo";
         ctx.fillStyle = "wheat";
         ctx.fillText(ticketInfo.title ?? "No Title", 40, 70);
 
