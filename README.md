@@ -53,4 +53,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## License 
 MIT License
-Copyright (c) 2022 Christopher Ket Yung Chee
+Copyright (c) 2022 Christopher Ket Yung Chee. See [License](https://github.com/ketyung/tm_dapp/blob/master/LICENSE.md) for details
