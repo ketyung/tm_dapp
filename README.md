@@ -1,7 +1,7 @@
 # The frond-end dApp of TicketMaker
 This repo contains the front-end web3 application of the TicketMaker online NFT event and ticketing tool
 
-# Features of TicketMaker 
+# Features
 - An online tool for the ease of creation of event and the NFT ticket collections and
 the sales pages for ticket sales. 
 - Event organizers can easily share their ticket sales page on social media
