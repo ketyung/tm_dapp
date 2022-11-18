@@ -1,3 +1,8 @@
+# The frond-end dApp of TicketMaker
+This repo contains the front-end web3 application of the TicketMaker online NFT event and ticketing tool
+https://ticketmaker.xyz
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
