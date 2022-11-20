@@ -10,15 +10,6 @@ the sales pages for ticket sales.
 # Live Demo
 You can try out a live version on NEAR testnet on https://ticketmaker.xyz
 
-# To run locally, glone this GitHub repo 
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 ## License 
 MIT License
 Copyright (c) 2022 Christopher Ket Yung Chee. See [License](https://github.com/ketyung/tm_dapp/blob/master/LICENSE.md) for details
