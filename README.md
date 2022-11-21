@@ -10,6 +10,26 @@ the sales pages for ticket sales.
 # Live Demo
 You can try out a live version on NEAR testnet on https://ticketmaker.xyz
 
+
+# To run this on your localhost
+- Git clone this repo
+- And run 
+
+yarn start 
+
+and open your browser at http://localhost:3000
+
+- For ticket image to be able to upload to Arweave, you'll need to add a .env file 
+into the root folder of this repo that contains at least REACT_APP_ARWEAVE_KEY as follows:
+
+REACT_APP_ARWEAVE_KEY=Arweave-wallet-private-key
+
+Replace "Arweave-wallet-private-key" with your Arweave wallet's private key
+
+
+
+
+
 ## License 
 MIT License
 Copyright (c) 2022 Christopher Ket Yung Chee. See [License](https://github.com/ketyung/tm_dapp/blob/master/LICENSE.md) for details
