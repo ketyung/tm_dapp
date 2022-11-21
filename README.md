@@ -10,7 +10,6 @@ the sales pages for ticket sales.
 # Live Demo
 You can try out a live version on NEAR testnet on https://ticketmaker.xyz
 
-
 # To run this on your localhost
 - Git clone this repo
 - And run 
@@ -26,9 +25,8 @@ REACT_APP_ARWEAVE_KEY=Arweave-wallet-private-key
 
 Replace "Arweave-wallet-private-key" with your Arweave wallet's private key
 
-
-
-
+# Repos for smart contracts
+The repo for the NEAR smart contracts can be found on https://github.com/ketyung?tab=repositories&q=tm_
 
 ## License 
 MIT License
