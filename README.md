@@ -7,6 +7,10 @@ the sales pages for ticket sales.
 - Event organizers can easily share their ticket sales page on social media
 - Edit event, view ticket sales on the dashboard and view customers
 
+# Architecture Overview
+![The architecture overview of TicketMaker](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/308/844/datas/gallery.jpg)
+
+
 # Live Demo
 You can try out a live version on NEAR testnet on https://ticketmaker.xyz
 
